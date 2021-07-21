@@ -1,0 +1,14 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP EPM7128slc84-15n
+D MAX 7000s series CPLD (JTAG programmable)
+F https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ds/archives/m7000.pdf
+$ENDCMP
+#
+$CMP IDT7132
+D DIP packaged dual port ram (DPRAM)
+K DPRAM
+F https://www.renesas.com/sg/en/document/dst/713242-datasheet
+$ENDCMP
+#
+#End Doc Library

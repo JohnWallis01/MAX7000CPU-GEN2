@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name eec)(type Legacy)(uri ${KIPRJMOD}/IC_Altera_EPM7128SLC84-15N/eec.lib)(options "")(descr ""))
+  (lib (name CPU_ics)(type Legacy)(uri ${KIPRJMOD}/CPU_ics.lib)(options "")(descr ""))
+  (lib (name MAX7000CPU-rescue)(type Legacy)(uri ${KIPRJMOD}/MAX7000CPU-rescue.lib)(options "")(descr ""))
+  (lib (name CPU_internal_elements)(type Legacy)(uri ${KIPRJMOD}/CPU_internal_elements.lib)(options "")(descr ""))
+)

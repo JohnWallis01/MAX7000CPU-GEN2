@@ -1,0 +1,52 @@
+IDT7132L70JI MAIN RAM/PROGRAM COUNTER https://www.ebay.com.au/itm/IDT7132L70JI-IDT7132LA100JI-PLCC-52-New-Original-Dual-Port-Static-RAM/124106189232 ~$4.50/unit 1x
+
+\\Replaable with EEPROM SN74LS181N ALU https://www.aliexpress.com/item/4001122330448.html?spm=a2g0s.8937460.0.0.4b882e0eEq61sD ~1.6/unit (min 10x) 2x
+AT28C64-15PC EEPROM (PLD) https://www.aliexpress.com/item/1005002059804323.html?spm=a2g0s.8937460.0.0.4b882e0eEq61sD ~$1.00/unit (min 5x) (find programmer)
+
+
+PI NANO https://www.aliexpress.com/item/32859196868.html?spm=a2g0s.8937460.0.0.4b882e0eEq61sD $7.50 
+
+Register https://www.aliexpress.com/item/32821374515.html?spm=a2g0o.productlist.0.0.2b1d71183KMe6k&algo_pvid=3424c9b4-c020-4b55-a0d2-a56a672d6d9e&algo_expid=3424c9b4-c020-4b55-a0d2-a56a672d6d9e-8&btsid=0bb0622d16184619296182090e92ae&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_ ~$0.43/unit (10x min)
+Oscillator
+
+
+IDT6116SA45P replacement ram
+
+
+\\Might not be necessary if other parts are tri state SN74LS241N  TRI STATE BUFFER https://www.aliexpress.com/item/32803605745.html?spm=a2g0s.8937460.0.0.4b882e0eEq61sD ~$1.10/unit (min 10x)
+NAND GATES
+Oscillator
+
+
+IDT7132L70JI MAIN RAM/PROGRAM COUNTER https://www.ebay.com.au/itm/IDT7132L70JI-IDT7132LA100JI-PLCC-52-New-Original-Dual-Port-Static-RAM/124106189232 ~$4.50/unit 1x
+
+
+High speed counter/jump logic  SN74LS592N ~ $17 SN74LS590N ~$16
+
+to get ~$5 Counter/Jump Logic SN74LS163AN https://www.aliexpress.com/item/33015989076.html?spm=a2g0o.productlist.0.0.303c503ePrlfUA&algo_pvid=d8dac396-0a8d-4d03-90d4-56ae2abaf52b&algo_expid=d8dac396-0a8d-4d03-90d4-56ae2abaf52b-0&btsid=0bb0623616191039782823916e4133&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+
+
+Mouser Parts
+
+
+1mbit eeprom GLS29EE010-70-4C-NHE-T $3.33
+
+
+
+
+altera parts seem like the go:
+
+
+806-PX-44LCC ~2.35 IC socket
+EPM7032AELC44-10N ~3.25 PLCC based 36 I/O 32 MCELL 600 Gate CPLD
+
+
+
+For gen2 16 bit cpu
+
+These chips kinda dont exist
+
+5M40ZE64C5N - very cost effecitve chip $1.22
+5M80ZT100C5N $2.57 kinda not worth
+IS62WV12816EALL 16 bit in 16 bit out SRAM $2.44
+IS62WV12816EBLL-45TLI $2.44 sram best choice

@@ -1,0 +1,449 @@
+Fitter report for AL_Controller
+Mon Jul 19 20:03:39 2021
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+  3. Fitter Settings
+  4. Parallel Compilation
+  5. Pin-Out File
+  6. Fitter Resource Usage Summary
+  7. Input Pins
+  8. Output Pins
+  9. All Package Pins
+ 10. I/O Standard
+ 11. Dedicated Inputs I/O
+ 12. Output Pin Default Load For Reported TCO
+ 13. Fitter Resource Utilization by Entity
+ 14. Non-Global High Fan-Out Signals
+ 15. Other Routing Usage Summary
+ 16. LAB Macrocells
+ 17. Logic Cell Interconnection
+ 18. Fitter Device Options
+ 19. Fitter Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; Fitter Summary                                                              ;
++---------------------------+-------------------------------------------------+
+; Fitter Status             ; Successful - Mon Jul 19 20:03:39 2021           ;
+; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name             ; AL_Controller                                   ;
+; Top-level Entity Name     ; AL_Controller                                   ;
+; Family                    ; MAX7000S                                        ;
+; Device                    ; EPM7128SLC84-15                                 ;
+; Timing Models             ; Final                                           ;
+; Total macrocells          ; 22 / 128 ( 17 % )                               ;
+; Total pins                ; 64 / 68 ( 94 % )                                ;
++---------------------------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Fitter Settings                                                                                              ;
++----------------------------------------------------------------------------+-----------------+---------------+
+; Option                                                                     ; Setting         ; Default Value ;
++----------------------------------------------------------------------------+-----------------+---------------+
+; Device                                                                     ; EPM7128SLC84-15 ;               ;
+; Use smart compilation                                                      ; Off             ; Off           ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On              ; On            ;
+; Enable compact report table                                                ; Off             ; Off           ;
+; Optimize Multi-Corner Timing                                               ; Off             ; Off           ;
+; Optimize Timing for ECOs                                                   ; Off             ; Off           ;
+; Regenerate full fit report during ECO compiles                             ; Off             ; Off           ;
+; Optimize IOC Register Placement for Timing                                 ; Normal          ; Normal        ;
+; Fitter Initial Placement Seed                                              ; 1               ; 1             ;
+; Slow Slew Rate                                                             ; Off             ; Off           ;
+; Fitter Effort                                                              ; Auto Fit        ; Auto Fit      ;
+; Force Fitter to Avoid Periphery Placement Warnings                         ; Off             ; Off           ;
++----------------------------------------------------------------------------+-----------------+---------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 16     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------+
+; Pin-Out File ;
++--------------+
+The pin-out file can be found in E:/Libraries/Documents/Quartus/MAX7000CPU_ALC/output_files/AL_Controller.pin.
+
+
++--------------------------------------------------+
+; Fitter Resource Usage Summary                    ;
++------------------------------+-------------------+
+; Resource                     ; Usage             ;
++------------------------------+-------------------+
+; Logic cells                  ; 22 / 128 ( 17 % ) ;
+; Registers                    ; 0 / 128 ( 0 % )   ;
+; Number of pterms used        ; 0                 ;
+; I/O pins                     ; 64 / 68 ( 94 % )  ;
+;     -- Clock pins            ; 1 / 2 ( 50 % )    ;
+;     -- Dedicated input pins  ; 2 / 2 ( 100 % )   ;
+;                              ;                   ;
+; Global signals               ; 0                 ;
+; Shareable expanders          ; 0 / 128 ( 0 % )   ;
+; Parallel expanders           ; 0 / 120 ( 0 % )   ;
+; Cells using turbo bit        ; 22 / 128 ( 17 % ) ;
+; Maximum fan-out              ; 1                 ;
+; Highest non-global fan-out   ; 1                 ;
+; Total fan-out                ; 22                ;
+; Average fan-out              ; 0.26              ;
++------------------------------+-------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                           ;
++----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; Name           ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; I/O Standard ; Location assigned by ;
++----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; A[0]           ; 81    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[1]           ; 52    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[2]           ; 33    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[3]           ; 80    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[4]           ; 61    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[5]           ; 60    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[6]           ; 70    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; A[7]           ; 34    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; AequalB_FlagIn ; 73    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[0]           ; 51    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[1]           ; 79    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[2]           ; 35    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[3]           ; 77    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[4]           ; 58    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[5]           ; 50    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[6]           ; 69    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; B[7]           ; 36    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; CLK_Select     ; 75    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; CarryFlagIn    ; 54    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Comm0          ; 55    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Comm1          ; 74    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FastCLK        ; 65    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[0]      ; 84    ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[1]      ; 48    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[2]      ; 76    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[3]      ; 57    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[4]      ; 37    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; FlagIn[5]      ; 67    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[0]         ; 49    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[1]         ; 45    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[2]         ; 40    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[3]         ; 64    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[4]         ; 68    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[5]         ; 46    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[6]         ; 2     ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; Ins[7]         ; 1     ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; SlowCLK        ; 56    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; UserCLK        ; 39    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
++----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                     ;
++-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; Name        ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
++-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; AequalB_Out ; 20    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; CLK         ; 28    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; CarryOut    ; 21    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagCLK     ; 29    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[0]  ; 18    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[1]  ; 17    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[2]  ; 16    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[3]  ; 15    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[4]  ; 31    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; FlagOut[5]  ; 30    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; JumpEnable  ; 27    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; JumpRegLoad ; 25    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[0]        ; 12    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[1]        ; 11    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[2]        ; 10    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[3]        ; 9     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[4]        ; 8     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[5]        ; 6     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[6]        ; 5     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; O[7]        ; 4     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RegAControl ; 22    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; RegBControl ; 24    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
++-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                      ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; 1        ; 0          ; --       ; Ins[7]         ; input  ; TTL          ;         ; N               ;
+; 2        ; 1          ; --       ; Ins[6]         ; input  ; TTL          ;         ; N               ;
+; 3        ; 2          ; --       ; VCCINT         ; power  ;              ; 5.0V    ;                 ;
+; 4        ; 3          ; --       ; O[7]           ; output ; TTL          ;         ; N               ;
+; 5        ; 4          ; --       ; O[6]           ; output ; TTL          ;         ; N               ;
+; 6        ; 5          ; --       ; O[5]           ; output ; TTL          ;         ; N               ;
+; 7        ; 6          ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 8        ; 7          ; --       ; O[4]           ; output ; TTL          ;         ; N               ;
+; 9        ; 8          ; --       ; O[3]           ; output ; TTL          ;         ; N               ;
+; 10       ; 9          ; --       ; O[2]           ; output ; TTL          ;         ; N               ;
+; 11       ; 10         ; --       ; O[1]           ; output ; TTL          ;         ; N               ;
+; 12       ; 11         ; --       ; O[0]           ; output ; TTL          ;         ; N               ;
+; 13       ; 12         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 14       ; 13         ; --       ; TDI            ; input  ; TTL          ;         ; N               ;
+; 15       ; 14         ; --       ; FlagOut[3]     ; output ; TTL          ;         ; N               ;
+; 16       ; 15         ; --       ; FlagOut[2]     ; output ; TTL          ;         ; N               ;
+; 17       ; 16         ; --       ; FlagOut[1]     ; output ; TTL          ;         ; N               ;
+; 18       ; 17         ; --       ; FlagOut[0]     ; output ; TTL          ;         ; N               ;
+; 19       ; 18         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 20       ; 19         ; --       ; AequalB_Out    ; output ; TTL          ;         ; N               ;
+; 21       ; 20         ; --       ; CarryOut       ; output ; TTL          ;         ; N               ;
+; 22       ; 21         ; --       ; RegAControl    ; output ; TTL          ;         ; N               ;
+; 23       ; 22         ; --       ; TMS            ; input  ; TTL          ;         ; N               ;
+; 24       ; 23         ; --       ; RegBControl    ; output ; TTL          ;         ; N               ;
+; 25       ; 24         ; --       ; JumpRegLoad    ; output ; TTL          ;         ; N               ;
+; 26       ; 25         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 27       ; 26         ; --       ; JumpEnable     ; output ; TTL          ;         ; N               ;
+; 28       ; 27         ; --       ; CLK            ; output ; TTL          ;         ; N               ;
+; 29       ; 28         ; --       ; FlagCLK        ; output ; TTL          ;         ; N               ;
+; 30       ; 29         ; --       ; FlagOut[5]     ; output ; TTL          ;         ; N               ;
+; 31       ; 30         ; --       ; FlagOut[4]     ; output ; TTL          ;         ; N               ;
+; 32       ; 31         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 33       ; 32         ; --       ; A[2]           ; input  ; TTL          ;         ; N               ;
+; 34       ; 33         ; --       ; A[7]           ; input  ; TTL          ;         ; N               ;
+; 35       ; 34         ; --       ; B[2]           ; input  ; TTL          ;         ; N               ;
+; 36       ; 35         ; --       ; B[7]           ; input  ; TTL          ;         ; N               ;
+; 37       ; 36         ; --       ; FlagIn[4]      ; input  ; TTL          ;         ; N               ;
+; 38       ; 37         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 39       ; 38         ; --       ; UserCLK        ; input  ; TTL          ;         ; N               ;
+; 40       ; 39         ; --       ; Ins[2]         ; input  ; TTL          ;         ; N               ;
+; 41       ; 40         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 42       ; 41         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 43       ; 42         ; --       ; VCCINT         ; power  ;              ; 5.0V    ;                 ;
+; 44       ; 43         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 45       ; 44         ; --       ; Ins[1]         ; input  ; TTL          ;         ; N               ;
+; 46       ; 45         ; --       ; Ins[5]         ; input  ; TTL          ;         ; N               ;
+; 47       ; 46         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 48       ; 47         ; --       ; FlagIn[1]      ; input  ; TTL          ;         ; N               ;
+; 49       ; 48         ; --       ; Ins[0]         ; input  ; TTL          ;         ; N               ;
+; 50       ; 49         ; --       ; B[5]           ; input  ; TTL          ;         ; N               ;
+; 51       ; 50         ; --       ; B[0]           ; input  ; TTL          ;         ; N               ;
+; 52       ; 51         ; --       ; A[1]           ; input  ; TTL          ;         ; N               ;
+; 53       ; 52         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 54       ; 53         ; --       ; CarryFlagIn    ; input  ; TTL          ;         ; N               ;
+; 55       ; 54         ; --       ; Comm0          ; input  ; TTL          ;         ; N               ;
+; 56       ; 55         ; --       ; SlowCLK        ; input  ; TTL          ;         ; N               ;
+; 57       ; 56         ; --       ; FlagIn[3]      ; input  ; TTL          ;         ; N               ;
+; 58       ; 57         ; --       ; B[4]           ; input  ; TTL          ;         ; N               ;
+; 59       ; 58         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 60       ; 59         ; --       ; A[5]           ; input  ; TTL          ;         ; N               ;
+; 61       ; 60         ; --       ; A[4]           ; input  ; TTL          ;         ; N               ;
+; 62       ; 61         ; --       ; TCK            ; input  ; TTL          ;         ; N               ;
+; 63       ; 62         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 64       ; 63         ; --       ; Ins[3]         ; input  ; TTL          ;         ; N               ;
+; 65       ; 64         ; --       ; FastCLK        ; input  ; TTL          ;         ; N               ;
+; 66       ; 65         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 67       ; 66         ; --       ; FlagIn[5]      ; input  ; TTL          ;         ; N               ;
+; 68       ; 67         ; --       ; Ins[4]         ; input  ; TTL          ;         ; N               ;
+; 69       ; 68         ; --       ; B[6]           ; input  ; TTL          ;         ; N               ;
+; 70       ; 69         ; --       ; A[6]           ; input  ; TTL          ;         ; N               ;
+; 71       ; 70         ; --       ; TDO            ; output ; TTL          ;         ; N               ;
+; 72       ; 71         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 73       ; 72         ; --       ; AequalB_FlagIn ; input  ; TTL          ;         ; N               ;
+; 74       ; 73         ; --       ; Comm1          ; input  ; TTL          ;         ; N               ;
+; 75       ; 74         ; --       ; CLK_Select     ; input  ; TTL          ;         ; N               ;
+; 76       ; 75         ; --       ; FlagIn[2]      ; input  ; TTL          ;         ; N               ;
+; 77       ; 76         ; --       ; B[3]           ; input  ; TTL          ;         ; N               ;
+; 78       ; 77         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
+; 79       ; 78         ; --       ; B[1]           ; input  ; TTL          ;         ; N               ;
+; 80       ; 79         ; --       ; A[3]           ; input  ; TTL          ;         ; N               ;
+; 81       ; 80         ; --       ; A[0]           ; input  ; TTL          ;         ; N               ;
+; 82       ; 81         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 83       ; 82         ; --       ; GND+           ;        ;              ;         ;                 ;
+; 84       ; 83         ; --       ; FlagIn[0]      ; input  ; TTL          ;         ; N               ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+
++--------------------------------------------------------------------------------------------------+
+; I/O Standard                                                                                     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; I/O Standard ; Input Vref ; Dedicated Input Pins ; Pins in I/O Bank1 ; Pins in I/O Bank2 ; Total ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; TTL          ; -          ; 3                    ; 0                 ; 0                 ; 3     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+
+
++-------------------------------------------------------------------------+
+; Dedicated Inputs I/O                                                    ;
++-----------+-------+-------+-------+--------------+------------+---------+
+; Name      ; Pin # ; Type  ; VCCIO ; I/O Standard ; Input Vref ; Current ;
++-----------+-------+-------+-------+--------------+------------+---------+
+; FlagIn[0] ; 84    ; Input ; --    ; TTL          ; -          ; 0 mA    ;
+; Ins[6]    ; 2     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
+; Ins[7]    ; 1     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
++-----------+-------+-------+-------+--------------+------------+---------+
+
+
++-----------------------------------------------+
+; Output Pin Default Load For Reported TCO      ;
++--------------+-------+------------------------+
+; I/O Standard ; Load  ; Termination Resistance ;
++--------------+-------+------------------------+
+; 3.3-V LVTTL  ; 10 pF ; Not Available          ;
+; 3.3-V LVCMOS ; 10 pF ; Not Available          ;
+; TTL          ; 10 pF ; Not Available          ;
++--------------+-------+------------------------+
+Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
+
+
++-------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                               ;
++----------------------------+------------+------+---------------------+--------------+
+; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+------------+------+---------------------+--------------+
+; |AL_Controller             ; 22         ; 64   ; |AL_Controller      ; work         ;
++----------------------------+------------+------+---------------------+--------------+
+
+
++---------------------------------+
+; Non-Global High Fan-Out Signals ;
++---------+-----------------------+
+; Name    ; Fan-Out               ;
++---------+-----------------------+
+; ~GND~21 ; 1                     ;
+; ~GND~20 ; 1                     ;
+; ~GND~19 ; 1                     ;
+; ~GND~18 ; 1                     ;
+; ~GND~17 ; 1                     ;
+; ~GND~16 ; 1                     ;
+; ~GND~15 ; 1                     ;
+; ~GND~14 ; 1                     ;
+; ~GND~13 ; 1                     ;
+; ~GND~12 ; 1                     ;
+; ~GND~11 ; 1                     ;
+; ~GND~10 ; 1                     ;
+; ~GND~9  ; 1                     ;
+; ~GND~8  ; 1                     ;
+; ~GND~7  ; 1                     ;
+; ~GND~6  ; 1                     ;
+; ~GND~5  ; 1                     ;
+; ~GND~4  ; 1                     ;
+; ~GND~3  ; 1                     ;
+; ~GND~2  ; 1                     ;
+; ~GND~1  ; 1                     ;
+; ~GND~0  ; 1                     ;
++---------+-----------------------+
+
+
++-----------------------------------------------+
+; Other Routing Usage Summary                   ;
++-----------------------------+-----------------+
+; Other Routing Resource Type ; Usage           ;
++-----------------------------+-----------------+
+; Output enables              ; 0 / 6 ( 0 % )   ;
+; PIA buffers                 ; 0 / 288 ( 0 % ) ;
+; PIAs                        ; 0 / 288 ( 0 % ) ;
++-----------------------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; LAB Macrocells                                                       ;
++----------------------------------------+-----------------------------+
+; Number of Macrocells  (Average = 2.75) ; Number of LABs  (Total = 3) ;
++----------------------------------------+-----------------------------+
+; 0                                      ; 5                           ;
+; 1                                      ; 0                           ;
+; 2                                      ; 0                           ;
+; 3                                      ; 0                           ;
+; 4                                      ; 0                           ;
+; 5                                      ; 0                           ;
+; 6                                      ; 0                           ;
+; 7                                      ; 2                           ;
+; 8                                      ; 1                           ;
++----------------------------------------+-----------------------------+
+
+
++----------------------------------------+
+; Logic Cell Interconnection             ;
++-----+------------+-------+-------------+
+; LAB ; Logic Cell ; Input ; Output      ;
++-----+------------+-------+-------------+
+;  A  ; LC3        ;       ; O[0]        ;
+;  A  ; LC5        ;       ; O[1]        ;
+;  A  ; LC6        ;       ; O[2]        ;
+;  A  ; LC8        ;       ; O[3]        ;
+;  A  ; LC11       ;       ; O[4]        ;
+;  A  ; LC13       ;       ; O[5]        ;
+;  A  ; LC14       ;       ; O[6]        ;
+;  A  ; LC16       ;       ; O[7]        ;
+;  B  ; LC17       ;       ; RegAControl ;
+;  B  ; LC19       ;       ; CarryOut    ;
+;  B  ; LC21       ;       ; AequalB_Out ;
+;  B  ; LC24       ;       ; FlagOut[0]  ;
+;  B  ; LC25       ;       ; FlagOut[1]  ;
+;  B  ; LC27       ;       ; FlagOut[2]  ;
+;  B  ; LC29       ;       ; FlagOut[3]  ;
+;  C  ; LC35       ;       ; FlagOut[4]  ;
+;  C  ; LC37       ;       ; FlagOut[5]  ;
+;  C  ; LC38       ;       ; FlagCLK     ;
+;  C  ; LC40       ;       ; CLK         ;
+;  C  ; LC43       ;       ; JumpEnable  ;
+;  C  ; LC45       ;       ; JumpRegLoad ;
+;  C  ; LC46       ;       ; RegBControl ;
++-----+------------+-------+-------------+
+
+
++---------------------------------------------------------------+
+; Fitter Device Options                                         ;
++----------------------------------------------+----------------+
+; Option                                       ; Setting        ;
++----------------------------------------------+----------------+
+; Enable user-supplied start-up clock (CLKUSR) ; Off            ;
+; Enable device-wide reset (DEV_CLRn)          ; Off            ;
+; Enable device-wide output enable (DEV_OE)    ; Off            ;
+; Enable INIT_DONE output                      ; Off            ;
+; Configuration scheme                         ; Passive Serial ;
+; Security bit                                 ; Off            ;
+; Base pin-out file on sameframe device        ; Off            ;
++----------------------------------------------+----------------+
+
+
++-----------------+
+; Fitter Messages ;
++-----------------+
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (119006): Selected device EPM7128SLC84-15 for design "AL_Controller"
+Info: Quartus II 64-Bit Fitter was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4675 megabytes
+    Info: Processing ended: Mon Jul 19 20:03:39 2021
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
