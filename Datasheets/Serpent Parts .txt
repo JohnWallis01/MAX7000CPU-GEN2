@@ -50,3 +50,4 @@ These chips kinda dont exist
 5M80ZT100C5N $2.57 kinda not worth
 IS62WV12816EALL 16 bit in 16 bit out SRAM $2.44
 IS62WV12816EBLL-45TLI $2.44 sram best choice
+74ABT162245A 1.90 bus transciver
