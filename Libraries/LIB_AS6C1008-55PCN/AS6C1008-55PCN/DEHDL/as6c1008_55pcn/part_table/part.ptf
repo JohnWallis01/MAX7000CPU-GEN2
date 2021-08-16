@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'AS6C1008_55PCN'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET";
+{========================================================================================}
+ "Alliance Memory", "AS6C1008-55PCN" (!) = "", "DIP254P1524X393-32", "Other", "913-AS6C1008-55PCN", "https://www.mouser.co.uk/ProductDetail/Alliance-Memory/AS6C1008-55PCN?qs=E5c5%252Bmu3i39qb4Qta5D2qg%3D%3D", "CMOS SRAM", "http://componentsearchengine.com/Datasheets/1/AS6C1008-55PCN.pdf"
+END_PART
+
+END.

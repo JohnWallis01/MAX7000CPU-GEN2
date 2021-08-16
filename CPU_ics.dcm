@@ -1,5 +1,10 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP AS6C1008-55PCN
+D CMOS SRAM
+F http://componentsearchengine.com/Datasheets/1/AS6C1008-55PCN.pdf
+$ENDCMP
+#
 $CMP EPM7128slc84-15n
 D MAX 7000s series CPLD (JTAG programmable)
 F https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ds/archives/m7000.pdf

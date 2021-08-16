@@ -1,0 +1,10 @@
+(unit MM)
+
+(package "DIP254P1524X393-32"
+    (type UNDEF)
+    (uver 2)
+    (mountForm default
+        (footprintRef "DIP254P1524X393-32")
+        (spec "default")
+    )
+)

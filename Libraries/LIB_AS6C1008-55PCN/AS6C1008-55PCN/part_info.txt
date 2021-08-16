@@ -1,0 +1,9 @@
+Manufacturer=Alliance Memory
+PartNumber=AS6C1008-55PCN
+PartCategory=Integrated Circuit
+PackageCategory=Other
+PinCount=32
+Version=3.1
+Released=2017-01-10 14:43:59
+Downloaded=2021-08-15 14:23:48
+3D=N

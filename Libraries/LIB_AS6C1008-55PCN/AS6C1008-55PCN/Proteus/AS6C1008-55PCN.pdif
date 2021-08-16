@@ -1,0 +1,725 @@
+;Proteus Design Interchange Format
+(PDIF
+ (vendor "SamacSys Limited")
+ (version 1 0)
+ (library
+  (part "AS6C1008-55PCN"
+   (description "CMOS SRAM")
+   (family "ANA")
+   (package "DIP254P1524X393-32")
+   (attribute "Datasheet Link" "http://componentsearchengine.com/Datasheets/1/AS6C1008-55PCN.pdf")
+   (attribute "Mouser Part Number" "913-AS6C1008-55PCN")
+   (attribute "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Alliance-Memory/AS6C1008-55PCN?qs=E5c5%252Bmu3i39qb4Qta5D2qg%3D%3D")
+   (attribute "Manufacturer_Name" "Alliance Memory")
+   (attribute "Manufacturer_Part_Number" "AS6C1008-55PCN")
+   (gate
+    (symbol "AS6C1008-55PCN")
+    (pin "NC" 1 NC)
+    (pin "A16" 2 PS)
+    (pin "A14" 3 PS)
+    (pin "A12" 4 PS)
+    (pin "A7" 5 PS)
+    (pin "A6" 6 PS)
+    (pin "A5" 7 PS)
+    (pin "A4" 8 PS)
+    (pin "A3" 9 PS)
+    (pin "A2" 10 PS)
+    (pin "A1" 11 PS)
+    (pin "A0" 12 PS)
+    (pin "DQ0" 13 PS)
+    (pin "DQ1" 14 PS)
+    (pin "DQ2" 15 PS)
+    (pin "VSS" 16 PS)
+    (pin "DQ3" 17 PS)
+    (pin "DQ4" 18 PS)
+    (pin "DQ5" 19 PS)
+    (pin "DQ6" 20 PS)
+    (pin "DQ7" 21 PS)
+    (pin "$CE$" 22 PS)
+    (pin "A10" 23 PS)
+    (pin "$OE$" 24 PS)
+    (pin "A11" 25 PS)
+    (pin "A9" 26 PS)
+    (pin "A8" 27 PS)
+    (pin "A13" 28 PS)
+    (pin "$WE$" 29 PS)
+    (pin "CE2" 30 PS)
+    (pin "A15" 31 PS)
+    (pin "VCC" 32 PS)
+   )
+  )
+  (symbol "AS6C1008-55PCN"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 200 100) (pt 800 100) (pt 800 -1600) (pt 200 -1600) (pt 200 100) (closed))
+   )
+   (terminal
+    (body (symbol "PIN") (pt 0 0) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -100) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -200) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -300) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -400) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -500) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -600) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -700) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -800) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -900) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1000) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1100) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1200) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1300) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1400) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 0 -1500) (rot 0) (mir 0) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1500) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1400) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1300) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1200) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1100) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -1000) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -900) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -800) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -700) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -600) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -500) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -400) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -300) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -200) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 -100) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+   (terminal
+    (body (symbol "PIN") (pt 1000 0) (rot 0) (mir X) (visible true))
+    (name (pt 230 0) (rot 0) (just MIDDLE LEFT) (visible true))
+    (number (pt 140 20) (rot 0) (just BOTTOM RIGHT) (visible true)))
+  )
+  (symbol "PIN"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 200 0))))
+  (symbol "PINSHORT"
+   (units THOU)
+   (origin (pt 0 0))
+   (graphic
+    (stroke 10)
+    (path (pt 0 0) (pt 100 0))))
+  (package "DIP254P1524X393-32"
+   (units MM)
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 39.1922)
+      (pt -0.7112 40.005))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 36.6522)
+      (pt -0.7112 37.0078))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 34.1122)
+      (pt -0.7112 34.4678))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 31.5722)
+      (pt -0.7112 31.9278))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 29.0322)
+      (pt -0.7112 29.3878))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 -1.905)
+      (pt -0.7112 -1.905))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 -1.905)
+      (pt -0.7112 -1.0922))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 40.005)
+      (pt -7.3152 40.005))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -7.3152 40.005)
+      (pt -7.9248 40.005))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -7.9248 40.005)
+      (pt -14.5288 40.005))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 40.005)
+      (pt -14.5288 39.4208))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 34.4678)
+      (pt -14.5288 34.1122))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 31.9278)
+      (pt -14.5288 31.5722))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 29.3878)
+      (pt -14.5288 29.0322))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 26.8478)
+      (pt -14.5288 26.4922))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 24.3078)
+      (pt -14.5288 23.9522))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 21.7678)
+      (pt -14.5288 21.4122))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 19.2278)
+      (pt -14.5288 18.8722))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 16.6878)
+      (pt -14.5288 16.3322))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 14.1478)
+      (pt -14.5288 13.7922))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 11.6078)
+      (pt -14.5288 11.2522))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 9.0678)
+      (pt -14.5288 8.7122))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 6.5278)
+      (pt -14.5288 6.1722))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 3.9878)
+      (pt -14.5288 3.6322))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 1.4478)
+      (pt -14.5288 1.0922))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -14.5288 -1.0922)
+      (pt -14.5288 -1.905))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 1.0922)
+      (pt -0.7112 1.4478))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 3.6322)
+      (pt -0.7112 3.9878))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 6.1722)
+      (pt -0.7112 6.5278))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 8.7122)
+      (pt -0.7112 9.0678))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 11.2522)
+      (pt -0.7112 11.6078))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 13.7922)
+      (pt -0.7112 14.1478))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 16.3322)
+      (pt -0.7112 16.6878))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 18.8722)
+      (pt -0.7112 19.2278))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 21.4122)
+      (pt -0.7112 21.7678))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 23.9522)
+      (pt -0.7112 24.3078))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (pt -0.7112 26.4922)
+      (pt -0.7112 26.8478))))
+   (layer TSLK
+    (graphic
+     (stroke 0.1524)
+     (path
+      (closed false)
+      (arc (pt -7.3152 40.005) (pt -7.9248 39.7002) (pt -7.3152 40.3098) (start -180.0) (sweep .0))
+      (pt -7.9248 40.005))))
+   (leg 1 (pt -15.24 38.1) (padstack 0))
+   (leg 2 (pt -15.24 35.56) (padstack 2))
+   (leg 3 (pt -15.24 33.02) (padstack 3))
+   (leg 4 (pt -15.24 30.48) (padstack 4))
+   (leg 5 (pt -15.24 27.94) (padstack 5))
+   (leg 6 (pt -15.24 25.4) (padstack 6))
+   (leg 7 (pt -15.24 22.86) (padstack 7))
+   (leg 8 (pt -15.24 20.32) (padstack 8))
+   (leg 9 (pt -15.24 17.78) (padstack 9))
+   (leg 10 (pt -15.24 15.24) (padstack 10))
+   (leg 11 (pt -15.24 12.7) (padstack 11))
+   (leg 12 (pt -15.24 10.16) (padstack 12))
+   (leg 13 (pt -15.24 7.62) (padstack 13))
+   (leg 14 (pt -15.24 5.08) (padstack 14))
+   (leg 15 (pt -15.24 2.54) (padstack 15))
+   (leg 16 (pt -15.24 0) (padstack 16))
+   (leg 17 (pt 0 0) (padstack 17))
+   (leg 18 (pt 0 2.54) (padstack 18))
+   (leg 19 (pt 0 5.08) (padstack 19))
+   (leg 20 (pt 0 7.62) (padstack 20))
+   (leg 21 (pt 0 10.16) (padstack 21))
+   (leg 22 (pt 0 12.7) (padstack 22))
+   (leg 23 (pt 0 15.24) (padstack 23))
+   (leg 24 (pt 0 17.78) (padstack 24))
+   (leg 25 (pt 0 20.32) (padstack 25))
+   (leg 26 (pt 0 22.86) (padstack 26))
+   (leg 27 (pt 0 25.4) (padstack 27))
+   (leg 28 (pt 0 27.94) (padstack 28))
+   (leg 29 (pt 0 30.48) (padstack 29))
+   (leg 30 (pt 0 33.02) (padstack 30))
+   (leg 31 (pt 0 35.56) (padstack 31))
+   (leg 32 (pt 0 38.1) (padstack 32))
+   (padstack 0
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (square 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (square 1.6764))
+   )
+   (padstack 2
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 3
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 4
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 5
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 6
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 7
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 8
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 9
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 10
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 11
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 12
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 13
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 14
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 15
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 16
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 17
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 18
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 19
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 20
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 21
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 22
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 23
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 24
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 25
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 26
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 27
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 28
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 29
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 30
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 31
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+   (padstack 32
+    (hole 1.1176)
+    (plated true)
+    (pad (layer TCOP) (round 1.6764))
+    (pad (layer INNER) (round 1.6764))
+    (pad (layer BCOP) (round 1.6764))
+   )
+  )
+ )
+)
