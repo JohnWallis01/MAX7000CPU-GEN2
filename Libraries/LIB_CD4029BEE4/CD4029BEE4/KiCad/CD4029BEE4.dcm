@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP CD4029BEE4
+D CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP
+K
+F http://www.ti.com/lit/ds/symlink/cd4029b.pdf
+$ENDCMP
+#
+#End Doc Library

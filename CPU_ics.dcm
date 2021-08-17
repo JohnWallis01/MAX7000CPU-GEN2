@@ -5,6 +5,11 @@ D CMOS SRAM
 F http://componentsearchengine.com/Datasheets/1/AS6C1008-55PCN.pdf
 $ENDCMP
 #
+$CMP CD4029BEE4
+D CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP
+F http://www.ti.com/lit/ds/symlink/cd4029b.pdf
+$ENDCMP
+#
 $CMP EPM7128slc84-15n
 D MAX 7000s series CPLD (JTAG programmable)
 F https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ds/archives/m7000.pdf

@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'CD4029BEE4'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Texas Instruments", "CD4029BEE4" (!) = "", "DIP794W53P254L1930H508Q16N", "Dual-In-Line Packages", "595-CD4029BEE4", "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/CD4029BEE4?qs=LU5rZWrBGo0epKDtktqo2w%3D%3D", "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP", "http://www.ti.com/lit/ds/symlink/cd4029b.pdf", "5.08 mm"
+END_PART
+
+END.
