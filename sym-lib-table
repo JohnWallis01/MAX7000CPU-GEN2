@@ -3,4 +3,5 @@
   (lib (name CPU_ics)(type Legacy)(uri ${KIPRJMOD}/CPU_ics.lib)(options "")(descr ""))
   (lib (name MAX7000CPU-rescue)(type Legacy)(uri ${KIPRJMOD}/MAX7000CPU-rescue.lib)(options "")(descr ""))
   (lib (name CPU_internal_elements)(type Legacy)(uri ${KIPRJMOD}/CPU_internal_elements.lib)(options "")(descr ""))
+  (lib (name MAX7000CPU-Gen2-rescue)(type Legacy)(uri ${KIPRJMOD}/MAX7000CPU-Gen2-rescue.lib)(options "")(descr ""))
 )
