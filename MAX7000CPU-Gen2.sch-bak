@@ -2039,7 +2039,7 @@ U 1 1 612D9799
 P 4650 3550
 F 0 "U13" H 4250 4300 50  0000 C CNN
 F 1 "74LS241" H 4350 4200 50  0000 C CNN
-F 2 "" H 4650 3550 50  0001 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 4650 3550 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74ls241.pdf" H 4650 3550 50  0001 C CNN
 	1    4650 3550
 	1    0    0    -1  
@@ -2074,7 +2074,7 @@ U 1 1 61A85EB0
 P 2950 7400
 F 0 "U19" H 3450 7665 50  0000 C CNN
 F 1 "AS6C1008-55PCN" H 3450 7574 50  0000 C CNN
-F 2 "DIP254P1524X393-32" H 3200 8350 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 3200 8350 50  0001 L CNN
 F 3 "http://componentsearchengine.com/Datasheets/1/AS6C1008-55PCN.pdf" H 3200 8250 50  0001 L CNN
 F 4 "CMOS SRAM" H 3200 8150 50  0001 L CNN "Description"
 F 5 "" H 3800 7200 50  0001 L CNN "Height"
@@ -2685,7 +2685,7 @@ Text GLabel 4150 4500 2    50   Input ~ 0
 CounterOutControl
 Text GLabel 13450 5650 0    50   Output ~ 0
 CounterOutControl
-Text Notes 9950 -700 0    50   ~ 0
+Text Notes 11900 9600 0    50   ~ 0
 Maybe Pull Chip enables to disable them when controllers arent running\n
 Wire Wire Line
 	4200 8400 3950 8400
@@ -2724,7 +2724,7 @@ U 1 1 64974BDB
 P 2250 2850
 F 0 "U9" H 2450 3050 50  0000 C CNN
 F 1 "CD4029BEE4" H 2650 2950 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 4100 2950 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 4100 2950 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 4100 2850 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 4100 2750 50  0001 L CNN "Description"
 F 5 "5.08" H 4100 2650 50  0001 L CNN "Height"
@@ -2789,7 +2789,7 @@ U 1 1 615AA2B4
 P 2250 3900
 F 0 "U10" H 2450 4100 50  0000 C CNN
 F 1 "CD4029BEE4" H 2650 4000 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 4100 4000 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 4100 4000 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 4100 3900 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 4100 3800 50  0001 L CNN "Description"
 F 5 "5.08" H 4100 3700 50  0001 L CNN "Height"
@@ -3029,7 +3029,7 @@ U 1 1 61C7AFB5
 P 4600 5750
 F 0 "U14" H 4200 6500 50  0000 C CNN
 F 1 "74LS241" H 4300 6400 50  0000 C CNN
-F 2 "" H 4600 5750 50  0001 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 4600 5750 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74ls241.pdf" H 4600 5750 50  0001 C CNN
 	1    4600 5750
 	1    0    0    -1  
@@ -3102,7 +3102,7 @@ U 1 1 61C7AFE1
 P 2200 5050
 F 0 "U11" H 2400 5250 50  0000 C CNN
 F 1 "CD4029BEE4" H 2600 5150 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 4050 5150 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 4050 5150 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 4050 5050 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 4050 4950 50  0001 L CNN "Description"
 F 5 "5.08" H 4050 4850 50  0001 L CNN "Height"
@@ -3167,7 +3167,7 @@ U 1 1 61C7B007
 P 2200 6100
 F 0 "U12" H 2400 6300 50  0000 C CNN
 F 1 "CD4029BEE4" H 2600 6200 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 4050 6200 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 4050 6200 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 4050 6100 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 4050 6000 50  0001 L CNN "Description"
 F 5 "5.08" H 4050 5900 50  0001 L CNN "Height"
@@ -3344,7 +3344,7 @@ U 1 1 61E5AA36
 P 8850 7700
 F 0 "U25" H 8450 8450 50  0000 C CNN
 F 1 "74LS241" H 8550 8350 50  0000 C CNN
-F 2 "" H 8850 7700 50  0001 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 8850 7700 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74ls241.pdf" H 8850 7700 50  0001 C CNN
 	1    8850 7700
 	1    0    0    -1  
@@ -3401,7 +3401,7 @@ U 1 1 61E5AA62
 P 6450 7000
 F 0 "U21" H 6650 7200 50  0000 C CNN
 F 1 "CD4029BEE4" H 6850 7100 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 8300 7100 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 8300 7100 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 8300 7000 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 8300 6900 50  0001 L CNN "Description"
 F 5 "5.08" H 8300 6800 50  0001 L CNN "Height"
@@ -3457,7 +3457,7 @@ U 1 1 61E5AA88
 P 6450 8050
 F 0 "U22" H 6650 8250 50  0000 C CNN
 F 1 "CD4029BEE4" H 6850 8150 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 8300 8150 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 8300 8150 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 8300 8050 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 8300 7950 50  0001 L CNN "Description"
 F 5 "5.08" H 8300 7850 50  0001 L CNN "Height"
@@ -3537,7 +3537,7 @@ U 1 1 61E5AAE8
 P 8800 9900
 F 0 "U26" H 8400 10650 50  0000 C CNN
 F 1 "74LS241" H 8500 10550 50  0000 C CNN
-F 2 "" H 8800 9900 50  0001 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 8800 9900 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74ls241.pdf" H 8800 9900 50  0001 C CNN
 	1    8800 9900
 	1    0    0    -1  
@@ -3594,7 +3594,7 @@ U 1 1 61E5AB14
 P 6400 9200
 F 0 "U23" H 6600 9400 50  0000 C CNN
 F 1 "CD4029BEE4" H 6800 9300 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 8250 9300 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 8250 9300 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 8250 9200 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 8250 9100 50  0001 L CNN "Description"
 F 5 "5.08" H 8250 9000 50  0001 L CNN "Height"
@@ -3650,7 +3650,7 @@ U 1 1 61E5AB3A
 P 6400 10250
 F 0 "U24" H 6600 10450 50  0000 C CNN
 F 1 "CD4029BEE4" H 6800 10350 50  0000 C CNN
-F 2 "DIP794W53P254L1930H508Q16N" H 8250 10350 50  0001 L CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 8250 10350 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/cd4029b.pdf" H 8250 10250 50  0001 L CNN
 F 4 "CD4029BEE4, 4-stage Decade and Binary Counter Up/Down Counter, Bi-Directional, 3  18 V, 16-Pin PDIP" H 8250 10150 50  0001 L CNN "Description"
 F 5 "5.08" H 8250 10050 50  0001 L CNN "Height"
@@ -3960,7 +3960,7 @@ Wire Notes Line
 	9950 11050 9950 9000
 Text Notes 10000 11000 0    50   ~ 0
 Speciality Registers
-Text Notes 14350 7400 0    50   ~ 0
+Text Notes 11900 9500 0    50   ~ 0
 Flags are stored in control unit
 Wire Notes Line
 	9950 11050 11650 11050
