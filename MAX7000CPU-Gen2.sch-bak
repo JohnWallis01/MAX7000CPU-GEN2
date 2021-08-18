@@ -2213,72 +2213,72 @@ Ins2
 $Comp
 L MAX7000CPU-Gen2-rescue:74LS573-74xx U26
 U 1 1 61AE780A
-P 3500 10000
-F 0 "U26" H 3250 10750 50  0000 C CNN
-F 1 "74LS574" H 3250 10650 50  0000 C CNN
-F 2 "Package_DIP:DIP-20_W7.62mm" H 3500 10000 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 3500 10000 50  0001 C CNN
-	1    3500 10000
+P 12500 8450
+F 0 "U26" H 12250 9200 50  0000 C CNN
+F 1 "74LS574" H 12250 9100 50  0000 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 12500 8450 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 12500 8450 50  0001 C CNN
+	1    12500 8450
 	1    0    0    -1  
 $EndComp
-Text Label 3000 9500 2    50   ~ 0
+Text Label 12000 7950 2    50   ~ 0
 B0
-Text Label 3000 9600 2    50   ~ 0
+Text Label 12000 8050 2    50   ~ 0
 B1
-Text Label 3000 9700 2    50   ~ 0
+Text Label 12000 8150 2    50   ~ 0
 B2
-Text Label 3000 9800 2    50   ~ 0
+Text Label 12000 8250 2    50   ~ 0
 B3
-Text Label 3000 9900 2    50   ~ 0
+Text Label 12000 8350 2    50   ~ 0
 B4
-Text Label 3000 10000 2    50   ~ 0
+Text Label 12000 8450 2    50   ~ 0
 B5
-Text Label 3000 10100 2    50   ~ 0
+Text Label 12000 8550 2    50   ~ 0
 B6
-Text Label 3000 10200 2    50   ~ 0
+Text Label 12000 8650 2    50   ~ 0
 B7
 Wire Wire Line
-	3000 10800 3500 10800
-Text Label 4000 9500 0    50   ~ 0
+	12000 9250 12500 9250
+Text Label 13000 7950 0    50   ~ 0
 Ins0
-Text Label 4000 9600 0    50   ~ 0
+Text Label 13000 8050 0    50   ~ 0
 Ins1
-Text Label 4000 9700 0    50   ~ 0
+Text Label 13000 8150 0    50   ~ 0
 Ins2
-Text Label 4000 9800 0    50   ~ 0
+Text Label 13000 8250 0    50   ~ 0
 Ins3
-Text Label 4000 9900 0    50   ~ 0
+Text Label 13000 8350 0    50   ~ 0
 Ins4
-Text Label 4000 10000 0    50   ~ 0
+Text Label 13000 8450 0    50   ~ 0
 Ins5
-Text Label 4000 10100 0    50   ~ 0
+Text Label 13000 8550 0    50   ~ 0
 Ins6
-Text Label 4000 10200 0    50   ~ 0
+Text Label 13000 8650 0    50   ~ 0
 Ins7
 $Comp
 L MAX7000CPU-Gen2-rescue:+5V-power #PWR065
 U 1 1 61DEC8E0
-P 3500 9200
-F 0 "#PWR065" H 3500 9050 50  0001 C CNN
-F 1 "+5V" H 3400 9300 50  0000 C CNN
-F 2 "" H 3500 9200 50  0001 C CNN
-F 3 "" H 3500 9200 50  0001 C CNN
-	1    3500 9200
+P 12500 7650
+F 0 "#PWR065" H 12500 7500 50  0001 C CNN
+F 1 "+5V" H 12400 7750 50  0000 C CNN
+F 2 "" H 12500 7650 50  0001 C CNN
+F 3 "" H 12500 7650 50  0001 C CNN
+	1    12500 7650
 	1    0    0    -1  
 $EndComp
 $Comp
 L MAX7000CPU-Gen2-rescue:GND-power #PWR072
 U 1 1 61E2AB93
-P 3500 10800
-F 0 "#PWR072" H 3500 10550 50  0001 C CNN
-F 1 "GND" H 3650 10800 50  0000 C CNN
-F 2 "" H 3500 10800 50  0001 C CNN
-F 3 "" H 3500 10800 50  0001 C CNN
-	1    3500 10800
+P 12500 9250
+F 0 "#PWR072" H 12500 9000 50  0001 C CNN
+F 1 "GND" H 12650 9250 50  0000 C CNN
+F 2 "" H 12500 9250 50  0001 C CNN
+F 3 "" H 12500 9250 50  0001 C CNN
+	1    12500 9250
 	1    0    0    -1  
 $EndComp
-Connection ~ 3500 10800
-Text GLabel 3000 10400 0    50   Input ~ 0
+Connection ~ 12500 9250
+Text GLabel 12000 8850 0    50   Input ~ 0
 InsRegControl
 Text Label 9800 5250 0    50   ~ 0
 B0
@@ -3586,85 +3586,77 @@ StackCountDirection
 $Comp
 L MAX7000CPU-Gen2-rescue:+5V-power #PWR066
 U 1 1 638D93A5
-P 10950 9200
-F 0 "#PWR066" H 10950 9050 50  0001 C CNN
-F 1 "+5V" H 10850 9300 50  0000 C CNN
-F 2 "" H 10950 9200 50  0001 C CNN
-F 3 "" H 10950 9200 50  0001 C CNN
-	1    10950 9200
+P 11000 7600
+F 0 "#PWR066" H 11000 7450 50  0001 C CNN
+F 1 "+5V" H 10900 7700 50  0000 C CNN
+F 2 "" H 11000 7600 50  0001 C CNN
+F 3 "" H 11000 7600 50  0001 C CNN
+	1    11000 7600
 	1    0    0    -1  
 $EndComp
 $Comp
 L MAX7000CPU-Gen2-rescue:GND-power #PWR073
 U 1 1 638D93B8
-P 10950 10800
-F 0 "#PWR073" H 10950 10550 50  0001 C CNN
-F 1 "GND" H 10955 10627 50  0000 C CNN
-F 2 "" H 10950 10800 50  0001 C CNN
-F 3 "" H 10950 10800 50  0001 C CNN
-	1    10950 10800
+P 11000 9200
+F 0 "#PWR073" H 11000 8950 50  0001 C CNN
+F 1 "GND" H 11005 9027 50  0000 C CNN
+F 2 "" H 11000 9200 50  0001 C CNN
+F 3 "" H 11000 9200 50  0001 C CNN
+	1    11000 9200
 	1    0    0    -1  
 $EndComp
 $Comp
 L MAX7000CPU-Gen2-rescue:74LS573-74xx U27
 U 1 1 638D93BE
-P 10950 10000
-F 0 "U27" H 10600 10750 50  0000 C CNN
-F 1 "74LS574" H 10700 10650 50  0000 C CNN
-F 2 "Package_DIP:DIP-20_W7.62mm" H 10950 10000 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 10950 10000 50  0001 C CNN
-	1    10950 10000
+P 11000 8400
+F 0 "U27" H 10650 9150 50  0000 C CNN
+F 1 "74LS574" H 10750 9050 50  0000 C CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 11000 8400 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 11000 8400 50  0001 C CNN
+	1    11000 8400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10950 10800 10450 10800
-Connection ~ 10950 10800
-Text Label 11450 10100 0    50   ~ 0
+	11000 9200 10500 9200
+Connection ~ 11000 9200
+Text Label 11500 8500 0    50   ~ 0
 Qo1
-Text Label 11450 10000 0    50   ~ 0
+Text Label 11500 8400 0    50   ~ 0
 Qo2
-Text Label 11450 9900 0    50   ~ 0
+Text Label 11500 8300 0    50   ~ 0
 Qo3
-Text Label 11450 9800 0    50   ~ 0
+Text Label 11500 8200 0    50   ~ 0
 Qo4
-Text Label 11450 9700 0    50   ~ 0
+Text Label 11500 8100 0    50   ~ 0
 Qo5
-Text Label 11450 9600 0    50   ~ 0
+Text Label 11500 8000 0    50   ~ 0
 Qo6
-Text Label 11450 9500 0    50   ~ 0
+Text Label 11500 7900 0    50   ~ 0
 Qo7
-Text Label 11450 10200 0    50   ~ 0
+Text Label 11500 8600 0    50   ~ 0
 Qo0
-Text Label 10450 9500 2    50   ~ 0
+Text Label 10500 7900 2    50   ~ 0
 B0
-Text Label 10450 9600 2    50   ~ 0
+Text Label 10500 8000 2    50   ~ 0
 B1
-Text Label 10450 9700 2    50   ~ 0
+Text Label 10500 8100 2    50   ~ 0
 B2
-Text Label 10450 9800 2    50   ~ 0
+Text Label 10500 8200 2    50   ~ 0
 B3
-Text Label 10450 9900 2    50   ~ 0
+Text Label 10500 8300 2    50   ~ 0
 B4
-Text Label 10450 10000 2    50   ~ 0
+Text Label 10500 8400 2    50   ~ 0
 B5
-Text Label 10450 10100 2    50   ~ 0
+Text Label 10500 8500 2    50   ~ 0
 B6
-Text Label 10450 10200 2    50   ~ 0
+Text Label 10500 8600 2    50   ~ 0
 B7
-Text GLabel 10450 10400 0    50   Input ~ 0
+Text GLabel 10500 8800 0    50   Input ~ 0
 DSPcontrol
-Wire Notes Line
-	11650 9000 11650 11050
-Wire Notes Line
-	9950 11050 9950 9000
-Text Notes 10000 11000 0    50   ~ 0
+Text Notes 10050 9400 0    50   ~ 0
 Speciality Registers
 Text Notes 12000 9650 0    50   ~ 0
 Flags are stored in control unit
-Wire Notes Line
-	9950 11050 11650 11050
-Wire Notes Line
-	9950 9000 11650 9000
 Text GLabel 13450 7250 0    50   Input ~ 0
 DSPcontrol
 Text GLabel 14550 7050 2    50   BiDi ~ 0
@@ -3849,36 +3841,14 @@ F 3 "" H 1400 8850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L MAX7000CPU-Gen2-rescue:R-Device R38
-U 1 1 616F11F1
-P 1400 10650
-F 0 "R38" H 1250 10700 50  0000 L CNN
-F 1 "50K" H 1200 10600 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 1330 10650 50  0001 C CNN
-F 3 "~" H 1400 10650 50  0001 C CNN
-	1    1400 10650
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR070
-U 1 1 616F11F7
-P 1400 10800
-F 0 "#PWR070" H 1400 10650 50  0001 C CNN
-F 1 "+5V" V 1400 10950 50  0000 L CNN
-F 2 "" H 1400 10800 50  0001 C CNN
-F 3 "" H 1400 10800 50  0001 C CNN
-	1    1400 10800
-	0    1    1    0   
-$EndComp
-$Comp
 L MAX7000CPU-Gen2-rescue:R-Device R39
 U 1 1 6173BEBD
-P 3000 10650
-F 0 "R39" H 2850 10700 50  0000 L CNN
-F 1 "50K" H 2800 10600 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 2930 10650 50  0001 C CNN
-F 3 "~" H 3000 10650 50  0001 C CNN
-	1    3000 10650
+P 12000 9100
+F 0 "R39" H 11850 9150 50  0000 L CNN
+F 1 "50K" H 11800 9050 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 11930 9100 50  0001 C CNN
+F 3 "~" H 12000 9100 50  0001 C CNN
+	1    12000 9100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -3954,12 +3924,12 @@ $EndComp
 $Comp
 L MAX7000CPU-Gen2-rescue:R-Device R40
 U 1 1 619800C6
-P 10450 10650
-F 0 "R40" H 10520 10696 50  0000 L CNN
-F 1 "50K" H 10520 10605 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 10380 10650 50  0001 C CNN
-F 3 "~" H 10450 10650 50  0001 C CNN
-	1    10450 10650
+P 10500 9050
+F 0 "R40" H 10570 9096 50  0000 L CNN
+F 1 "50K" H 10570 9005 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 10430 9050 50  0001 C CNN
+F 3 "~" H 10500 9050 50  0001 C CNN
+	1    10500 9050
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -4319,10 +4289,10 @@ Wire Wire Line
 Wire Wire Line
 	3700 5650 3700 6700
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0101
 U 1 1 614B9F5E
 P 3650 6100
-F 0 "#PWR?" H 3650 5950 50  0001 C CNN
+F 0 "#PWR0101" H 3650 5950 50  0001 C CNN
 F 1 "+5V" H 3665 6273 50  0000 C CNN
 F 2 "" H 3650 6100 50  0001 C CNN
 F 3 "" H 3650 6100 50  0001 C CNN
@@ -4330,10 +4300,10 @@ F 3 "" H 3650 6100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0102
 U 1 1 614BAC35
 P 3700 3900
-F 0 "#PWR?" H 3700 3750 50  0001 C CNN
+F 0 "#PWR0102" H 3700 3750 50  0001 C CNN
 F 1 "+5V" H 3715 4073 50  0000 C CNN
 F 2 "" H 3700 3900 50  0001 C CNN
 F 3 "" H 3700 3900 50  0001 C CNN
@@ -4343,7 +4313,7 @@ $EndComp
 Wire Wire Line
 	3750 4500 3800 4500
 Wire Wire Line
-	3800 4500 3800 5050
+	3800 4500 3800 4950
 Wire Wire Line
 	3800 5050 3700 5050
 Connection ~ 3750 4500
@@ -4361,4 +4331,15 @@ $EndComp
 Wire Wire Line
 	4100 4950 4100 4800
 Connection ~ 4100 4800
+Connection ~ 3800 4950
+Wire Wire Line
+	3800 4950 3800 5050
+Wire Notes Line
+	10000 7450 13200 7450
+Wire Notes Line
+	13200 7450 13200 9450
+Wire Notes Line
+	13200 9450 10000 9450
+Wire Notes Line
+	10000 7450 10000 9450
 $EndSCHEMATC
