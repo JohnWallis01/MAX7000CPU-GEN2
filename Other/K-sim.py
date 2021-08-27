@@ -45,13 +45,10 @@ def map_from_truth_matrix(truth_matrix):
     dims = [len(dimension) for dimension in axes]
     Kmatrix = -np.ones(dims)
     t_map = truth_matrix.truth_map()
-
     for key in t_map.keys():
-        print(key, axes)
         coord = np.array(keytocoord(key, axes))
-        print(coord)
-        Kmatrix.T[coord] = t_map[key]
-        print(Kmatrix)
+        coord = tuple(coord)
+        Kmatrix[coord] = t_map[key]
     return Kmatrix
 
 def keytocoord(key,axes):
@@ -66,5 +63,5 @@ def keytocoord(key,axes):
     return coords
 
 
-test = Truth_Matrix([1,1,0,0,0])
+test = Truth_Matrix([1,1,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,0,1,1,1,0,0,])
 print(map_from_truth_matrix(test))
