@@ -628,39 +628,6 @@ F 3 "~" H 10450 4300 50  0001 C CNN
 	1    10450 4300
 	1    0    0    -1  
 $EndComp
-$Comp
-L MAX7000CPU-Gen2-rescue:C-Device C36
-U 1 1 6256F276
-P 10900 4300
-F 0 "C36" H 11015 4346 50  0000 L CNN
-F 1 "100n" H 11015 4255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 10938 4150 50  0001 C CNN
-F 3 "~" H 10900 4300 50  0001 C CNN
-	1    10900 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L MAX7000CPU-Gen2-rescue:C-Device C37
-U 1 1 6256F27C
-P 11300 4300
-F 0 "C37" H 11415 4346 50  0000 L CNN
-F 1 "100n" H 11415 4255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 11338 4150 50  0001 C CNN
-F 3 "~" H 11300 4300 50  0001 C CNN
-	1    11300 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L MAX7000CPU-Gen2-rescue:C-Device C38
-U 1 1 6256F282
-P 11750 4300
-F 0 "C38" H 11865 4346 50  0000 L CNN
-F 1 "100n" H 11865 4255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 11788 4150 50  0001 C CNN
-F 3 "~" H 11750 4300 50  0001 C CNN
-	1    11750 4300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8750 2800 9200 2800
 Connection ~ 9200 2800
@@ -737,14 +704,6 @@ Wire Wire Line
 	10050 4150 10450 4150
 Connection ~ 10450 4150
 Wire Wire Line
-	10450 4150 10900 4150
-Connection ~ 10900 4150
-Wire Wire Line
-	10900 4150 11300 4150
-Connection ~ 11300 4150
-Wire Wire Line
-	11300 4150 11750 4150
-Wire Wire Line
 	11750 4000 11300 4000
 Connection ~ 9200 4000
 Wire Wire Line
@@ -795,15 +754,6 @@ Wire Wire Line
 Connection ~ 10050 4450
 Wire Wire Line
 	10050 4450 10450 4450
-Connection ~ 10450 4450
-Wire Wire Line
-	10450 4450 10900 4450
-Connection ~ 10900 4450
-Wire Wire Line
-	10900 4450 11300 4450
-Connection ~ 11300 4450
-Wire Wire Line
-	11300 4450 11750 4450
 Wire Wire Line
 	11750 3100 11300 3100
 Connection ~ 9200 3100
@@ -856,12 +806,9 @@ F 3 "" H 8600 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	11750 4150 12100 4150
-Wire Wire Line
 	12100 4150 12100 3700
 Wire Wire Line
 	12100 3700 11750 3700
-Connection ~ 11750 4150
 Connection ~ 11750 3700
 Wire Wire Line
 	12100 3700 12100 3250
@@ -4305,4 +4252,6 @@ F 3 "~" H 4200 8700 50  0001 C CNN
 	1    4200 8700
 	-1   0    0    1   
 $EndComp
+Wire Wire Line
+	10450 4150 12100 4150
 $EndSCHEMATC
