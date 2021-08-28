@@ -53,10 +53,11 @@ def map_from_truth_matrix(truth_matrix):
         coord = np.array(keytocoord(key, axes))
         coord = tuple(coord)
         Kmatrix[coord] = t_map[key]
-    return Kmatrix
+    return Kmatrix, axes
 
 
 def K_search(Kmatrix):
+    #need to change this to wrap around the boundaries
     """searches a K_map for the simplified states"""
     groups = []
     iters = [list(range(i)) for i in Kmatrix.shape]
@@ -67,14 +68,78 @@ def K_search(Kmatrix):
             volume = len(Kmatrix[slicer].flatten())
             if np.all(np.abs(Kmatrix[slicer])==1) and np.any(Kmatrix[slicer]==1) and np.round(np.log(volume)/np.log(2)) == np.log(volume)/np.log(2):
                 groups.append([vec1,vec2])
-
-            #need to generate a slicer for the outer slice of these objects
-    print(groups)
+    #loop through groups to remove duplicates.
+    subgroups = []
     for group in groups:
-        print(Kmatrix[vec_slice(group[0],group[1])])
-    print(Kmatrix)
-    exit()
-    return Kmatrix
+        for biggroup in groups:
+            subgroup = True
+            for c in range(len(group[0])):
+                if (group[0][c] not in range(biggroup[0][c], biggroup[1][c] + 1 ) or group[1][c] not in range(biggroup[0][c], biggroup[1][c] + 1)) and biggroup != group:
+                    subgroup = False
+            if group not in subgroups and subgroup is True and biggroup != group:
+                subgroups.append(group)
+    groups = [group for group in groups if group not in subgroups]
+    #check that needless groups arent in there
+    # first find the total number of ones in each group
+    newgroups = []
+    for group in groups:
+        submatrix = Kmatrix[vec_slice(group[0],group[1])]
+        oneCount = np.sum(submatrix + np.ones(submatrix.shape))/2
+        newgroups.append([oneCount,group])
+    newgroups.sort(reverse=True)
+    redundant = []
+    for group in newgroups:
+        slicer = vec_slice(group[1][0], group[1][1])
+        submatrix = Kmatrix[slicer]
+        oneCount = np.sum(submatrix == 1)
+        if oneCount == 0:
+            redundant.append(group)
+        Kmatrix[slicer] = np.zeros(submatrix.shape)
+    groups = [[g[1][0],g[1][1]] for g in newgroups if g not in redundant]
+    return groups
+
+
+def GroupSynthesize(groups, axes):
+    output = []
+    for group in groups:
+        slicer = vec_slice(group[0], group[1])
+        ax_states = []
+        for c in range(len(slicer)):
+            ax_states.append(axes[c][slicer[c]])
+        Inputs = []
+        c = 0
+        for ax in reversed(ax_states):
+            for state in ax:
+                # print(Inputs, state)
+                if len(state) == 1:
+                    try:
+                        Inputs[c] = Inputs[c] + state
+                    except IndexError:
+                        Inputs.insert(c, state)
+                else:
+                    try:
+                        Inputs[c] = Inputs[c] + state[1]
+                        Inputs[c+1] = Inputs[c+1] + state[0]
+                    except IndexError:
+                        Inputs.insert(c, state[1])
+                        Inputs.insert(c+1, state[0])
+            c += 2
+        stringi = ""
+        d = 0
+        for Inputi in Inputs:
+            if Inputi == "01" or "10":
+                pass
+            if Inputi == "00" or Inputi == "0":
+                stringi = stringi + "~Q"+str(d)+""
+            if Inputi == "11" or Inputi == "1":
+                stringi = stringi + "Q"+str(d)
+            d += 1
+        output.append(stringi)
+    output = "D = " + " + ".join(output)
+    return output
+
+
+
 
 def vec_slice(vec1, vec2):
     slicer = []
@@ -82,6 +147,7 @@ def vec_slice(vec1, vec2):
         slicer.append(slice(vec1[c], vec2[c]+1))
     slicer = tuple(slicer)
     return slicer
+
 
 def keytocoord(key,axes):
     """converts a greycode value into the coordinate of a Kmap"""
@@ -106,7 +172,19 @@ def indextocoord(index, shape):
     np.unravel_index(index, shape)
 
 
-test = Truth_Matrix([1,1,0,0,0])
-x = K_search(map_from_truth_matrix(test))
-# np.ravel_multi_index(coord, shape)
-print(x[(slice(0,2),slice(0,2))])
+#truth matrix seems to be generating the incorrect states (Kmatrix horiziontal axis is wrong)
+
+test = Truth_Matrix([1,1,0,0,0,1,1,1,1,0,0,1,1])
+x = K_search(map_from_truth_matrix(test)[0])
+print(map_from_truth_matrix(test)[0])
+axes = map_from_truth_matrix(test)[1]
+# print(axes)
+print(x)
+print(test.truth_map())
+print(GroupSynthesize(x, axes))
+
+
+
+#software at this point is eol
+
+#Quine–McCluskey algorithm is new waifiu
