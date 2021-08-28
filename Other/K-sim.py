@@ -1,23 +1,24 @@
 import math
 import numpy as np
+import itertools
 
 double_index = ["00", "01", "11", "10"]
 single_index = ["0", "1"]
 
 class Truth_Matrix(object):
-    """truth matrix has n inputs and a vector that goes from 0 to n-1 of
+    """truth matrix has n outpus of a vector that goes from 0 to n-1 of
        True(1), False(0), or Dont care(-1) states"""
+
     def __init__(self, outputs):
         super(Truth_Matrix, self).__init__()
         self.inputs = len(outputs)
         self.outputs = outputs
 
-
     def gen_truth_values(self):
         truthvalues = []
         self.bits = math.ceil(math.log(self.inputs)/math.log(2))
         for n in range(self.inputs):
-             truthvalues.append('{:0{}b}'.format(n, self.bits))
+            truthvalues.append('{:0{}b}'.format(n, self.bits))
         return truthvalues
 
     def print_tt(self):
@@ -31,7 +32,10 @@ class Truth_Matrix(object):
         for i in range(len(self.outputs)):
             truthdict[truthvalues[i]] = self.outputs[i]
         return truthdict
+
+
 def map_from_truth_matrix(truth_matrix):
+    """creates a kmap using a truth_matrix_object"""
     bits = math.ceil(math.log(truth_matrix.inputs)/math.log(2))
     dimensions = math.ceil(bits/2)
     axes = []
@@ -51,7 +55,36 @@ def map_from_truth_matrix(truth_matrix):
         Kmatrix[coord] = t_map[key]
     return Kmatrix
 
+
+def K_search(Kmatrix):
+    """searches a K_map for the simplified states"""
+    groups = []
+    iters = [list(range(i)) for i in Kmatrix.shape]
+    iter_vectors = list(itertools.product(*iters))
+    for vec1 in iter_vectors:
+        for vec2 in iter_vectors:
+            slicer = vec_slice(vec1,vec2)
+            volume = len(Kmatrix[slicer].flatten())
+            if np.all(np.abs(Kmatrix[slicer])==1) and np.any(Kmatrix[slicer]==1) and np.round(np.log(volume)/np.log(2)) == np.log(volume)/np.log(2):
+                groups.append([vec1,vec2])
+
+            #need to generate a slicer for the outer slice of these objects
+    print(groups)
+    for group in groups:
+        print(Kmatrix[vec_slice(group[0],group[1])])
+    print(Kmatrix)
+    exit()
+    return Kmatrix
+
+def vec_slice(vec1, vec2):
+    slicer = []
+    for c in range(len(vec1)):
+        slicer.append(slice(vec1[c], vec2[c]+1))
+    slicer = tuple(slicer)
+    return slicer
+
 def keytocoord(key,axes):
+    """converts a greycode value into the coordinate of a Kmap"""
     n=2
     key = key[::-1]
     breakup = [key[i:i+n] for i in range(0, len(key), n)]
@@ -63,5 +96,17 @@ def keytocoord(key,axes):
     return coords
 
 
-test = Truth_Matrix([1,1,0,0,0,1,1,1,0,0,1,1,1,1,1,0,0,0,1,1,1,0,0,])
-print(map_from_truth_matrix(test))
+def coordtoindex(coord, shape):
+    """takes a matrix of shape and returns a scalar that points to the coordinates of the value at coord"""
+    pass
+
+
+def indextocoord(index, shape):
+    """takes a matrix of shape and returns a vector that points to the coordinates of the value at coord"""
+    np.unravel_index(index, shape)
+
+
+test = Truth_Matrix([1,1,0,0,0])
+x = K_search(map_from_truth_matrix(test))
+# np.ravel_multi_index(coord, shape)
+print(x[(slice(0,2),slice(0,2))])
