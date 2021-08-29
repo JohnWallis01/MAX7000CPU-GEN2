@@ -1,0 +1,55 @@
+$date
+  Sun Aug 29 20:47:46 2021
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module siggen_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " count $end
+$var reg 1 # instructread $end
+$var reg 1 $ modread $end
+$var reg 1 % ramaddrandmodout $end
+$var reg 1 & counterout $end
+$scope module test $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+X!
+U"
+U#
+U$
+U%
+U&
+#1000000
+0!
+#2000000
+1!
+#3000000
+0!
+#4000000
+1!
+#5000000
+0!
+#6000000
+1!
+#7000000
+0!
+#8000000
+1!
+#9000000
+0!
+#10000000
+1!
+#11000000
+0!
+#12000000
+1!

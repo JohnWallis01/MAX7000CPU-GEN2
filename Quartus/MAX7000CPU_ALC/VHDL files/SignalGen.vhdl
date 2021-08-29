@@ -19,11 +19,18 @@ architecture Sig_Gen_Arch of Sig_Gen is
   end component;
 
 
-  signal
+  signal Q0, Qn0, Q1, Qn1, Q2, Qn2 : std_logic;
 
 begin
+D0 : D_flip_flop port map(clk, Qn2, Q0, Qn0);
+D1 : D_flip_flop port map(clk, Q0, Q1, Qn1);
+D2 : D_flip_flop port map(clk, Q1, Q2, Qn2);
 
-D0 : D_flip_flop port map(clk, )
+Count <= Qn0 and Qn2;
+CounterOut <= Q0 and Qn2;
+InstructRead <= Q1 and Qn2;
+ModRead <= Q2 and Q1;
+RamAddrAndModOut <= Q2 and Qn0;
 
 
 end architecture;

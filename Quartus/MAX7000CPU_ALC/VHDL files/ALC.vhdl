@@ -51,5 +51,3 @@ end component;
   end component;
 
 begin
-  component
-end architecture;

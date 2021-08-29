@@ -210,7 +210,7 @@ architecture DFF_arch of D_flip_flop is
     begin
         process (clk,Din)
           begin
-           if(clk’event and clk=’1′) then
+           if(clk'event and clk='1') then
                  Q <= Din;
                  Qnot <= (not Din);
                end if;

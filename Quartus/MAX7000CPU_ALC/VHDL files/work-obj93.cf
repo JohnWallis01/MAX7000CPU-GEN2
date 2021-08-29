@@ -1,0 +1,4 @@
+v 4
+file . "SignalGen.vhdl" "edbaf7203ccc90eb47e72bf66783ff9eb4da0e56" "20210829124900.588":
+  entity sig_gen at 1( 0) + 0 on 4;
+  architecture sig_gen_arch of sig_gen at 14( 293) + 0 on 4;
