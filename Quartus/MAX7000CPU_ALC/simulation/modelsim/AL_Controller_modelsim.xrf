@@ -1,8 +1,10 @@
 vendor_name = ModelSim
-source_file = 1, E:/Libraries/Documents/Quartus/MAX7000CPU_ALC/VHDL files/logic.vhdl
-source_file = 1, E:/Libraries/Documents/Quartus/MAX7000CPU_ALC/VHDL files/ALC.vhdl
-source_file = 1, E:/Libraries/Documents/Quartus/MAX7000CPU_ALC/VHDL files/74181 ALU.vhdl
-source_file = 1, E:/Libraries/Documents/Quartus/MAX7000CPU_ALC/db/AL_Controller.cbx.xml
+source_file = 1, E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/SignalGen.vhdl
+source_file = 1, E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/logic.vhdl
+source_file = 1, E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/ALC.vhdl
+source_file = 1, E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/74181 ALU.vhdl
+source_file = 1, VHDL files/test_flipFlop.vhdl
+source_file = 1, E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/db/AL_Controller.cbx.xml
 source_file = 1, c:/program files/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/program files/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, c:/program files/altera/13.0sp1/quartus/libraries/vhdl/ieee/timing_b.vhd

@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
--- DATE "07/19/2021 20:03:42"
+-- DATE "08/29/2021 22:17:24"
 
 -- 
 -- Device: Altera EPM7128SLC84-15 Package PLCC84

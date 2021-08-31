@@ -201,18 +201,23 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity D_flip_flop is
-    port (clk,Din : in std_logic;
-             Q: out std_logic;
-             Qnot : out std_logic);
+   port (clk,Din,rst,en : in std_logic;
+            Q: out std_logic;
+            Qnot : out std_logic);
  end D_flip_flop;
-
 architecture DFF_arch of D_flip_flop is
-    begin
-        process (clk,Din)
-          begin
-           if(clk'event and clk='1') then
-                 Q <= Din;
-                 Qnot <= (not Din);
-               end if;
-        end process;
+   begin
+       process (clk,en,Din,rst)
+        begin
+             if(en='0') then
+               Q <='Z';
+               Qnot <= 'Z';
+             elsif(rst='1') then
+               Q <='0';
+               Qnot <='1';
+             elsif(clk'event and clk='1') then
+               Q <= Din;
+               Qnot <= not Din;
+             end  if;
+     end process;
 end DFF_arch;

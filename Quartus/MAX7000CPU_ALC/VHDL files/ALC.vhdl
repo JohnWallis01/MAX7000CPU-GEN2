@@ -3,28 +3,37 @@ use ieee.std_logic_1164.all;
 
 entity AL_Controller is
   port(
-  A: in std_logic_vector (7 downto 0);
-  B: in std_logic_vector (7 downto 0);
-  O: out std_logic_vector (7 downto 0);
+  regA: in std_logic_vector (7 downto 0);
+  regB: in std_logic_vector (7 downto 0);
+  MainBus: out std_logic_vector (7 downto 0);
   Ins: in std_logic_vector(7 downto 0);
-  RegAControl: out std_logic;
-  CarryFlagIn: in std_logic;
-  CarryOut: out std_logic;
-  AequalB_FlagIn: in std_logic;
-  AequalB_Out: out std_logic;
-  FlagIn: in std_logic_vector (5 downto 0);
-  FlagOut: out std_logic_vector (5 downto 0);
-  SlowCLK: in std_logic;
-  FlagCLK: out std_logic;
-  CLK_Select: in std_logic;
+  Reset: in std_logic;
   UserCLK: in std_logic;
-  FastCLK: in std_logic;
-  Comm0: in std_logic; --note that these can be in/out depending on configuration of memory contorller
-  CLK: out std_logic;
-  Comm1: in std_logic; --note that this can be in/out depneidng on configuration of memory controller
+  SlowCLK: in std_logic;
+  CLK_Select: in std_logic;
+  CLK: out std_logic; -- this needs to be birectional
+  Count: out std_logic;
+  CounterOutControl: out std_logic;
+  InsRegControl: out std_logic;
+  RegAControl: out std_logic;
+  RegBControl: out std_logic;
+  MainRegReadControl: out std_logic;
+  LowJumpRegLoad: out std_logic;
+  HighJumpRegLoad: out std_logic;
   JumpEnable: out std_logic;
-  JumpRegLoad: out std_logic;
-  RegBControl: out std_logic
+  MainRegOutputControl: out std_logic;
+  MemOutEnable: out std_logic;
+  MemWriteControl: out std_logic;
+  Ram_LowControl: out std_logic;
+  Ram_HighControl: out std_logic;
+  Ram_Addr_Enable: out std_logic;
+  StackCount: out std_logic;
+  StackOutControl: out std_logic;
+  DisplayControl: out std_logic;
+  LowStackJump: out std_logic;
+  HighStackJump: out std_logic;
+  SYNC: out std_logic; --bidirectional
+  STATE: out std_logic --bidirectional
   );
 end AL_Controller;
 
@@ -50,4 +59,16 @@ end component;
   );
   end component;
 
+  component Sig_Gen is
+    port (clk : in std_logic;
+  		    Reset : in std_logic;
+          Count : out std_logic;
+          InstructRead : out std_logic;
+          ModRead : out std_logic;
+          RamAddrAndModOut : out std_logic;
+          CounterOut: out std_logic
+          );
+  end component;
+
 begin
+end architecture;

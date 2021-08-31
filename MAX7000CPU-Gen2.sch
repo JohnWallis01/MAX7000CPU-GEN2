@@ -3599,13 +3599,13 @@ B6
 Text Label 10500 8600 2    50   ~ 0
 B7
 Text GLabel 10500 8800 0    50   Input ~ 0
-DSPcontrol
+DisplayControl
 Text Notes 10050 9400 0    50   ~ 0
 Speciality Registers
 Text Notes 12000 9650 0    50   ~ 0
 Flags are stored in control unit
 Text GLabel 13450 7250 0    50   Input ~ 0
-DSPcontrol
+DisplayControl
 Text GLabel 14550 7050 2    50   BiDi ~ 0
 CLK
 Text GLabel 14550 7150 2    50   BiDi ~ 0
@@ -4232,13 +4232,9 @@ Connection ~ 3800 4950
 Wire Wire Line
 	3800 4950 3800 5050
 Wire Notes Line
-	10000 7450 13200 7450
-Wire Notes Line
 	13200 7450 13200 9450
 Wire Notes Line
-	13200 9450 10000 9450
-Wire Notes Line
-	10000 7450 10000 9450
+	9900 7450 9900 9450
 Wire Wire Line
 	8250 10400 8250 10850
 $Comp
@@ -4254,4 +4250,8 @@ F 3 "~" H 4200 8700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10450 4150 12100 4150
+Wire Notes Line
+	9900 7450 13200 7450
+Wire Notes Line
+	9900 9450 13200 9450
 $EndSCHEMATC

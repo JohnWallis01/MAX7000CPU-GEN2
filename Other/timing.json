@@ -1,5 +1,19 @@
 https://wavedrom.com/editor.html
 
+
+
+{signal: [
+  {name: "clk", wave: "p....."},
+  {name: "Counter", wave: "hl...."},
+  {name: "Counter Out", wave:"lh.l.."},
+  {name:"Instruction Read", wave:"l.hl.."},
+  {name: "Ram/Bus out", wave: "l...h."},
+  {name: "Mod/Main Read", wave:"l....h"},
+]}
+
+
+
+#old timming
 {signal: [
   {name: "clk", wave: "p..."},
   {name: "Counter", wave: "Pl.."},
