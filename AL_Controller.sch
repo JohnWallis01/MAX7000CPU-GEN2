@@ -989,13 +989,9 @@ Wire Wire Line
 Wire Wire Line
 	5000 6600 5450 6600
 Wire Wire Line
-	4750 6700 15600 6700
+	4000 6800 11150 6800
 Wire Wire Line
-	4000 6800 15600 6800
-Wire Wire Line
-	3500 6900 15600 6900
-Wire Wire Line
-	3000 7000 15600 7000
+	3500 6900 13550 6900
 Wire Wire Line
 	2500 7100 5650 7100
 Wire Wire Line
@@ -1037,14 +1033,14 @@ Connection ~ 6050 5200
 Wire Wire Line
 	6050 5200 7150 5200
 Wire Wire Line
-	2000 7200 15600 7200
+	2000 7200 8200 7200
 Wire Wire Line
 	5350 7650 5350 5700
 Connection ~ 5350 5700
 Wire Wire Line
 	5350 5700 6450 5700
 Wire Wire Line
-	3950 5600 15600 5600
+	3950 5600 8100 5600
 Wire Wire Line
 	3750 5800 6650 5800
 Wire Wire Line
@@ -1102,33 +1098,25 @@ Wire Wire Line
 Wire Wire Line
 	6750 7650 6750 7100
 Connection ~ 6750 7100
-Wire Wire Line
-	6750 7100 15600 7100
 Connection ~ 6550 6600
 Wire Wire Line
-	6550 6600 15600 6600
+	6550 6600 7600 6600
 Connection ~ 6450 5700
-Wire Wire Line
-	6450 5700 15600 5700
 Connection ~ 6850 5500
 Wire Wire Line
-	6850 5500 15600 5500
+	6850 5500 8000 5500
 Connection ~ 6950 5400
 Wire Wire Line
-	6950 5400 15600 5400
+	6950 5400 7900 5400
 Connection ~ 7050 5300
 Wire Wire Line
-	7050 5300 15600 5300
+	7050 5300 7800 5300
 Connection ~ 7150 5200
 Wire Wire Line
-	7150 5200 15600 5200
-Wire Wire Line
-	5550 7300 15600 7300
+	7150 5200 7700 5200
 Wire Wire Line
 	6650 7650 6650 5800
 Connection ~ 6650 5800
-Wire Wire Line
-	6650 5800 15600 5800
 $Comp
 L 4xxx:4081 UI?
 U 1 1 614DCE8A
@@ -1150,4 +1138,619 @@ Text Label 6550 8750 1    50   ~ 0
 CarryFlag
 Wire Wire Line
 	6550 8750 6700 8750
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 613E5D28
+P 7950 8150
+F 0 "UI?" H 7950 8766 50  0000 C CNN
+F 1 "4068" H 7950 8675 50  0000 C CNN
+F 2 "" H 7950 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 7950 8150 50  0001 C CNN
+	1    7950 8150
+	0    1    1    0   
+$EndComp
+$Comp
+L 4xxx:4081 UI?
+U 1 1 61405022
+P 8050 9200
+F 0 "UI?" H 8050 9525 50  0000 C CNN
+F 1 "4081" H 8050 9434 50  0000 C CNN
+F 2 "" H 8050 9200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 8050 9200 50  0001 C CNN
+	1    8050 9200
+	0    1    1    0   
+$EndComp
+Text Label 8350 8850 1    50   ~ 0
+Module_Read
+Wire Wire Line
+	8150 8900 8150 8850
+Wire Wire Line
+	8150 8850 8350 8850
+Wire Wire Line
+	8050 8650 8050 8900
+Wire Wire Line
+	8050 8900 7950 8900
+Text Label 8050 9500 3    50   ~ 0
+DSP_Read
+Wire Wire Line
+	7600 7650 7600 6600
+Connection ~ 7600 6600
+Wire Wire Line
+	8200 7650 8200 7200
+Connection ~ 8200 7200
+Wire Wire Line
+	8200 7200 9300 7200
+Wire Wire Line
+	8300 7650 8300 7300
+Wire Wire Line
+	5550 7300 8300 7300
+Connection ~ 8300 7300
+Wire Wire Line
+	8300 7300 10500 7300
+Wire Wire Line
+	8100 7650 8100 5600
+Connection ~ 8100 5600
+Wire Wire Line
+	8000 7650 8000 5500
+Connection ~ 8000 5500
+Wire Wire Line
+	8000 5500 9100 5500
+Wire Wire Line
+	7900 7650 7900 5400
+Connection ~ 7900 5400
+Wire Wire Line
+	7900 5400 9000 5400
+Wire Wire Line
+	7800 7650 7800 5300
+Connection ~ 7800 5300
+Wire Wire Line
+	7800 5300 8900 5300
+Wire Wire Line
+	7700 7650 7700 5200
+Connection ~ 7700 5200
+Wire Wire Line
+	7700 5200 8800 5200
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 614E650E
+P 9050 8150
+F 0 "UI?" H 9050 8766 50  0000 C CNN
+F 1 "4068" H 9050 8675 50  0000 C CNN
+F 2 "" H 9050 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 9050 8150 50  0001 C CNN
+	1    9050 8150
+	0    1    1    0   
+$EndComp
+$Comp
+L 4xxx:4081 UI?
+U 1 1 614E6514
+P 9150 9200
+F 0 "UI?" H 9150 9525 50  0000 C CNN
+F 1 "4081" H 9150 9434 50  0000 C CNN
+F 2 "" H 9150 9200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 9150 9200 50  0001 C CNN
+	1    9150 9200
+	0    1    1    0   
+$EndComp
+Text Label 9450 8850 1    50   ~ 0
+Module_Read
+Wire Wire Line
+	9250 8900 9250 8850
+Wire Wire Line
+	9250 8850 9450 8850
+Wire Wire Line
+	9150 8650 9150 8900
+Wire Wire Line
+	9150 8900 9050 8900
+Text Label 9150 9500 3    50   ~ 0
+JumpBuffer_Read_Low
+Wire Wire Line
+	8700 7650 8700 6600
+Wire Wire Line
+	7600 6600 8700 6600
+Connection ~ 8700 6600
+Wire Wire Line
+	8700 6600 9800 6600
+Wire Wire Line
+	9400 7650 9400 5800
+Wire Wire Line
+	6650 5800 9400 5800
+Connection ~ 9400 5800
+Wire Wire Line
+	9400 5800 11650 5800
+Wire Wire Line
+	8100 5600 11450 5600
+Wire Wire Line
+	6450 5700 11550 5700
+Wire Wire Line
+	9300 7650 9300 7200
+Connection ~ 9300 7200
+Wire Wire Line
+	9300 7200 10400 7200
+Wire Wire Line
+	9200 7650 9200 7100
+Wire Wire Line
+	6750 7100 9200 7100
+Connection ~ 9200 7100
+Wire Wire Line
+	9200 7100 10300 7100
+Wire Wire Line
+	3000 7000 15600 7000
+Connection ~ 9100 5500
+Wire Wire Line
+	9100 5500 10200 5500
+Wire Wire Line
+	9100 5500 9100 7650
+Wire Wire Line
+	9000 7650 9000 5400
+Connection ~ 9000 5400
+Wire Wire Line
+	9000 5400 10100 5400
+Wire Wire Line
+	8900 5300 8900 7650
+Connection ~ 8900 5300
+Wire Wire Line
+	8900 5300 10000 5300
+Wire Wire Line
+	8800 5200 8800 7650
+Connection ~ 8800 5200
+Wire Wire Line
+	8800 5200 9900 5200
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 6166E247
+P 10150 8150
+F 0 "UI?" H 10150 8766 50  0000 C CNN
+F 1 "4068" H 10150 8675 50  0000 C CNN
+F 2 "" H 10150 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 10150 8150 50  0001 C CNN
+	1    10150 8150
+	0    1    1    0   
+$EndComp
+$Comp
+L 4xxx:4081 UI?
+U 1 1 6166E24D
+P 10250 9200
+F 0 "UI?" H 10250 9525 50  0000 C CNN
+F 1 "4081" H 10250 9434 50  0000 C CNN
+F 2 "" H 10250 9200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 10250 9200 50  0001 C CNN
+	1    10250 9200
+	0    1    1    0   
+$EndComp
+Text Label 10550 8850 1    50   ~ 0
+Module_Read
+Wire Wire Line
+	10350 8900 10350 8850
+Wire Wire Line
+	10350 8850 10550 8850
+Wire Wire Line
+	10250 8650 10250 8900
+Wire Wire Line
+	10250 8900 10150 8900
+Text Label 10250 9500 3    50   ~ 0
+JumpBuffer_Read_High
+Wire Wire Line
+	10500 7650 10500 7300
+Connection ~ 10500 7300
+Wire Wire Line
+	10500 7300 12750 7300
+Wire Wire Line
+	10400 7650 10400 7200
+Connection ~ 10400 7200
+Wire Wire Line
+	10400 7200 13900 7200
+Wire Wire Line
+	10300 7650 10300 7100
+Connection ~ 10300 7100
+Wire Wire Line
+	10300 7100 15600 7100
+Connection ~ 9800 6600
+Wire Wire Line
+	9800 6600 10950 6600
+Wire Wire Line
+	9800 6600 9800 7650
+Wire Wire Line
+	10200 5500 10200 7650
+Wire Wire Line
+	10100 7650 10100 5400
+Wire Wire Line
+	10000 5300 10000 7650
+Wire Wire Line
+	9900 5200 9900 7650
+Connection ~ 9900 5200
+Wire Wire Line
+	9900 5200 11050 5200
+Connection ~ 10000 5300
+Wire Wire Line
+	10000 5300 15600 5300
+Connection ~ 10100 5400
+Wire Wire Line
+	10100 5400 11250 5400
+Connection ~ 10200 5500
+Wire Wire Line
+	10200 5500 11350 5500
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 61783CAD
+P 11300 8150
+F 0 "UI?" H 11300 8766 50  0000 C CNN
+F 1 "4068" H 11300 8675 50  0000 C CNN
+F 2 "" H 11300 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 11300 8150 50  0001 C CNN
+	1    11300 8150
+	0    1    1    0   
+$EndComp
+$Comp
+L 4xxx:4081 UI?
+U 1 1 61783CB3
+P 11400 9200
+F 0 "UI?" H 11400 9525 50  0000 C CNN
+F 1 "4081" H 11400 9434 50  0000 C CNN
+F 2 "" H 11400 9200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 11400 9200 50  0001 C CNN
+	1    11400 9200
+	0    1    1    0   
+$EndComp
+Text Label 11700 8850 1    50   ~ 0
+Module_Read
+Wire Wire Line
+	11500 8900 11500 8850
+Wire Wire Line
+	11500 8850 11700 8850
+Wire Wire Line
+	11400 8650 11400 8900
+Wire Wire Line
+	11400 8900 11300 8900
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 61783CBE
+P 12400 8150
+F 0 "UI?" H 12400 8766 50  0000 C CNN
+F 1 "4068" H 12400 8675 50  0000 C CNN
+F 2 "" H 12400 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 12400 8150 50  0001 C CNN
+	1    12400 8150
+	0    1    1    0   
+$EndComp
+$Comp
+L 4xxx:4081 UI?
+U 1 1 61783CC4
+P 12500 9200
+F 0 "UI?" H 12500 9525 50  0000 C CNN
+F 1 "4081" H 12500 9434 50  0000 C CNN
+F 2 "" H 12500 9200 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 12500 9200 50  0001 C CNN
+	1    12500 9200
+	0    1    1    0   
+$EndComp
+Text Label 12800 8850 1    50   ~ 0
+Module_Read
+Wire Wire Line
+	12600 8900 12600 8850
+Wire Wire Line
+	12600 8850 12800 8850
+Wire Wire Line
+	12500 8650 12500 8900
+Wire Wire Line
+	12500 8900 12400 8900
+Text Label 11400 9500 3    50   ~ 0
+Low_Addr_Read
+Text Label 12500 9500 3    50   ~ 0
+High_Addr_Read
+Wire Wire Line
+	10950 7650 10950 6600
+Connection ~ 10950 6600
+Wire Wire Line
+	10950 6600 12050 6600
+Wire Wire Line
+	12050 7650 12050 6600
+Connection ~ 12050 6600
+Wire Wire Line
+	12050 6600 13250 6600
+Wire Wire Line
+	11050 7650 11050 5200
+Connection ~ 11050 5200
+Wire Wire Line
+	11050 5200 12150 5200
+Wire Wire Line
+	11650 7650 11650 5800
+Connection ~ 11650 5800
+Wire Wire Line
+	11650 5800 14000 5800
+Wire Wire Line
+	11550 7650 11550 5700
+Connection ~ 11550 5700
+Wire Wire Line
+	11550 5700 12650 5700
+Wire Wire Line
+	11450 7650 11450 5600
+Connection ~ 11450 5600
+Wire Wire Line
+	11450 5600 12550 5600
+Wire Wire Line
+	11350 7650 11350 5500
+Connection ~ 11350 5500
+Wire Wire Line
+	11350 5500 12450 5500
+Wire Wire Line
+	11250 7650 11250 5400
+Connection ~ 11250 5400
+Wire Wire Line
+	11250 5400 12350 5400
+Wire Wire Line
+	12150 7650 12150 5200
+Connection ~ 12150 5200
+Wire Wire Line
+	12150 5200 13350 5200
+Wire Wire Line
+	12250 7650 12250 6800
+Connection ~ 12250 6800
+Wire Wire Line
+	12250 6800 13450 6800
+Wire Wire Line
+	4750 6700 15600 6700
+Wire Wire Line
+	11150 7650 11150 6800
+Connection ~ 11150 6800
+Wire Wire Line
+	11150 6800 12250 6800
+Wire Wire Line
+	12750 7650 12750 7300
+Connection ~ 12750 7300
+Wire Wire Line
+	12650 7650 12650 5700
+Connection ~ 12650 5700
+Wire Wire Line
+	12650 5700 13850 5700
+Wire Wire Line
+	12550 7650 12550 5600
+Connection ~ 12550 5600
+Wire Wire Line
+	12550 5600 13750 5600
+Wire Wire Line
+	12450 7650 12450 5500
+Connection ~ 12450 5500
+Wire Wire Line
+	12450 5500 13650 5500
+Wire Wire Line
+	12350 7650 12350 5400
+Connection ~ 12350 5400
+Wire Wire Line
+	12350 5400 15600 5400
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 614C8B75
+P 13600 8150
+F 0 "UI?" H 13600 8766 50  0000 C CNN
+F 1 "4068" H 13600 8675 50  0000 C CNN
+F 2 "" H 13600 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 13600 8150 50  0001 C CNN
+	1    13600 8150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	13250 7650 13250 6600
+Connection ~ 13250 6600
+Wire Wire Line
+	13250 6600 13300 6600
+Wire Wire Line
+	12750 7300 13950 7300
+Wire Wire Line
+	13350 7650 13350 5200
+Connection ~ 13350 5200
+Wire Wire Line
+	13350 5200 13400 5200
+Wire Wire Line
+	13450 7650 13450 6800
+Connection ~ 13450 6800
+Wire Wire Line
+	13450 6800 13500 6800
+Wire Wire Line
+	13550 7650 13550 6900
+Connection ~ 13550 6900
+Wire Wire Line
+	13550 6900 13600 6900
+Wire Wire Line
+	13950 7650 13950 7300
+Connection ~ 13950 7300
+Wire Wire Line
+	13850 7650 13850 5700
+Connection ~ 13850 5700
+Wire Wire Line
+	13850 5700 15200 5700
+Wire Wire Line
+	13750 7650 13750 5600
+Connection ~ 13750 5600
+Wire Wire Line
+	13750 5600 13800 5600
+Wire Wire Line
+	13650 7650 13650 5500
+Connection ~ 13650 5500
+Wire Wire Line
+	13650 5500 13700 5500
+$Comp
+L 4xxx:4081 UI?
+U 1 1 6161AEC5
+P 13800 8950
+F 0 "UI?" H 13800 9275 50  0000 C CNN
+F 1 "4081" H 13800 9184 50  0000 C CNN
+F 2 "" H 13800 8950 50  0001 C CNN
+F 3 "http://www.intersil.com/content/dam/Intersil/documents/cd40/cd4073bms-81bms-82bms.pdf" H 13800 8950 50  0001 C CNN
+	1    13800 8950
+	0    1    1    0   
+$EndComp
+Text Label 13900 8650 0    50   ~ 0
+Module_Read
+Text Label 13800 9250 3    50   ~ 0
+MemoryOutput
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 617885A9
+P 14950 8150
+F 0 "UI?" H 14950 8766 50  0000 C CNN
+F 1 "4068" H 14950 8675 50  0000 C CNN
+F 2 "" H 14950 8150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 14950 8150 50  0001 C CNN
+	1    14950 8150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	14600 7650 14600 6600
+Wire Wire Line
+	14700 7650 14700 5200
+Wire Wire Line
+	14800 7650 14800 6800
+Wire Wire Line
+	14900 7650 14900 6900
+Wire Wire Line
+	15200 7650 15200 5700
+Wire Wire Line
+	15100 7650 15100 5600
+Wire Wire Line
+	15000 7650 15000 5500
+Wire Wire Line
+	15300 7650 15300 5800
+Connection ~ 15300 5800
+Wire Wire Line
+	15300 5800 15600 5800
+Connection ~ 15200 5700
+Wire Wire Line
+	15200 5700 15600 5700
+Connection ~ 15100 5600
+Wire Wire Line
+	15100 5600 15150 5600
+Connection ~ 15000 5500
+Wire Wire Line
+	15000 5500 15050 5500
+Connection ~ 14700 5200
+Wire Wire Line
+	14700 5200 14750 5200
+Connection ~ 14800 6800
+Wire Wire Line
+	14800 6800 14850 6800
+Connection ~ 14900 6900
+Wire Wire Line
+	14900 6900 14950 6900
+Connection ~ 14600 6600
+Wire Wire Line
+	14600 6600 14650 6600
+Text Label 15050 8650 3    50   ~ 0
+MemWriteControl
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 61A3457E
+P 13650 4050
+F 0 "UI?" H 13650 4666 50  0000 C CNN
+F 1 "4068" H 13650 4575 50  0000 C CNN
+F 2 "" H 13650 4050 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 13650 4050 50  0001 C CNN
+	1    13650 4050
+	0    -1   -1   0   
+$EndComp
+$Comp
+L 4xxx_IEEE:4068 UI?
+U 1 1 61A8AD4E
+P 15000 4100
+F 0 "UI?" H 15000 4716 50  0000 C CNN
+F 1 "4068" H 15000 4625 50  0000 C CNN
+F 2 "" H 15000 4100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/cd4068b.pdf" H 15000 4100 50  0001 C CNN
+	1    15000 4100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	13300 4550 13300 6600
+Connection ~ 13300 6600
+Wire Wire Line
+	13300 6600 14600 6600
+Wire Wire Line
+	13400 4550 13400 5200
+Connection ~ 13400 5200
+Wire Wire Line
+	13400 5200 14700 5200
+Wire Wire Line
+	13500 4550 13500 6800
+Connection ~ 13500 6800
+Wire Wire Line
+	13500 6800 14800 6800
+Wire Wire Line
+	13600 4550 13600 6900
+Connection ~ 13600 6900
+Wire Wire Line
+	13600 6900 14900 6900
+Wire Wire Line
+	13700 4550 13700 5500
+Connection ~ 13700 5500
+Wire Wire Line
+	13700 5500 15000 5500
+Wire Wire Line
+	13800 4550 13800 5600
+Connection ~ 13800 5600
+Wire Wire Line
+	13800 5600 15100 5600
+Wire Wire Line
+	13900 4550 13900 7200
+Connection ~ 13900 7200
+Wire Wire Line
+	13900 7200 15250 7200
+Wire Wire Line
+	14000 4550 14000 5800
+Connection ~ 14000 5800
+Wire Wire Line
+	14000 5800 15300 5800
+Wire Wire Line
+	14650 4550 14650 6600
+Wire Wire Line
+	14750 4550 14750 5200
+Wire Wire Line
+	14850 4550 14850 6800
+Wire Wire Line
+	14950 4550 14950 6900
+Wire Wire Line
+	15050 4550 15050 5500
+Wire Wire Line
+	15150 4550 15150 5600
+Wire Wire Line
+	15250 4550 15250 7200
+Wire Wire Line
+	15350 4600 15350 7300
+Wire Wire Line
+	13950 7300 15350 7300
+Connection ~ 15350 7300
+Wire Wire Line
+	15350 7300 15600 7300
+Connection ~ 15250 7200
+Wire Wire Line
+	15250 7200 15600 7200
+Connection ~ 14950 6900
+Wire Wire Line
+	14950 6900 15600 6900
+Connection ~ 14850 6800
+Wire Wire Line
+	14850 6800 15600 6800
+Connection ~ 14650 6600
+Wire Wire Line
+	14650 6600 15600 6600
+Connection ~ 15150 5600
+Wire Wire Line
+	15150 5600 15600 5600
+Connection ~ 15050 5500
+Wire Wire Line
+	15050 5500 15600 5500
+Connection ~ 14750 5200
+Wire Wire Line
+	14750 5200 15600 5200
+Text Label 13550 3300 2    50   ~ 0
+MemWriteControl
+Text Label 13550 3400 2    50   ~ 0
+StackCountDown
+Wire Wire Line
+	13550 3550 13550 3300
+Text Label 14900 3350 2    50   ~ 0
+MemWriteControl
+Text Label 14900 3450 2    50   ~ 0
+StackCountUp
+Wire Wire Line
+	14900 3600 14900 3350
 $EndSCHEMATC
