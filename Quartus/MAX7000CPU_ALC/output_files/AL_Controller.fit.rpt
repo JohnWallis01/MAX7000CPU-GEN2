@@ -1,5 +1,5 @@
 Fitter report for AL_Controller
-Sun Aug 29 22:17:22 2021
+Sun Sep 26 22:11:25 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -15,16 +15,18 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   7. Input Pins
   8. Output Pins
   9. All Package Pins
- 10. I/O Standard
- 11. Dedicated Inputs I/O
- 12. Output Pin Default Load For Reported TCO
- 13. Fitter Resource Utilization by Entity
- 14. Non-Global High Fan-Out Signals
- 15. Other Routing Usage Summary
+ 10. Output Pin Default Load For Reported TCO
+ 11. Fitter Resource Utilization by Entity
+ 12. Control Signals
+ 13. Non-Global High Fan-Out Signals
+ 14. Other Routing Usage Summary
+ 15. LAB External Interconnect
  16. LAB Macrocells
- 17. Logic Cell Interconnection
- 18. Fitter Device Options
- 19. Fitter Messages
+ 17. Parallel Expander
+ 18. Shareable Expander
+ 19. Logic Cell Interconnection
+ 20. Fitter Device Options
+ 21. Fitter Messages
 
 
 
@@ -50,15 +52,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Fitter Summary                                                              ;
 +---------------------------+-------------------------------------------------+
-; Fitter Status             ; Successful - Sun Aug 29 22:17:22 2021           ;
+; Fitter Status             ; Successful - Sun Sep 26 22:11:25 2021           ;
 ; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name             ; AL_Controller                                   ;
 ; Top-level Entity Name     ; AL_Controller                                   ;
 ; Family                    ; MAX7000S                                        ;
 ; Device                    ; EPM7128SLC84-15                                 ;
 ; Timing Models             ; Final                                           ;
-; Total macrocells          ; 22 / 128 ( 17 % )                               ;
-; Total pins                ; 64 / 68 ( 94 % )                                ;
+; Total macrocells          ; 52 / 128 ( 41 % )                               ;
+; Total pins                ; 63 / 68 ( 93 % )                                ;
 +---------------------------+-------------------------------------------------+
 
 
@@ -104,211 +106,190 @@ The pin-out file can be found in E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/
 +------------------------------+-------------------+
 ; Resource                     ; Usage             ;
 +------------------------------+-------------------+
-; Logic cells                  ; 22 / 128 ( 17 % ) ;
-; Registers                    ; 0 / 128 ( 0 % )   ;
-; Number of pterms used        ; 0                 ;
-; I/O pins                     ; 64 / 68 ( 94 % )  ;
-;     -- Clock pins            ; 1 / 2 ( 50 % )    ;
-;     -- Dedicated input pins  ; 2 / 2 ( 100 % )   ;
+; Logic cells                  ; 52 / 128 ( 41 % ) ;
+; Registers                    ; 6 / 128 ( 5 % )   ;
+; Number of pterms used        ; 132               ;
+; I/O pins                     ; 63 / 68 ( 93 % )  ;
+;     -- Clock pins            ; 0 / 2 ( 0 % )     ;
+;     -- Dedicated input pins  ; 0 / 2 ( 0 % )     ;
 ;                              ;                   ;
 ; Global signals               ; 0                 ;
-; Shareable expanders          ; 0 / 128 ( 0 % )   ;
-; Parallel expanders           ; 0 / 120 ( 0 % )   ;
-; Cells using turbo bit        ; 22 / 128 ( 17 % ) ;
-; Maximum fan-out              ; 1                 ;
-; Highest non-global fan-out   ; 1                 ;
-; Total fan-out                ; 22                ;
-; Average fan-out              ; 0.26              ;
+; Shareable expanders          ; 11 / 128 ( 9 % )  ;
+; Parallel expanders           ; 5 / 120 ( 4 % )   ;
+; Cells using turbo bit        ; 52 / 128 ( 41 % ) ;
+; Maximum fan-out              ; 20                ;
+; Highest non-global fan-out   ; 20                ;
+; Total fan-out                ; 274               ;
+; Average fan-out              ; 2.17              ;
 +------------------------------+-------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Input Pins                                                                                                                                           ;
-+----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
-; Name           ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; I/O Standard ; Location assigned by ;
-+----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
-; A[0]           ; 81    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[1]           ; 52    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[2]           ; 33    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[3]           ; 80    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[4]           ; 61    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[5]           ; 60    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[6]           ; 70    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; A[7]           ; 34    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; AequalB_FlagIn ; 73    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[0]           ; 51    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[1]           ; 79    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[2]           ; 35    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[3]           ; 77    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[4]           ; 58    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[5]           ; 50    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[6]           ; 69    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; B[7]           ; 36    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; CLK_Select     ; 75    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; CarryFlagIn    ; 54    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Comm0          ; 55    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Comm1          ; 74    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FastCLK        ; 65    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[0]      ; 84    ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[1]      ; 48    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[2]      ; 76    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[3]      ; 57    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[4]      ; 37    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; FlagIn[5]      ; 67    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[0]         ; 49    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[1]         ; 45    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[2]         ; 40    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[3]         ; 64    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[4]         ; 68    ; --       ; 7   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[5]         ; 46    ; --       ; 5   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[6]         ; 2     ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; Ins[7]         ; 1     ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; SlowCLK        ; 56    ; --       ; 6   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-; UserCLK        ; 39    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
-+----------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                       ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; Name       ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; I/O Standard ; Location assigned by ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; CLK_Select ; 18    ; --       ; 2   ; 2                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[0]     ; 4     ; --       ; 1   ; 19                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[1]     ; 5     ; --       ; 1   ; 20                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[2]     ; 6     ; --       ; 1   ; 18                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[3]     ; 8     ; --       ; 1   ; 18                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[4]     ; 9     ; --       ; 1   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[5]     ; 10    ; --       ; 1   ; 8                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[6]     ; 11    ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Ins[7]     ; 12    ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; Reset      ; 15    ; --       ; 2   ; 4                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; SlowCLK    ; 17    ; --       ; 2   ; 3                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; UserCLK    ; 16    ; --       ; 2   ; 3                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[0]    ; 54    ; --       ; 6   ; 7                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[1]    ; 55    ; --       ; 6   ; 3                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[2]    ; 56    ; --       ; 6   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[3]    ; 57    ; --       ; 6   ; 3                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[4]    ; 58    ; --       ; 6   ; 6                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[5]    ; 60    ; --       ; 6   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[6]    ; 61    ; --       ; 6   ; 4                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regA[7]    ; 63    ; --       ; 7   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[0]    ; 64    ; --       ; 7   ; 7                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[1]    ; 65    ; --       ; 7   ; 4                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[2]    ; 67    ; --       ; 7   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[3]    ; 68    ; --       ; 7   ; 3                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[4]    ; 69    ; --       ; 7   ; 6                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[5]    ; 70    ; --       ; 7   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[6]    ; 73    ; --       ; 8   ; 4                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; regB[7]    ; 74    ; --       ; 8   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Output Pins                                                                                                                                                                                     ;
-+-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
-; Name        ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
-+-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
-; AequalB_Out ; 20    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; CLK         ; 28    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; CarryOut    ; 21    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagCLK     ; 29    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[0]  ; 18    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[1]  ; 17    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[2]  ; 16    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[3]  ; 15    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[4]  ; 31    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; FlagOut[5]  ; 30    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; JumpEnable  ; 27    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; JumpRegLoad ; 25    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[0]        ; 12    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[1]        ; 11    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[2]        ; 10    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[3]        ; 9     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[4]        ; 8     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[5]        ; 6     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[6]        ; 5     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; O[7]        ; 4     ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; RegAControl ; 22    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-; RegBControl ; 24    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
-+-------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                              ;
++----------------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; Name                 ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
++----------------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; CLK                  ; 79    ; --       ; 8   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; Count                ; 20    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; CounterOutControl    ; 21    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; DisplayControl       ; 41    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; HighJumpRegLoad      ; 29    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; HighStackJump        ; 76    ; --       ; 8   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; InsRegControl        ; 22    ; --       ; 2   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; JumpEnable           ; 30    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; LowJumpRegLoad       ; 28    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; LowStackJump         ; 75    ; --       ; 8   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[0]           ; 44    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[1]           ; 45    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[2]           ; 46    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[3]           ; 48    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[4]           ; 49    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[5]           ; 50    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[6]           ; 51    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainBus[7]           ; 52    ; --       ; 5   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainRegOutputControl ; 31    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MainRegReadControl   ; 27    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MemOutEnable         ; 33    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; MemWriteControl      ; 34    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; Ram_Addr_Enable      ; 37    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; Ram_HighControl      ; 36    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; Ram_LowControl       ; 35    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; RegAControl          ; 24    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; RegBControl          ; 25    ; --       ; 3   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; STATE                ; 81    ; --       ; 8   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; SYNC                 ; 80    ; --       ; 8   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; StackCount           ; 39    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
+; StackOutControl      ; 40    ; --       ; 4   ; no              ; no             ; no         ; no            ; TTL          ; User                 ; 10 pF ; -                    ; -                   ;
++----------------------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; All Package Pins                                                                                      ;
-+----------+------------+----------+----------------+--------+--------------+---------+-----------------+
-; Location ; Pad Number ; I/O Bank ; Pin Name/Usage ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
-+----------+------------+----------+----------------+--------+--------------+---------+-----------------+
-; 1        ; 0          ; --       ; Ins[7]         ; input  ; TTL          ;         ; N               ;
-; 2        ; 1          ; --       ; Ins[6]         ; input  ; TTL          ;         ; N               ;
-; 3        ; 2          ; --       ; VCCINT         ; power  ;              ; 5.0V    ;                 ;
-; 4        ; 3          ; --       ; O[7]           ; output ; TTL          ;         ; N               ;
-; 5        ; 4          ; --       ; O[6]           ; output ; TTL          ;         ; N               ;
-; 6        ; 5          ; --       ; O[5]           ; output ; TTL          ;         ; N               ;
-; 7        ; 6          ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 8        ; 7          ; --       ; O[4]           ; output ; TTL          ;         ; N               ;
-; 9        ; 8          ; --       ; O[3]           ; output ; TTL          ;         ; N               ;
-; 10       ; 9          ; --       ; O[2]           ; output ; TTL          ;         ; N               ;
-; 11       ; 10         ; --       ; O[1]           ; output ; TTL          ;         ; N               ;
-; 12       ; 11         ; --       ; O[0]           ; output ; TTL          ;         ; N               ;
-; 13       ; 12         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 14       ; 13         ; --       ; TDI            ; input  ; TTL          ;         ; N               ;
-; 15       ; 14         ; --       ; FlagOut[3]     ; output ; TTL          ;         ; N               ;
-; 16       ; 15         ; --       ; FlagOut[2]     ; output ; TTL          ;         ; N               ;
-; 17       ; 16         ; --       ; FlagOut[1]     ; output ; TTL          ;         ; N               ;
-; 18       ; 17         ; --       ; FlagOut[0]     ; output ; TTL          ;         ; N               ;
-; 19       ; 18         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 20       ; 19         ; --       ; AequalB_Out    ; output ; TTL          ;         ; N               ;
-; 21       ; 20         ; --       ; CarryOut       ; output ; TTL          ;         ; N               ;
-; 22       ; 21         ; --       ; RegAControl    ; output ; TTL          ;         ; N               ;
-; 23       ; 22         ; --       ; TMS            ; input  ; TTL          ;         ; N               ;
-; 24       ; 23         ; --       ; RegBControl    ; output ; TTL          ;         ; N               ;
-; 25       ; 24         ; --       ; JumpRegLoad    ; output ; TTL          ;         ; N               ;
-; 26       ; 25         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 27       ; 26         ; --       ; JumpEnable     ; output ; TTL          ;         ; N               ;
-; 28       ; 27         ; --       ; CLK            ; output ; TTL          ;         ; N               ;
-; 29       ; 28         ; --       ; FlagCLK        ; output ; TTL          ;         ; N               ;
-; 30       ; 29         ; --       ; FlagOut[5]     ; output ; TTL          ;         ; N               ;
-; 31       ; 30         ; --       ; FlagOut[4]     ; output ; TTL          ;         ; N               ;
-; 32       ; 31         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 33       ; 32         ; --       ; A[2]           ; input  ; TTL          ;         ; N               ;
-; 34       ; 33         ; --       ; A[7]           ; input  ; TTL          ;         ; N               ;
-; 35       ; 34         ; --       ; B[2]           ; input  ; TTL          ;         ; N               ;
-; 36       ; 35         ; --       ; B[7]           ; input  ; TTL          ;         ; N               ;
-; 37       ; 36         ; --       ; FlagIn[4]      ; input  ; TTL          ;         ; N               ;
-; 38       ; 37         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 39       ; 38         ; --       ; UserCLK        ; input  ; TTL          ;         ; N               ;
-; 40       ; 39         ; --       ; Ins[2]         ; input  ; TTL          ;         ; N               ;
-; 41       ; 40         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 42       ; 41         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 43       ; 42         ; --       ; VCCINT         ; power  ;              ; 5.0V    ;                 ;
-; 44       ; 43         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 45       ; 44         ; --       ; Ins[1]         ; input  ; TTL          ;         ; N               ;
-; 46       ; 45         ; --       ; Ins[5]         ; input  ; TTL          ;         ; N               ;
-; 47       ; 46         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 48       ; 47         ; --       ; FlagIn[1]      ; input  ; TTL          ;         ; N               ;
-; 49       ; 48         ; --       ; Ins[0]         ; input  ; TTL          ;         ; N               ;
-; 50       ; 49         ; --       ; B[5]           ; input  ; TTL          ;         ; N               ;
-; 51       ; 50         ; --       ; B[0]           ; input  ; TTL          ;         ; N               ;
-; 52       ; 51         ; --       ; A[1]           ; input  ; TTL          ;         ; N               ;
-; 53       ; 52         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 54       ; 53         ; --       ; CarryFlagIn    ; input  ; TTL          ;         ; N               ;
-; 55       ; 54         ; --       ; Comm0          ; input  ; TTL          ;         ; N               ;
-; 56       ; 55         ; --       ; SlowCLK        ; input  ; TTL          ;         ; N               ;
-; 57       ; 56         ; --       ; FlagIn[3]      ; input  ; TTL          ;         ; N               ;
-; 58       ; 57         ; --       ; B[4]           ; input  ; TTL          ;         ; N               ;
-; 59       ; 58         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 60       ; 59         ; --       ; A[5]           ; input  ; TTL          ;         ; N               ;
-; 61       ; 60         ; --       ; A[4]           ; input  ; TTL          ;         ; N               ;
-; 62       ; 61         ; --       ; TCK            ; input  ; TTL          ;         ; N               ;
-; 63       ; 62         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 64       ; 63         ; --       ; Ins[3]         ; input  ; TTL          ;         ; N               ;
-; 65       ; 64         ; --       ; FastCLK        ; input  ; TTL          ;         ; N               ;
-; 66       ; 65         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 67       ; 66         ; --       ; FlagIn[5]      ; input  ; TTL          ;         ; N               ;
-; 68       ; 67         ; --       ; Ins[4]         ; input  ; TTL          ;         ; N               ;
-; 69       ; 68         ; --       ; B[6]           ; input  ; TTL          ;         ; N               ;
-; 70       ; 69         ; --       ; A[6]           ; input  ; TTL          ;         ; N               ;
-; 71       ; 70         ; --       ; TDO            ; output ; TTL          ;         ; N               ;
-; 72       ; 71         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 73       ; 72         ; --       ; AequalB_FlagIn ; input  ; TTL          ;         ; N               ;
-; 74       ; 73         ; --       ; Comm1          ; input  ; TTL          ;         ; N               ;
-; 75       ; 74         ; --       ; CLK_Select     ; input  ; TTL          ;         ; N               ;
-; 76       ; 75         ; --       ; FlagIn[2]      ; input  ; TTL          ;         ; N               ;
-; 77       ; 76         ; --       ; B[3]           ; input  ; TTL          ;         ; N               ;
-; 78       ; 77         ; --       ; VCCIO          ; power  ;              ; 5.0V    ;                 ;
-; 79       ; 78         ; --       ; B[1]           ; input  ; TTL          ;         ; N               ;
-; 80       ; 79         ; --       ; A[3]           ; input  ; TTL          ;         ; N               ;
-; 81       ; 80         ; --       ; A[0]           ; input  ; TTL          ;         ; N               ;
-; 82       ; 81         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 83       ; 82         ; --       ; GND+           ;        ;              ;         ;                 ;
-; 84       ; 83         ; --       ; FlagIn[0]      ; input  ; TTL          ;         ; N               ;
-+----------+------------+----------+----------------+--------+--------------+---------+-----------------+
++-------------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                            ;
++----------+------------+----------+----------------------+--------+--------------+---------+-----------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage       ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
++----------+------------+----------+----------------------+--------+--------------+---------+-----------------+
+; 1        ; 0          ; --       ; GND+                 ;        ;              ;         ;                 ;
+; 2        ; 1          ; --       ; GND+                 ;        ;              ;         ;                 ;
+; 3        ; 2          ; --       ; VCCINT               ; power  ;              ; 5.0V    ;                 ;
+; 4        ; 3          ; --       ; Ins[0]               ; input  ; TTL          ;         ; Y               ;
+; 5        ; 4          ; --       ; Ins[1]               ; input  ; TTL          ;         ; Y               ;
+; 6        ; 5          ; --       ; Ins[2]               ; input  ; TTL          ;         ; Y               ;
+; 7        ; 6          ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 8        ; 7          ; --       ; Ins[3]               ; input  ; TTL          ;         ; Y               ;
+; 9        ; 8          ; --       ; Ins[4]               ; input  ; TTL          ;         ; Y               ;
+; 10       ; 9          ; --       ; Ins[5]               ; input  ; TTL          ;         ; Y               ;
+; 11       ; 10         ; --       ; Ins[6]               ; input  ; TTL          ;         ; Y               ;
+; 12       ; 11         ; --       ; Ins[7]               ; input  ; TTL          ;         ; Y               ;
+; 13       ; 12         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 14       ; 13         ; --       ; TDI                  ; input  ; TTL          ;         ; Y               ;
+; 15       ; 14         ; --       ; Reset                ; input  ; TTL          ;         ; Y               ;
+; 16       ; 15         ; --       ; UserCLK              ; input  ; TTL          ;         ; Y               ;
+; 17       ; 16         ; --       ; SlowCLK              ; input  ; TTL          ;         ; Y               ;
+; 18       ; 17         ; --       ; CLK_Select           ; input  ; TTL          ;         ; Y               ;
+; 19       ; 18         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 20       ; 19         ; --       ; Count                ; output ; TTL          ;         ; Y               ;
+; 21       ; 20         ; --       ; CounterOutControl    ; output ; TTL          ;         ; Y               ;
+; 22       ; 21         ; --       ; InsRegControl        ; output ; TTL          ;         ; Y               ;
+; 23       ; 22         ; --       ; TMS                  ; input  ; TTL          ;         ; Y               ;
+; 24       ; 23         ; --       ; RegAControl          ; output ; TTL          ;         ; Y               ;
+; 25       ; 24         ; --       ; RegBControl          ; output ; TTL          ;         ; Y               ;
+; 26       ; 25         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 27       ; 26         ; --       ; MainRegReadControl   ; output ; TTL          ;         ; Y               ;
+; 28       ; 27         ; --       ; LowJumpRegLoad       ; output ; TTL          ;         ; Y               ;
+; 29       ; 28         ; --       ; HighJumpRegLoad      ; output ; TTL          ;         ; Y               ;
+; 30       ; 29         ; --       ; JumpEnable           ; output ; TTL          ;         ; Y               ;
+; 31       ; 30         ; --       ; MainRegOutputControl ; output ; TTL          ;         ; Y               ;
+; 32       ; 31         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 33       ; 32         ; --       ; MemOutEnable         ; output ; TTL          ;         ; Y               ;
+; 34       ; 33         ; --       ; MemWriteControl      ; output ; TTL          ;         ; Y               ;
+; 35       ; 34         ; --       ; Ram_LowControl       ; output ; TTL          ;         ; Y               ;
+; 36       ; 35         ; --       ; Ram_HighControl      ; output ; TTL          ;         ; Y               ;
+; 37       ; 36         ; --       ; Ram_Addr_Enable      ; output ; TTL          ;         ; Y               ;
+; 38       ; 37         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 39       ; 38         ; --       ; StackCount           ; output ; TTL          ;         ; Y               ;
+; 40       ; 39         ; --       ; StackOutControl      ; output ; TTL          ;         ; Y               ;
+; 41       ; 40         ; --       ; DisplayControl       ; output ; TTL          ;         ; Y               ;
+; 42       ; 41         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 43       ; 42         ; --       ; VCCINT               ; power  ;              ; 5.0V    ;                 ;
+; 44       ; 43         ; --       ; MainBus[0]           ; output ; TTL          ;         ; Y               ;
+; 45       ; 44         ; --       ; MainBus[1]           ; output ; TTL          ;         ; Y               ;
+; 46       ; 45         ; --       ; MainBus[2]           ; output ; TTL          ;         ; Y               ;
+; 47       ; 46         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 48       ; 47         ; --       ; MainBus[3]           ; output ; TTL          ;         ; Y               ;
+; 49       ; 48         ; --       ; MainBus[4]           ; output ; TTL          ;         ; Y               ;
+; 50       ; 49         ; --       ; MainBus[5]           ; output ; TTL          ;         ; Y               ;
+; 51       ; 50         ; --       ; MainBus[6]           ; output ; TTL          ;         ; Y               ;
+; 52       ; 51         ; --       ; MainBus[7]           ; output ; TTL          ;         ; Y               ;
+; 53       ; 52         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 54       ; 53         ; --       ; regA[0]              ; input  ; TTL          ;         ; Y               ;
+; 55       ; 54         ; --       ; regA[1]              ; input  ; TTL          ;         ; Y               ;
+; 56       ; 55         ; --       ; regA[2]              ; input  ; TTL          ;         ; Y               ;
+; 57       ; 56         ; --       ; regA[3]              ; input  ; TTL          ;         ; Y               ;
+; 58       ; 57         ; --       ; regA[4]              ; input  ; TTL          ;         ; Y               ;
+; 59       ; 58         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 60       ; 59         ; --       ; regA[5]              ; input  ; TTL          ;         ; Y               ;
+; 61       ; 60         ; --       ; regA[6]              ; input  ; TTL          ;         ; Y               ;
+; 62       ; 61         ; --       ; TCK                  ; input  ; TTL          ;         ; Y               ;
+; 63       ; 62         ; --       ; regA[7]              ; input  ; TTL          ;         ; Y               ;
+; 64       ; 63         ; --       ; regB[0]              ; input  ; TTL          ;         ; Y               ;
+; 65       ; 64         ; --       ; regB[1]              ; input  ; TTL          ;         ; Y               ;
+; 66       ; 65         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 67       ; 66         ; --       ; regB[2]              ; input  ; TTL          ;         ; Y               ;
+; 68       ; 67         ; --       ; regB[3]              ; input  ; TTL          ;         ; Y               ;
+; 69       ; 68         ; --       ; regB[4]              ; input  ; TTL          ;         ; Y               ;
+; 70       ; 69         ; --       ; regB[5]              ; input  ; TTL          ;         ; Y               ;
+; 71       ; 70         ; --       ; TDO                  ; output ; TTL          ;         ; Y               ;
+; 72       ; 71         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 73       ; 72         ; --       ; regB[6]              ; input  ; TTL          ;         ; Y               ;
+; 74       ; 73         ; --       ; regB[7]              ; input  ; TTL          ;         ; Y               ;
+; 75       ; 74         ; --       ; LowStackJump         ; output ; TTL          ;         ; Y               ;
+; 76       ; 75         ; --       ; HighStackJump        ; output ; TTL          ;         ; Y               ;
+; 77       ; 76         ; --       ; RESERVED             ;        ;              ;         ;                 ;
+; 78       ; 77         ; --       ; VCCIO                ; power  ;              ; 5.0V    ;                 ;
+; 79       ; 78         ; --       ; CLK                  ; output ; TTL          ;         ; Y               ;
+; 80       ; 79         ; --       ; SYNC                 ; output ; TTL          ;         ; Y               ;
+; 81       ; 80         ; --       ; STATE                ; output ; TTL          ;         ; Y               ;
+; 82       ; 81         ; --       ; GND                  ; gnd    ;              ;         ;                 ;
+; 83       ; 82         ; --       ; GND+                 ;        ;              ;         ;                 ;
+; 84       ; 83         ; --       ; GND+                 ;        ;              ;         ;                 ;
++----------+------------+----------+----------------------+--------+--------------+---------+-----------------+
 Note: Pin directions (input, output or bidir) are based on device operating in user mode.
-
-
-+--------------------------------------------------------------------------------------------------+
-; I/O Standard                                                                                     ;
-+--------------+------------+----------------------+-------------------+-------------------+-------+
-; I/O Standard ; Input Vref ; Dedicated Input Pins ; Pins in I/O Bank1 ; Pins in I/O Bank2 ; Total ;
-+--------------+------------+----------------------+-------------------+-------------------+-------+
-; TTL          ; -          ; 3                    ; 0                 ; 0                 ; 3     ;
-+--------------+------------+----------------------+-------------------+-------------------+-------+
-
-
-+-------------------------------------------------------------------------+
-; Dedicated Inputs I/O                                                    ;
-+-----------+-------+-------+-------+--------------+------------+---------+
-; Name      ; Pin # ; Type  ; VCCIO ; I/O Standard ; Input Vref ; Current ;
-+-----------+-------+-------+-------+--------------+------------+---------+
-; FlagIn[0] ; 84    ; Input ; --    ; TTL          ; -          ; 0 mA    ;
-; Ins[6]    ; 2     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
-; Ins[7]    ; 1     ; Input ; --    ; TTL          ; -          ; 0 mA    ;
-+-----------+-------+-------+-------+--------------+------------+---------+
 
 
 +-----------------------------------------------+
@@ -323,101 +304,284 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
 
 
-+-------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                               ;
-+----------------------------+------------+------+---------------------+--------------+
-; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+------------+------+---------------------+--------------+
-; |AL_Controller             ; 22         ; 64   ; |AL_Controller      ; work         ;
-+----------------------------+------------+------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                   ;
++------------------------------+------------+------+-------------------------------------------------------+--------------+
+; Compilation Hierarchy Node   ; Macrocells ; Pins ; Full Hierarchy Name                                   ; Library Name ;
++------------------------------+------------+------+-------------------------------------------------------+--------------+
+; |AL_Controller               ; 52         ; 63   ; |AL_Controller                                        ; work         ;
+;    |ALU:ALU_High|            ; 10         ; 0    ; |AL_Controller|ALU:ALU_High                           ; work         ;
+;       |dual_NOR:dualNOR0|    ; 0          ; 0    ; |AL_Controller|ALU:ALU_High|dual_NOR:dualNOR0         ; work         ;
+;       |dual_NOR:dualNOR2|    ; 0          ; 0    ; |AL_Controller|ALU:ALU_High|dual_NOR:dualNOR2         ; work         ;
+;       |dual_XOR:XOR0|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR0             ; work         ;
+;       |dual_XOR:XOR1|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR1             ; work         ;
+;       |dual_XOR:XOR2|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR2             ; work         ;
+;       |dual_XOR:XOR3|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR3             ; work         ;
+;       |triple_NOR:triNOR0|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR0        ; work         ;
+;       |triple_NOR:triNOR1|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR1        ; work         ;
+;       |triple_NOR:triNOR2|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR2        ; work         ;
+;    |ALU:ALU_Low|             ; 13         ; 0    ; |AL_Controller|ALU:ALU_Low                            ; work         ;
+;       |dual_NOR:dualNOR_X|   ; 2          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR_X         ; work         ;
+;       |dual_XOR:XOR0|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR0              ; work         ;
+;       |dual_XOR:XOR1|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR1              ; work         ;
+;       |dual_XOR:XOR2|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR2              ; work         ;
+;       |dual_XOR:XOR3|        ; 3          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR3              ; work         ;
+;       |quad_NOR:quadNOR0|    ; 3          ; 0    ; |AL_Controller|ALU:ALU_Low|quad_NOR:quadNOR0          ; work         ;
+;       |triple_NOR:triNOR3|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|triple_NOR:triNOR3         ; work         ;
+;    |D_flip_flop:CLKFLOP|     ; 2          ; 0    ; |AL_Controller|D_flip_flop:CLKFLOP                    ; work         ;
+;    |Sig_Gen:SignalGenerator| ; 7          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator                ; work         ;
+;       |D_flip_flop:D0|       ; 2          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D0 ; work         ;
+;       |D_flip_flop:D1|       ; 1          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D1 ; work         ;
+;       |D_flip_flop:D2|       ; 1          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D2 ; work         ;
++------------------------------+------------+------+-------------------------------------------------------+--------------+
 
 
-+---------------------------------+
-; Non-Global High Fan-Out Signals ;
-+---------+-----------------------+
-; Name    ; Fan-Out               ;
-+---------+-----------------------+
-; ~GND~21 ; 1                     ;
-; ~GND~20 ; 1                     ;
-; ~GND~19 ; 1                     ;
-; ~GND~18 ; 1                     ;
-; ~GND~17 ; 1                     ;
-; ~GND~16 ; 1                     ;
-; ~GND~15 ; 1                     ;
-; ~GND~14 ; 1                     ;
-; ~GND~13 ; 1                     ;
-; ~GND~12 ; 1                     ;
-; ~GND~11 ; 1                     ;
-; ~GND~10 ; 1                     ;
-; ~GND~9  ; 1                     ;
-; ~GND~8  ; 1                     ;
-; ~GND~7  ; 1                     ;
-; ~GND~6  ; 1                     ;
-; ~GND~5  ; 1                     ;
-; ~GND~4  ; 1                     ;
-; ~GND~3  ; 1                     ;
-; ~GND~2  ; 1                     ;
-; ~GND~1  ; 1                     ;
-; ~GND~0  ; 1                     ;
-+---------+-----------------------+
++--------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                        ;
++-----------------+----------+---------+--------------+--------+----------------------+------------------+
+; Name            ; Location ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ;
++-----------------+----------+---------+--------------+--------+----------------------+------------------+
+; CLK_Select      ; PIN_18   ; 2       ; Clock        ; no     ; --                   ; --               ;
+; Reset           ; PIN_15   ; 4       ; Async. clear ; no     ; --                   ; --               ;
+; interntalCLK~13 ; SEXP116  ; 4       ; Clock        ; no     ; --                   ; --               ;
+; interntalCLK~14 ; SEXP114  ; 4       ; Clock        ; no     ; --                   ; --               ;
+; interntalCLK~15 ; SEXP113  ; 4       ; Clock        ; no     ; --                   ; --               ;
++-----------------+----------+---------+--------------+--------+----------------------+------------------+
 
 
-+-----------------------------------------------+
-; Other Routing Usage Summary                   ;
-+-----------------------------+-----------------+
-; Other Routing Resource Type ; Usage           ;
-+-----------------------------+-----------------+
-; Output enables              ; 0 / 6 ( 0 % )   ;
-; PIA buffers                 ; 0 / 288 ( 0 % ) ;
-; PIAs                        ; 0 / 288 ( 0 % ) ;
-+-----------------------------+-----------------+
++------------------------------------------------------------+
+; Non-Global High Fan-Out Signals                            ;
++--------------------------------------------------+---------+
+; Name                                             ; Fan-Out ;
++--------------------------------------------------+---------+
+; Ins[1]                                           ; 20      ;
+; Ins[0]                                           ; 19      ;
+; Ins[3]                                           ; 18      ;
+; Ins[2]                                           ; 18      ;
+; Ins[5]                                           ; 8       ;
+; regB[0]                                          ; 7       ;
+; regA[0]                                          ; 7       ;
+; regB[4]                                          ; 6       ;
+; regA[4]                                          ; 6       ;
+; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; 6       ;
+; Ins[4]                                           ; 5       ;
+; regB[5]                                          ; 5       ;
+; regB[2]                                          ; 5       ;
+; regA[5]                                          ; 5       ;
+; regA[2]                                          ; 5       ;
+; ALU:ALU_Low|dual_NOR:dualNOR_X|F~11              ; 5       ;
+; Reset                                            ; 4       ;
+; regB[6]                                          ; 4       ;
+; regB[1]                                          ; 4       ;
+; regA[6]                                          ; 4       ;
+; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; 4       ;
+; ALU:ALU_Low|triple_NOR:triNOR3|F~6               ; 4       ;
+; interntalCLK~15                                  ; 4       ;
+; interntalCLK~14                                  ; 4       ;
+; interntalCLK~13                                  ; 4       ;
+; D_flip_flop:CLKFLOP|Qnot~reg0                    ; 4       ;
+; D_flip_flop:CLKFLOP|Qnot~en                      ; 4       ;
+; SlowCLK                                          ; 3       ;
+; UserCLK                                          ; 3       ;
+; regB[3]                                          ; 3       ;
+; regA[3]                                          ; 3       ;
+; regA[1]                                          ; 3       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~1                   ; 3       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~0                   ; 3       ;
+; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; 3       ;
+; CLK_Select                                       ; 2       ;
+; ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp2          ; 2       ;
+; ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp1          ; 2       ;
+; ALU:ALU_High|triple_NOR:triNOR1|F~6              ; 2       ;
+; ALU:ALU_High|triple_NOR:triNOR0|F~6              ; 2       ;
+; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; 2       ;
+; ALU:ALU_Low|quad_NOR:quadNOR0|F~5                ; 2       ;
+; regB[7]                                          ; 1       ;
+; regA[7]                                          ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR3|F~0bal                ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR3|F~0bal                 ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR2|F~0bal                ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR1|F~0bal                 ; 1       ;
+; ALU:ALU_High|dual_NOR:dualNOR2|F~6sexp2          ; 1       ;
+; ALU:ALU_High|dual_NOR:dualNOR2|F~6sexp1          ; 1       ;
+; ~GND~18                                          ; 1       ;
+; ~GND~17                                          ; 1       ;
+; ~GND~16                                          ; 1       ;
+; ~GND~15                                          ; 1       ;
+; ~GND~14                                          ; 1       ;
+; ~GND~13                                          ; 1       ;
+; ~GND~12                                          ; 1       ;
+; ~GND~11                                          ; 1       ;
+; ~GND~10                                          ; 1       ;
+; ~GND~9                                           ; 1       ;
+; ~GND~8                                           ; 1       ;
+; ~GND~7                                           ; 1       ;
+; ~GND~6                                           ; 1       ;
+; ~GND~5                                           ; 1       ;
+; ~GND~4                                           ; 1       ;
+; ~GND~3                                           ; 1       ;
+; ~GND~2                                           ; 1       ;
+; ~GND~1                                           ; 1       ;
+; ~GND~0                                           ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~11                  ; 1       ;
+; ALU:ALU_Low|dual_NOR:dualNOR_X|F~12              ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR3|F~11                   ; 1       ;
+; ALU:ALU_Low|quad_NOR:quadNOR0|F~18               ; 1       ;
+; ALU:ALU_Low|quad_NOR:quadNOR0|F~12               ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR3|F~4                   ; 1       ;
+; ALU:ALU_High|triple_NOR:triNOR2|F~6              ; 1       ;
+; Sig_Gen:SignalGenerator|Count~3                  ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR2|F~5                   ; 1       ;
+; Sig_Gen:SignalGenerator|InstructRead~1           ; 1       ;
+; Sig_Gen:SignalGenerator|CounterOut~1             ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~4                   ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~3                   ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR1|F~2                   ; 1       ;
+; ALU:ALU_High|dual_XOR:XOR0|F~0                   ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR3|F~4                    ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR2|F~0                    ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR1|F~5                    ; 1       ;
+; interntalCLK~12                                  ; 1       ;
+; ALU:ALU_Low|dual_XOR:XOR0|F~0                    ; 1       ;
++--------------------------------------------------+---------+
+
+
++-------------------------------------------------+
+; Other Routing Usage Summary                     ;
++-----------------------------+-------------------+
+; Other Routing Resource Type ; Usage             ;
++-----------------------------+-------------------+
+; Output enables              ; 0 / 6 ( 0 % )     ;
+; PIA buffers                 ; 59 / 288 ( 20 % ) ;
+; PIAs                        ; 59 / 288 ( 20 % ) ;
++-----------------------------+-------------------+
+
+
++----------------------------------------------------------------------------+
+; LAB External Interconnect                                                  ;
++----------------------------------------------+-----------------------------+
+; LAB External Interconnects  (Average = 7.38) ; Number of LABs  (Total = 4) ;
++----------------------------------------------+-----------------------------+
+; 0 - 2                                        ; 4                           ;
+; 3 - 5                                        ; 1                           ;
+; 6 - 8                                        ; 0                           ;
+; 9 - 11                                       ; 1                           ;
+; 12 - 14                                      ; 0                           ;
+; 15 - 17                                      ; 1                           ;
+; 18 - 20                                      ; 0                           ;
+; 21 - 23                                      ; 0                           ;
+; 24 - 26                                      ; 0                           ;
+; 27 - 29                                      ; 1                           ;
++----------------------------------------------+-----------------------------+
 
 
 +----------------------------------------------------------------------+
 ; LAB Macrocells                                                       ;
 +----------------------------------------+-----------------------------+
-; Number of Macrocells  (Average = 2.75) ; Number of LABs  (Total = 3) ;
+; Number of Macrocells  (Average = 6.50) ; Number of LABs  (Total = 6) ;
 +----------------------------------------+-----------------------------+
-; 0                                      ; 5                           ;
+; 0                                      ; 2                           ;
 ; 1                                      ; 0                           ;
 ; 2                                      ; 0                           ;
-; 3                                      ; 0                           ;
+; 3                                      ; 1                           ;
 ; 4                                      ; 0                           ;
 ; 5                                      ; 0                           ;
 ; 6                                      ; 0                           ;
-; 7                                      ; 2                           ;
+; 7                                      ; 1                           ;
 ; 8                                      ; 1                           ;
+; 9                                      ; 0                           ;
+; 10                                     ; 0                           ;
+; 11                                     ; 2                           ;
+; 12                                     ; 1                           ;
 +----------------------------------------+-----------------------------+
 
 
-+----------------------------------------+
-; Logic Cell Interconnection             ;
-+-----+------------+-------+-------------+
-; LAB ; Logic Cell ; Input ; Output      ;
-+-----+------------+-------+-------------+
-;  A  ; LC3        ;       ; O[0]        ;
-;  A  ; LC5        ;       ; O[1]        ;
-;  A  ; LC6        ;       ; O[2]        ;
-;  A  ; LC8        ;       ; O[3]        ;
-;  A  ; LC11       ;       ; O[4]        ;
-;  A  ; LC13       ;       ; O[5]        ;
-;  A  ; LC14       ;       ; O[6]        ;
-;  A  ; LC16       ;       ; O[7]        ;
-;  B  ; LC17       ;       ; RegAControl ;
-;  B  ; LC19       ;       ; CarryOut    ;
-;  B  ; LC21       ;       ; AequalB_Out ;
-;  B  ; LC24       ;       ; FlagOut[0]  ;
-;  B  ; LC25       ;       ; FlagOut[1]  ;
-;  B  ; LC27       ;       ; FlagOut[2]  ;
-;  B  ; LC29       ;       ; FlagOut[3]  ;
-;  C  ; LC35       ;       ; FlagOut[4]  ;
-;  C  ; LC37       ;       ; FlagOut[5]  ;
-;  C  ; LC38       ;       ; FlagCLK     ;
-;  C  ; LC40       ;       ; CLK         ;
-;  C  ; LC43       ;       ; JumpEnable  ;
-;  C  ; LC45       ;       ; JumpRegLoad ;
-;  C  ; LC46       ;       ; RegBControl ;
-+-----+------------+-------+-------------+
++---------------------------------------------------------+
+; Parallel Expander                                       ;
++--------------------------+------------------------------+
+; Parallel Expander Length ; Number of Parallel Expanders ;
++--------------------------+------------------------------+
+; 0                        ; 0                            ;
+; 1                        ; 3                            ;
+; 2                        ; 1                            ;
++--------------------------+------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Shareable Expander                                                            ;
++-------------------------------------------------+-----------------------------+
+; Number of shareable expanders  (Average = 1.38) ; Number of LABs  (Total = 2) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 6                           ;
+; 1                                               ; 0                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 1                           ;
+; 4                                               ; 0                           ;
+; 5                                               ; 0                           ;
+; 6                                               ; 0                           ;
+; 7                                               ; 0                           ;
+; 8                                               ; 1                           ;
++-------------------------------------------------+-----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Logic Cell Interconnection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
++-----+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LAB ; Logic Cell ; Input                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ; Output                                                                                                                                                                                                                                                           ;
++-----+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+;  A  ; LC5        ; ALU:ALU_Low|dual_NOR:dualNOR_X|F~12, Ins[2], regB[2], regA[2], Ins[3], regB[0], regA[0], Ins[0]                                                                                                                                                                                                                                                                                                                                                                       ; ALU:ALU_High|dual_XOR:XOR0|F~0, ALU:ALU_High|dual_XOR:XOR1|F~4, ALU:ALU_High|dual_XOR:XOR2|F~5, ALU:ALU_High|dual_XOR:XOR3|F~4, ALU:ALU_High|dual_XOR:XOR1|F~11                                                                                                  ;
+;  A  ; LC2        ; ALU:ALU_Low|quad_NOR:quadNOR0|F~12, Ins[4], regB[0], regB[1], Ins[1], regA[0], Ins[0], Ins[3], Ins[2]                                                                                                                                                                                                                                                                                                                                                                 ; ALU:ALU_Low|quad_NOR:quadNOR0|F~5                                                                                                                                                                                                                                ;
+;  A  ; LC3        ; ALU:ALU_Low|quad_NOR:quadNOR0|F~18, Ins[2], Ins[4], regB[0], regA[1], regA[0], Ins[0], regB[1], Ins[3], Ins[1]                                                                                                                                                                                                                                                                                                                                                        ; ALU:ALU_Low|dual_XOR:XOR2|F~0, ALU:ALU_Low|dual_XOR:XOR3|F~4                                                                                                                                                                                                     ;
+;  A  ; LC1        ; Ins[0], Ins[4], regB[0], regA[1], regA[0], Ins[1], Ins[2], regB[1], Ins[3]                                                                                                                                                                                                                                                                                                                                                                                            ; ALU:ALU_Low|quad_NOR:quadNOR0|F~18                                                                                                                                                                                                                               ;
+;  A  ; LC9        ; regA[3], regB[3], Ins[1], Ins[0]                                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR0|F~0, ALU:ALU_High|dual_XOR:XOR2|F~5, ALU:ALU_High|dual_XOR:XOR3|F~4, ALU:ALU_High|dual_XOR:XOR1|F~11                                                                                                                                  ;
+;  A  ; LC4        ; regB[3], regA[3], Ins[2], Ins[3], Ins[1], regB[0], regA[0], regB[2], regA[2]                                                                                                                                                                                                                                                                                                                                                                                          ; ALU:ALU_Low|dual_NOR:dualNOR_X|F~11                                                                                                                                                                                                                              ;
+;  A  ; LC8        ; regA[6], regB[6], Ins[1], Ins[0]                                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR3|F~4                                                                                                                                                                                                                                   ;
+;  A  ; LC7        ; Ins[1], regA[7], regB[7], Ins[0], Ins[3], Ins[2]                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR3|F~4                                                                                                                                                                                                                                   ;
+;  A  ; LC11       ; Ins[4], regA[0], regB[0], Ins[0], Ins[1], Ins[3], Ins[2]                                                                                                                                                                                                                                                                                                                                                                                                              ; ALU:ALU_Low|dual_XOR:XOR1|F~5                                                                                                                                                                                                                                    ;
+;  A  ; LC12       ; Ins[2], Ins[1], Ins[3], Ins[0], regA[6], regB[6]                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR2|F~5                                                                                                                                                                                                                                   ;
+;  A  ; LC14       ; Ins[2], regA[3], regB[3], Ins[3], Ins[1], Ins[0]                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_Low|dual_XOR:XOR3|F~4                                                                                                                                                                                                                                    ;
+;  B  ; LC17       ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en                                                                                                                                                                                                                                                                                                                       ; InsRegControl                                                                                                                                                                                                                                                    ;
+;  B  ; LC21       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en                                                                                                                                                                                                                                                                                                                    ; Count                                                                                                                                                                                                                                                            ;
+;  B  ; LC19       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en                                                                                                                                                                                                                                                                                                                    ; CounterOutControl                                                                                                                                                                                                                                                ;
+;  C  ; LC37       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; JumpEnable                                                                                                                                                                                                                                                       ;
+;  C  ; LC38       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; HighJumpRegLoad                                                                                                                                                                                                                                                  ;
+;  C  ; LC43       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; MainRegReadControl                                                                                                                                                                                                                                               ;
+;  C  ; LC45       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; RegBControl                                                                                                                                                                                                                                                      ;
+;  C  ; LC40       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; LowJumpRegLoad                                                                                                                                                                                                                                                   ;
+;  C  ; LC46       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; RegAControl                                                                                                                                                                                                                                                      ;
+;  C  ; LC35       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; MainRegOutputControl                                                                                                                                                                                                                                             ;
+;  D  ; LC57       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; Ram_HighControl                                                                                                                                                                                                                                                  ;
+;  D  ; LC64       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; MemOutEnable                                                                                                                                                                                                                                                     ;
+;  D  ; LC61       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; MemWriteControl                                                                                                                                                                                                                                                  ;
+;  D  ; LC59       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; Ram_LowControl                                                                                                                                                                                                                                                   ;
+;  D  ; LC56       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; Ram_Addr_Enable                                                                                                                                                                                                                                                  ;
+;  D  ; LC53       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; StackCount                                                                                                                                                                                                                                                       ;
+;  D  ; LC51       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; StackOutControl                                                                                                                                                                                                                                                  ;
+;  D  ; LC49       ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; DisplayControl                                                                                                                                                                                                                                                   ;
+;  E  ; LC65       ; Ins[2], regA[0], regB[0], Ins[3], Ins[1], Ins[0], Ins[4], Ins[5]                                                                                                                                                                                                                                                                                                                                                                                                      ; MainBus[0]                                                                                                                                                                                                                                                       ;
+;  E  ; LC67       ; Ins[2], regA[1], regB[1], Ins[3], Ins[1], Ins[0], ALU:ALU_Low|dual_XOR:XOR1|F~0bal, Ins[5]                                                                                                                                                                                                                                                                                                                                                                            ; MainBus[1]                                                                                                                                                                                                                                                       ;
+;  E  ; LC69       ; Ins[2], regA[2], regB[2], Ins[3], Ins[1], Ins[0], Ins[5], ALU:ALU_Low|quad_NOR:quadNOR0|F~5                                                                                                                                                                                                                                                                                                                                                                           ; MainBus[2]                                                                                                                                                                                                                                                       ;
+;  E  ; LC72       ; ALU:ALU_Low|dual_XOR:XOR3|F~11, regA[2], regB[2], Ins[3], ALU:ALU_Low|quad_NOR:quadNOR0|F~5, Ins[0], Ins[1], ALU:ALU_Low|dual_XOR:XOR3|F~0bal                                                                                                                                                                                                                                                                                                                         ; MainBus[3]                                                                                                                                                                                                                                                       ;
+;  E  ; LC73       ; Ins[2], regA[4], regB[4], Ins[3], Ins[1], Ins[0], Ins[5], ALU:ALU_Low|triple_NOR:triNOR3|F~6, ALU:ALU_Low|dual_NOR:dualNOR_X|F~11                                                                                                                                                                                                                                                                                                                                     ; MainBus[4]                                                                                                                                                                                                                                                       ;
+;  E  ; LC75       ; ALU:ALU_High|dual_XOR:XOR1|F~11, regB[4], Ins[1], ALU:ALU_Low|dual_NOR:dualNOR_X|F~11, regA[4], Ins[3], Ins[2], Ins[5], ALU:ALU_High|dual_XOR:XOR1|F~0, ALU:ALU_High|dual_XOR:XOR1|F~1, ALU:ALU_High|dual_XOR:XOR1|F~2, ALU:ALU_High|dual_XOR:XOR1|F~3                                                                                                                                                                                                                ; MainBus[5]                                                                                                                                                                                                                                                       ;
+;  E  ; LC68       ; regA[4], regB[4], Ins[1], Ins[0]                                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR2|F~5, ALU:ALU_High|dual_XOR:XOR3|F~4                                                                                                                                                                                                   ;
+;  E  ; LC66       ; regA[5], regB[5], Ins[1], Ins[0]                                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_High|dual_XOR:XOR2|F~5, ALU:ALU_High|dual_XOR:XOR3|F~4                                                                                                                                                                                                   ;
+;  E  ; LC80       ; ALU:ALU_Low|triple_NOR:triNOR3|F~6, ALU:ALU_Low|dual_NOR:dualNOR_X|F~11, Ins[5], ALU:ALU_High|triple_NOR:triNOR0|F~6, ALU:ALU_High|triple_NOR:triNOR1|F~6, ALU:ALU_High|triple_NOR:triNOR2|F~6, ALU:ALU_High|dual_XOR:XOR3|F~0bal, ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp1, ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp2, ALU:ALU_High|dual_XOR:XOR1|F~0, ALU:ALU_High|dual_XOR:XOR1|F~1, ALU:ALU_High|dual_NOR:dualNOR2|F~6sexp1, ALU:ALU_High|dual_NOR:dualNOR2|F~6sexp2 ; MainBus[7]                                                                                                                                                                                                                                                       ;
+;  E  ; LC77       ; ALU:ALU_Low|triple_NOR:triNOR3|F~6, ALU:ALU_Low|dual_NOR:dualNOR_X|F~11, Ins[5], ALU:ALU_High|triple_NOR:triNOR0|F~6, ALU:ALU_High|triple_NOR:triNOR1|F~6, ALU:ALU_High|dual_XOR:XOR2|F~0bal, ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp1, ALU:ALU_High|dual_NOR:dualNOR0|F~6sexp2, ALU:ALU_High|dual_XOR:XOR1|F~0, ALU:ALU_High|dual_XOR:XOR1|F~1                                                                                                                        ; MainBus[6]                                                                                                                                                                                                                                                       ;
+;  E  ; LC74       ; ALU:ALU_Low|triple_NOR:triNOR3|F~6, regA[4], regB[4], Ins[0], Ins[1], ALU:ALU_Low|dual_NOR:dualNOR_X|F~11                                                                                                                                                                                                                                                                                                                                                             ; ALU:ALU_High|dual_XOR:XOR1|F~4                                                                                                                                                                                                                                   ;
+;  E  ; LC71       ; Ins[5], Ins[2], regA[2], regB[2]                                                                                                                                                                                                                                                                                                                                                                                                                                      ; ALU:ALU_Low|dual_XOR:XOR3|F~4                                                                                                                                                                                                                                    ;
+;  H  ; LC117      ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en, Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, interntalCLK~13, interntalCLK~14, interntalCLK~15, Reset                                                                                                                                                                                                                                                                                                            ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0, Sig_Gen:SignalGenerator|CounterOut~1, Sig_Gen:SignalGenerator|Count~3                                                                                                                                             ;
+;  H  ; LC114      ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en, interntalCLK~13, interntalCLK~14, interntalCLK~15, Reset                                                                                                                                                                                                                                                                                                            ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, Sig_Gen:SignalGenerator|InstructRead~1                                                                                                                                                                         ;
+;  H  ; LC113      ; interntalCLK~13, interntalCLK~14, interntalCLK~15, Reset                                                                                                                                                                                                                                                                                                                                                                                                              ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0, Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0, Sig_Gen:SignalGenerator|CounterOut~1, Sig_Gen:SignalGenerator|InstructRead~1, Sig_Gen:SignalGenerator|Count~3 ;
+;  H  ; LC118      ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; LowStackJump                                                                                                                                                                                                                                                     ;
+;  H  ; LC119      ; CLK_Select                                                                                                                                                                                                                                                                                                                                                                                                                                                            ; D_flip_flop:CLKFLOP|Qnot~reg0, interntalCLK~12, interntalCLK~13, interntalCLK~15                                                                                                                                                                                 ;
+;  H  ; LC126      ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; SYNC                                                                                                                                                                                                                                                             ;
+;  H  ; LC128      ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; STATE                                                                                                                                                                                                                                                            ;
+;  H  ; LC116      ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en, Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0, interntalCLK~13, interntalCLK~14, interntalCLK~15, Reset                                                                                                                                                                                                                                                                                                               ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0, Sig_Gen:SignalGenerator|CounterOut~1, Sig_Gen:SignalGenerator|InstructRead~1, Sig_Gen:SignalGenerator|Count~3                                                                                                  ;
+;  H  ; LC125      ; UserCLK, D_flip_flop:CLKFLOP|Qnot~reg0, D_flip_flop:CLKFLOP|Qnot~en, SlowCLK                                                                                                                                                                                                                                                                                                                                                                                          ; CLK                                                                                                                                                                                                                                                              ;
+;  H  ; LC121      ; D_flip_flop:CLKFLOP|Qnot~reg0, D_flip_flop:CLKFLOP|Qnot~en, CLK_Select                                                                                                                                                                                                                                                                                                                                                                                                ; D_flip_flop:CLKFLOP|Qnot~reg0, interntalCLK~12, interntalCLK~13, interntalCLK~15                                                                                                                                                                                 ;
+;  H  ; LC120      ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ; HighStackJump                                                                                                                                                                                                                                                    ;
++-----+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------+
@@ -440,10 +604,15 @@ Note: User assignments will override these defaults. The user specified values a
 +-----------------+
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (119006): Selected device EPM7128SLC84-15 for design "AL_Controller"
-Info: Quartus II 64-Bit Fitter was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4675 megabytes
-    Info: Processing ended: Sun Aug 29 22:17:22 2021
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:00
+Warning (15705): Ignored locations or region assignments to the following nodes
+    Warning (15706): Node "TCK" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "TDI" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "TDO" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "TMS" is assigned to location or region, but does not exist in design
+Info: Quartus II 64-Bit Fitter was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4686 megabytes
+    Info: Processing ended: Sun Sep 26 22:11:25 2021
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
 
 

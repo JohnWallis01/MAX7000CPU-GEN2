@@ -14,7 +14,7 @@ entity AL_Controller is
   CLK: out std_logic; -- this needs to be birectional
   Count: out std_logic;
   CounterOutControl: out std_logic;
-  InsRegControl: out std_logic;
+  InsRegControl: buffer std_logic;
   RegAControl: out std_logic;
   RegBControl: out std_logic;
   MainRegReadControl: out std_logic;
@@ -77,22 +77,26 @@ end component;
     end component;
 
 
-signal nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable: std_logic;
-signal ALU_Out : std_logic_vector (7 downto 0)
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut: std_logic;
+signal ALU_Out : std_logic_vector (7 downto 0);
 begin
+
+  --signal buffering
+  CLK <= interntalCLK;
+
   --clock selector
-  CLKFLOP : D_flip_flop port map (CLK_Select, nClkSelect, '0', '1', ClkSelectState, nClkSelectState);
-  CLK <= (UserCLK and nClkSelectState) or (SlowCLK and ClkSelectState);
+  CLKFLOP : D_flip_flop port map (CLK_Select, nClkSelectState, '0', '1', ClkSelectState, nClkSelectState);
+  interntalCLK <= (UserCLK and nClkSelectState) or (SlowCLK and ClkSelectState);
   --timing generator
-  SignalGenerator: Sig_Gen port map (CLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
+  SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
   --instruction decoder
 
   --ALU
   ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
-  ALU_High: ALU port map((regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), Ins(5), ALU_connect, ALU_Out(7 downto 4), CarryOut, ABHigh));
-  CarryFlagFlop: D_flip_flop port map(InsRegControl, CarryOut, '0', '1', CarryFlag, 'X');
+  ALU_High: ALU port map(regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), Ins(5), ALU_connect, ALU_Out(7 downto 4), CarryOut, ABHigh);
+  CarryFlagFlop: D_flip_flop port map(InsRegControl, CarryOut, '0', '1', CarryFlag, open);
   ABLowHigh <= ABLow and ABHigh;
-  ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, 'X');
+  ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, open);
   ALU_Buffer: Octal_Bus_Driver port map(ALU_Out(7 downto 0), MainBus(7 downto 0), ALU_Enable);
 
 

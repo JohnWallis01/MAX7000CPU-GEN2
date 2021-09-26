@@ -61,87 +61,87 @@ CHIP  "AL_Controller"  ASSIGNED TO AN: EPM7128SLC84-15
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-Ins[7]                       : 1         : input  : TTL               :         :           : N              
-Ins[6]                       : 2         : input  : TTL               :         :           : N              
+GND+                         : 1         :        :                   :         :           :                
+GND+                         : 2         :        :                   :         :           :                
 VCCINT                       : 3         : power  :                   : 5.0V    :           :                
-O[7]                         : 4         : output : TTL               :         :           : N              
-O[6]                         : 5         : output : TTL               :         :           : N              
-O[5]                         : 6         : output : TTL               :         :           : N              
+Ins[0]                       : 4         : input  : TTL               :         :           : Y              
+Ins[1]                       : 5         : input  : TTL               :         :           : Y              
+Ins[2]                       : 6         : input  : TTL               :         :           : Y              
 GND                          : 7         : gnd    :                   :         :           :                
-O[4]                         : 8         : output : TTL               :         :           : N              
-O[3]                         : 9         : output : TTL               :         :           : N              
-O[2]                         : 10        : output : TTL               :         :           : N              
-O[1]                         : 11        : output : TTL               :         :           : N              
-O[0]                         : 12        : output : TTL               :         :           : N              
+Ins[3]                       : 8         : input  : TTL               :         :           : Y              
+Ins[4]                       : 9         : input  : TTL               :         :           : Y              
+Ins[5]                       : 10        : input  : TTL               :         :           : Y              
+Ins[6]                       : 11        : input  : TTL               :         :           : Y              
+Ins[7]                       : 12        : input  : TTL               :         :           : Y              
 VCCIO                        : 13        : power  :                   : 5.0V    :           :                
-TDI                          : 14        : input  : TTL               :         :           : N              
-FlagOut[3]                   : 15        : output : TTL               :         :           : N              
-FlagOut[2]                   : 16        : output : TTL               :         :           : N              
-FlagOut[1]                   : 17        : output : TTL               :         :           : N              
-FlagOut[0]                   : 18        : output : TTL               :         :           : N              
+TDI                          : 14        : input  : TTL               :         :           : Y              
+Reset                        : 15        : input  : TTL               :         :           : Y              
+UserCLK                      : 16        : input  : TTL               :         :           : Y              
+SlowCLK                      : 17        : input  : TTL               :         :           : Y              
+CLK_Select                   : 18        : input  : TTL               :         :           : Y              
 GND                          : 19        : gnd    :                   :         :           :                
-AequalB_Out                  : 20        : output : TTL               :         :           : N              
-CarryOut                     : 21        : output : TTL               :         :           : N              
-RegAControl                  : 22        : output : TTL               :         :           : N              
-TMS                          : 23        : input  : TTL               :         :           : N              
-RegBControl                  : 24        : output : TTL               :         :           : N              
-JumpRegLoad                  : 25        : output : TTL               :         :           : N              
+Count                        : 20        : output : TTL               :         :           : Y              
+CounterOutControl            : 21        : output : TTL               :         :           : Y              
+InsRegControl                : 22        : output : TTL               :         :           : Y              
+TMS                          : 23        : input  : TTL               :         :           : Y              
+RegAControl                  : 24        : output : TTL               :         :           : Y              
+RegBControl                  : 25        : output : TTL               :         :           : Y              
 VCCIO                        : 26        : power  :                   : 5.0V    :           :                
-JumpEnable                   : 27        : output : TTL               :         :           : N              
-CLK                          : 28        : output : TTL               :         :           : N              
-FlagCLK                      : 29        : output : TTL               :         :           : N              
-FlagOut[5]                   : 30        : output : TTL               :         :           : N              
-FlagOut[4]                   : 31        : output : TTL               :         :           : N              
+MainRegReadControl           : 27        : output : TTL               :         :           : Y              
+LowJumpRegLoad               : 28        : output : TTL               :         :           : Y              
+HighJumpRegLoad              : 29        : output : TTL               :         :           : Y              
+JumpEnable                   : 30        : output : TTL               :         :           : Y              
+MainRegOutputControl         : 31        : output : TTL               :         :           : Y              
 GND                          : 32        : gnd    :                   :         :           :                
-A[2]                         : 33        : input  : TTL               :         :           : N              
-A[7]                         : 34        : input  : TTL               :         :           : N              
-B[2]                         : 35        : input  : TTL               :         :           : N              
-B[7]                         : 36        : input  : TTL               :         :           : N              
-FlagIn[4]                    : 37        : input  : TTL               :         :           : N              
+MemOutEnable                 : 33        : output : TTL               :         :           : Y              
+MemWriteControl              : 34        : output : TTL               :         :           : Y              
+Ram_LowControl               : 35        : output : TTL               :         :           : Y              
+Ram_HighControl              : 36        : output : TTL               :         :           : Y              
+Ram_Addr_Enable              : 37        : output : TTL               :         :           : Y              
 VCCIO                        : 38        : power  :                   : 5.0V    :           :                
-UserCLK                      : 39        : input  : TTL               :         :           : N              
-Ins[2]                       : 40        : input  : TTL               :         :           : N              
-RESERVED                     : 41        :        :                   :         :           :                
+StackCount                   : 39        : output : TTL               :         :           : Y              
+StackOutControl              : 40        : output : TTL               :         :           : Y              
+DisplayControl               : 41        : output : TTL               :         :           : Y              
 GND                          : 42        : gnd    :                   :         :           :                
 VCCINT                       : 43        : power  :                   : 5.0V    :           :                
-RESERVED                     : 44        :        :                   :         :           :                
-Ins[1]                       : 45        : input  : TTL               :         :           : N              
-Ins[5]                       : 46        : input  : TTL               :         :           : N              
+MainBus[0]                   : 44        : output : TTL               :         :           : Y              
+MainBus[1]                   : 45        : output : TTL               :         :           : Y              
+MainBus[2]                   : 46        : output : TTL               :         :           : Y              
 GND                          : 47        : gnd    :                   :         :           :                
-FlagIn[1]                    : 48        : input  : TTL               :         :           : N              
-Ins[0]                       : 49        : input  : TTL               :         :           : N              
-B[5]                         : 50        : input  : TTL               :         :           : N              
-B[0]                         : 51        : input  : TTL               :         :           : N              
-A[1]                         : 52        : input  : TTL               :         :           : N              
+MainBus[3]                   : 48        : output : TTL               :         :           : Y              
+MainBus[4]                   : 49        : output : TTL               :         :           : Y              
+MainBus[5]                   : 50        : output : TTL               :         :           : Y              
+MainBus[6]                   : 51        : output : TTL               :         :           : Y              
+MainBus[7]                   : 52        : output : TTL               :         :           : Y              
 VCCIO                        : 53        : power  :                   : 5.0V    :           :                
-CarryFlagIn                  : 54        : input  : TTL               :         :           : N              
-Comm0                        : 55        : input  : TTL               :         :           : N              
-SlowCLK                      : 56        : input  : TTL               :         :           : N              
-FlagIn[3]                    : 57        : input  : TTL               :         :           : N              
-B[4]                         : 58        : input  : TTL               :         :           : N              
+regA[0]                      : 54        : input  : TTL               :         :           : Y              
+regA[1]                      : 55        : input  : TTL               :         :           : Y              
+regA[2]                      : 56        : input  : TTL               :         :           : Y              
+regA[3]                      : 57        : input  : TTL               :         :           : Y              
+regA[4]                      : 58        : input  : TTL               :         :           : Y              
 GND                          : 59        : gnd    :                   :         :           :                
-A[5]                         : 60        : input  : TTL               :         :           : N              
-A[4]                         : 61        : input  : TTL               :         :           : N              
-TCK                          : 62        : input  : TTL               :         :           : N              
-RESERVED                     : 63        :        :                   :         :           :                
-Ins[3]                       : 64        : input  : TTL               :         :           : N              
-FastCLK                      : 65        : input  : TTL               :         :           : N              
+regA[5]                      : 60        : input  : TTL               :         :           : Y              
+regA[6]                      : 61        : input  : TTL               :         :           : Y              
+TCK                          : 62        : input  : TTL               :         :           : Y              
+regA[7]                      : 63        : input  : TTL               :         :           : Y              
+regB[0]                      : 64        : input  : TTL               :         :           : Y              
+regB[1]                      : 65        : input  : TTL               :         :           : Y              
 VCCIO                        : 66        : power  :                   : 5.0V    :           :                
-FlagIn[5]                    : 67        : input  : TTL               :         :           : N              
-Ins[4]                       : 68        : input  : TTL               :         :           : N              
-B[6]                         : 69        : input  : TTL               :         :           : N              
-A[6]                         : 70        : input  : TTL               :         :           : N              
-TDO                          : 71        : output : TTL               :         :           : N              
+regB[2]                      : 67        : input  : TTL               :         :           : Y              
+regB[3]                      : 68        : input  : TTL               :         :           : Y              
+regB[4]                      : 69        : input  : TTL               :         :           : Y              
+regB[5]                      : 70        : input  : TTL               :         :           : Y              
+TDO                          : 71        : output : TTL               :         :           : Y              
 GND                          : 72        : gnd    :                   :         :           :                
-AequalB_FlagIn               : 73        : input  : TTL               :         :           : N              
-Comm1                        : 74        : input  : TTL               :         :           : N              
-CLK_Select                   : 75        : input  : TTL               :         :           : N              
-FlagIn[2]                    : 76        : input  : TTL               :         :           : N              
-B[3]                         : 77        : input  : TTL               :         :           : N              
+regB[6]                      : 73        : input  : TTL               :         :           : Y              
+regB[7]                      : 74        : input  : TTL               :         :           : Y              
+LowStackJump                 : 75        : output : TTL               :         :           : Y              
+HighStackJump                : 76        : output : TTL               :         :           : Y              
+RESERVED                     : 77        :        :                   :         :           :                
 VCCIO                        : 78        : power  :                   : 5.0V    :           :                
-B[1]                         : 79        : input  : TTL               :         :           : N              
-A[3]                         : 80        : input  : TTL               :         :           : N              
-A[0]                         : 81        : input  : TTL               :         :           : N              
+CLK                          : 79        : output : TTL               :         :           : Y              
+SYNC                         : 80        : output : TTL               :         :           : Y              
+STATE                        : 81        : output : TTL               :         :           : Y              
 GND                          : 82        : gnd    :                   :         :           :                
 GND+                         : 83        :        :                   :         :           :                
-FlagIn[0]                    : 84        : input  : TTL               :         :           : N              
+GND+                         : 84        :        :                   :         :           :                

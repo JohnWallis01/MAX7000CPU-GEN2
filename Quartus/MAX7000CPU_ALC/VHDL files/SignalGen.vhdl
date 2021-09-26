@@ -32,7 +32,5 @@ CounterOut <= Q0 and Qn2;
 InstructRead <= Q1 and Qn2;
 ModRead <= Q2 and Qn1;
 RamAddrAndModOut <= Q2 and Qn0;
-Test <= not clk;
-
 
 end architecture;
