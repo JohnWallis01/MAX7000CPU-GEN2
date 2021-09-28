@@ -76,8 +76,33 @@ end component;
              Qnot : out std_logic);
     end component;
 
+  component Micro_Gen is
+    port(AB_Flag: in std_logic;
+         Carry_Flag: in std_logic;
+         Module_Read: in std_logic;
+         Ins: in std_logic_vector (7 downto 0);
+         ModuleOuputEnable: in std_logic;
+         JumpEnable: out std_logic;
+         B_Read: out std_logic;
+         A_Read: out std_logic;
+         DSP_Read: out std_logic;
+         JumpBuffer_Read_Low: out std_logic;
+         JumpBuffer_Read_High: out std_logic;
+         Addr_Read_Low: out std_logic;
+         Addr_Read_High: out std_logic;
+         MemOutEnable: out std_logic;
+         MemWriteControl: out std_logic;
+         StackCountUp: out std_logic;
+         StackCountDown: out std_logic;
+         ALU_Enable: out std_logic;
+         MainRegOut_Enable: out std_logic;
+         StackOutControl: out std_logic;
+         Ram_Addr_Enable: out std_logic
+         );
+    end component;
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut: std_logic;
+
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut: std_logic;
 signal ALU_Out : std_logic_vector (7 downto 0);
 begin
 
@@ -90,6 +115,7 @@ begin
   --timing generator
   SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
   --instruction decoder
+  InstructionDecoder: Micro_Gen port map(ABFlag, CarryFlag, ModReadTSig, Ins, ModOutTSig, JumpEnable, RegBControl, RegAControl, DisplayControl, LowJumpRegLoad, HighJumpRegLoad, Ram_LowControl, Ram_HighControl, MemOutEnable, MemWriteControl, intmdStackCountUp, intmdStackCountDown, ALU_Enable, intmdMainOut, intmdStackEnable, intmdRamAddrEnable);
 
   --ALU
   ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
@@ -98,7 +124,6 @@ begin
   ABLowHigh <= ABLow and ABHigh;
   ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, open);
   ALU_Buffer: Octal_Bus_Driver port map(ALU_Out(7 downto 0), MainBus(7 downto 0), ALU_Enable);
-
 
 
 
