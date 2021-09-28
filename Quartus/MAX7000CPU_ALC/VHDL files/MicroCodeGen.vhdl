@@ -22,7 +22,9 @@ entity Micro_Gen is
        ALU_Enable: out std_logic;
        MainRegOut_Enable: out std_logic;
        StackOutControl: out std_logic;
-       Ram_Addr_Enable: out std_logic
+       Ram_Addr_Enable: out std_logic;
+       Constants: out std_logic_vector (7 downto 0);
+       Const_Enable: out std_logic
        );
 end Micro_Gen;
 
@@ -112,54 +114,63 @@ begin
   Addr_Read_High <= '0';
   end if;
   end process;
----double check to make sure the main is disabled
-  process(Ins, Carry_Flag, AB_Flag,Module_Read)
-  begin
-  if Ins = "10110001" then
-  --StackOutControl <= '1'; --active low
-  --Ram_Addr_Enable <='0'; --active low
-  --MemOutEnable <= '1';
-  MainRegOut_Enable <='1'; --check when this needs to actually be enabled might have to enable it every time a read is fired
-  else
-  --MemOutEnable <= '0';
-  end if;
-  end process;
 
   process(Ins, Carry_Flag, AB_Flag,Module_Read)
   begin
-  if Ins = "10110000" then
-  --StackOutControl <= '1'; --active low
-  --Ram_Addr_Enable <='0'; --active low
-  --MemWriteControl <= '1';
+  if Ins(7 downto 4) = "1011" then
+    if Ins(3 downto 0) = "0001" then
+      --reading something from the ram
+      StackOutControl <= '1'; --active low
+      Ram_Addr_Enable <='0'; --active low
+      MemOutEnable <= '0'; -- active low
+      MemWriteControl <= '1'; -- active low
+    elsif Ins(3 downto 0) = "0000" then
+      --writing something into the ram
+      StackOutControl <= '1'; --active low
+      Ram_Addr_Enable <='0'; --active low
+      MemWriteControl <= '0';
+      --Mem out is dont care
+    elsif Ins(3 downto 0) = "0011" then
+      -- this is pulling something off the stack
+      StackOutControl <= '0'; --active low
+      Ram_Addr_Enable <='1'; --active low
+      MemWriteControl <= '1'; --active low
+      MemOutEnable <= '0'; --active low
+      StackCountUp <= '1'; --this will move the pointer upwards (rember to maximise memory we start at 64k and count down when adding stuff to the memoery)
+    elsif Ins(3 downto 0) = "0010" then
+      --pushing something onto the stack
+      StackOutControl <= '0'; --active low
+      Ram_Addr_Enable <='1'; --active low
+      MemWriteControl <= '0'; --active low
+      -- mem out dont care
+      StackCountDown <= '1'; --this will move the pointer upwards (rember to maximise memory we start at 64k and count down when adding stuff to the memoery)
+    else
+      --disable the ram otherwise
+      StackOutControl <= '1'; --active low
+      Ram_Addr_Enable <='1'; --active low
+      MemOutEnable <='1'; --active low
+      MemWriteControl <= '1'; -- active low
+  end if;
   else
-  --MemWriteControl <= '0';
+    --disabling ram other wise
+    StackOutControl <= '1'; --active low
+    Ram_Addr_Enable <='1'; --active low
+    MemOutEnable <='1'; --active low
+    MemWriteControl <= '1'; -- active low
   end if;
   end process;
+
 
   process(Ins, Carry_Flag, AB_Flag,Module_Read)
   begin
-  if Ins = "10110011" then
-  --StackOutControl <= '0'; --active low
-  --Ram_Addr_Enable <='1'; --active low
-  --MemWriteControl <= '1';
-  StackCountUp <= '1'; --this will move the pointer upwards (rember to maximise memory we start at 64k and count down when adding stuff to the memoery)
+  if Ins(7) = '0' then
+  Constants(6 downto 0) <= Ins(6 downto 0);
+  Constants(7) <= '0';
+  Const_Enable <= '1';
   else
-  --MemWriteControl <= '0';
+  Const_Enable <= '0';
   end if;
   end process;
-
-  process(Ins, Carry_Flag, AB_Flag,Module_Read)
-  begin
-  if Ins = "10110010" then
-  --StackOutControl <= '0'; --active low
-  --Ram_Addr_Enable <='1'; --active low
-  --MemOutEnable <= '1';
-  StackCountDown <= '1'; --this will move the pointer downwairs (rember to maximise memory we start at 64k and count down when adding stuff to the memoery)
-  else
-  MemOutEnable <= '0';
-  end if;
-  end process;
-
 --notes need to ensure the stack is never allowed to drive when the instruction fetch cyle is firing.
 
 end architecture;

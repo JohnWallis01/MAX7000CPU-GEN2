@@ -22,7 +22,7 @@ entity AL_Controller is
   HighJumpRegLoad: out std_logic;
   JumpEnable: out std_logic;
   MainRegOutputControl: out std_logic;
-  MemOutEnable: out std_logic;
+  MemOutEnable: buffer std_logic;
   MemWriteControl: out std_logic;
   Ram_LowControl: out std_logic;
   Ram_HighControl: out std_logic;
@@ -97,13 +97,15 @@ end component;
          ALU_Enable: out std_logic;
          MainRegOut_Enable: out std_logic;
          StackOutControl: out std_logic;
-         Ram_Addr_Enable: out std_logic
+         Ram_Addr_Enable: out std_logic;
+         Constants: out std_logic_vector;
+         Const_Enable: out std_logic
          );
     end component;
 
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut: std_logic;
-signal ALU_Out : std_logic_vector (7 downto 0);
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut, Const_Enable: std_logic;
+signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
   --signal buffering
@@ -115,7 +117,10 @@ begin
   --timing generator
   SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
   --instruction decoder
-  InstructionDecoder: Micro_Gen port map(ABFlag, CarryFlag, ModReadTSig, Ins, ModOutTSig, JumpEnable, RegBControl, RegAControl, DisplayControl, LowJumpRegLoad, HighJumpRegLoad, Ram_LowControl, Ram_HighControl, MemOutEnable, MemWriteControl, intmdStackCountUp, intmdStackCountDown, ALU_Enable, intmdMainOut, intmdStackEnable, intmdRamAddrEnable);
+  InstructionDecoder: Micro_Gen port map(ABFlag, CarryFlag, ModReadTSig, Ins, ModOutTSig, JumpEnable, RegBControl, RegAControl, DisplayControl, LowJumpRegLoad, HighJumpRegLoad, Ram_LowControl, Ram_HighControl, MemOutEnable, MemWriteControl, intmdStackCountUp, intmdStackCountDown, ALU_Enable, intmdMainOut, intmdStackEnable, intmdRamAddrEnable, Constants, Const_Enable);
+  Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
+  MainRegOutputControl <= (not ALU_Enable) and (not MemOutEnable) and ModOutTSig;
+  --timing commands to drive ram at the correct time
 
   --ALU
   ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
