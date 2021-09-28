@@ -193,7 +193,7 @@ end Octal_Bus_Driver;
 
 architecture Octal_Bus_Driver_beh of Octal_Bus_Driver is
 begin
-    O <= A when En='0' else "ZZZZZZZZ";
+    O <= A when En='1' else "ZZZZZZZZ";
 end architecture;
 
 

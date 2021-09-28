@@ -161,12 +161,12 @@ begin
   end process;
 
 
-  process(Ins, Carry_Flag, AB_Flag,Module_Read)
+  process(Ins, Carry_Flag, AB_Flag,Module_Read, ModuleOuputEnable)
   begin
   if Ins(7) = '0' then
   Constants(6 downto 0) <= Ins(6 downto 0);
   Constants(7) <= '0';
-  Const_Enable <= '1';
+  Const_Enable <= ModuleOuputEnable;
   else
   Const_Enable <= '0';
   end if;

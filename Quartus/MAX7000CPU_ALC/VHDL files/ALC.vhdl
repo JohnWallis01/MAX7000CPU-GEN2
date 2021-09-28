@@ -33,7 +33,8 @@ entity AL_Controller is
   LowStackJump: out std_logic;
   HighStackJump: out std_logic;
   SYNC: out std_logic; --bidirectional
-  STATE: out std_logic --bidirectional
+  STATE: out std_logic; --bidirectional
+  debug_ALU_Enable: out std_logic
   );
 end AL_Controller;
 
@@ -108,45 +109,58 @@ signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, A
 signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
+  --Clock Based Circuitary All works
   --signal buffering
   CLK <= interntalCLK;
 
   --clock selector
-  CLKFLOP : D_flip_flop port map (CLK_Select, nClkSelectState, '0', '1', ClkSelectState, nClkSelectState);
-  interntalCLK <= (UserCLK and nClkSelectState) or (SlowCLK and ClkSelectState);
+  CLKFLOP : D_flip_flop port map (CLK_Select, nClkSelectState, Reset, '1', ClkSelectState, nClkSelectState);
+  process(UserCLK, SlowCLK, ClkSelectState)
+  begin
+    if ClkSelectState = '1' then
+      interntalCLK <= UserCLK;
+    else
+      interntalCLK <= SlowCLK;
+    end if;
+  end process;
+
+  --This timing generator definetly works as intend
   --timing generator
   SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
-  --instruction decoder
-  InstructionDecoder: Micro_Gen port map(ABFlag,
-                                        CarryFlag,
-                                        ModReadTSig,
-                                        Ins,
-                                        ModOutTSig,
-                                        JumpEnable,
-                                        RegBControl,
-                                        RegAControl,
-                                        DisplayControl,
-                                        LowJumpRegLoad,
-                                        HighJumpRegLoad,
-                                        Ram_LowControl,
-                                        Ram_HighControl,
-                                        MemOutEnable,
-                                        intmdMemWriteControl,
-                                        intmdStackCountUp,
-                                        intmdStackCountDown,
-                                        ALU_Enable,
-                                        intmdMainOut,
-                                        intmdStackEnable,
-                                        intmdRamAddrEnable,
-                                        Constants,
-                                        Const_Enable);
 
-  Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
-  MainRegOutputControl <= (not ALU_Enable) and (not MemOutEnable) and ModOutTSig;
-  StackOutControl <= intmdStackEnable and ModOutTSig;
-  Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
-  MemWriteControl <= intmdMemWriteControl and ModReadTSig;
-  --need to drive some kind of instructino fetch cycle (probalby handled by the Sig Gen)
+  --instruction decoder
+  -- InstructionDecoder: Micro_Gen port map(ABFlag,
+  --                                       CarryFlag,
+  --                                       ModReadTSig,
+  --                                       Ins,
+  --                                       ModOutTSig,
+  --                                       JumpEnable,
+  --                                       RegBControl,
+  --                                       RegAControl,
+  --                                       DisplayControl,
+  --                                       LowJumpRegLoad,
+  --                                       HighJumpRegLoad,
+  --                                       Ram_LowControl,
+  --                                       Ram_HighControl,
+  --                                       MemOutEnable,
+  --                                       intmdMemWriteControl,
+  --                                       intmdStackCountUp,
+  --                                       intmdStackCountDown,
+  --                                       ALU_Enable,
+  --                                       intmdMainOut,
+  --                                       intmdStackEnable,
+  --                                       intmdRamAddrEnable,
+  --                                       Constants,
+  --                                       Const_Enable);
+  --
+  -- Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
+  -- MainRegOutputControl <= (not ALU_Enable) and (not MemOutEnable) and ModOutTSig;
+  -- StackOutControl <= intmdStackEnable and ModOutTSig;
+  -- Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
+  -- MemWriteControl <= intmdMemWriteControl and ModReadTSig;
+
+
+
 
   --ALU
   ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
@@ -156,6 +170,16 @@ begin
   ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, open);
   ALU_Buffer: Octal_Bus_Driver port map(ALU_Out(7 downto 0), MainBus(7 downto 0), ALU_Enable);
 
+  process(Ins, ModOutTSig)
+  begin
+  if Ins(7) = '1' and Ins(6)='1' and ModOutTSig = '1' then
+  ALU_Enable <= '1';
+  else
+  ALU_Enable <= '0';
+  end if;
+  end process;
+
+  debug_ALU_Enable <= ALU_Enable;
 
 
 end architecture;
