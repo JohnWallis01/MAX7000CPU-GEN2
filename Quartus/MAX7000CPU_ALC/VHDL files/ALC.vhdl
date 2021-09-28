@@ -104,7 +104,7 @@ end component;
     end component;
 
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut, Const_Enable: std_logic;
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut, intmdMemWriteControl, Const_Enable: std_logic;
 signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
@@ -117,10 +117,36 @@ begin
   --timing generator
   SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
   --instruction decoder
-  InstructionDecoder: Micro_Gen port map(ABFlag, CarryFlag, ModReadTSig, Ins, ModOutTSig, JumpEnable, RegBControl, RegAControl, DisplayControl, LowJumpRegLoad, HighJumpRegLoad, Ram_LowControl, Ram_HighControl, MemOutEnable, MemWriteControl, intmdStackCountUp, intmdStackCountDown, ALU_Enable, intmdMainOut, intmdStackEnable, intmdRamAddrEnable, Constants, Const_Enable);
+  InstructionDecoder: Micro_Gen port map(ABFlag,
+                                        CarryFlag,
+                                        ModReadTSig,
+                                        Ins,
+                                        ModOutTSig,
+                                        JumpEnable,
+                                        RegBControl,
+                                        RegAControl,
+                                        DisplayControl,
+                                        LowJumpRegLoad,
+                                        HighJumpRegLoad,
+                                        Ram_LowControl,
+                                        Ram_HighControl,
+                                        MemOutEnable,
+                                        intmdMemWriteControl,
+                                        intmdStackCountUp,
+                                        intmdStackCountDown,
+                                        ALU_Enable,
+                                        intmdMainOut,
+                                        intmdStackEnable,
+                                        intmdRamAddrEnable,
+                                        Constants,
+                                        Const_Enable);
+
   Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
   MainRegOutputControl <= (not ALU_Enable) and (not MemOutEnable) and ModOutTSig;
-  --timing commands to drive ram at the correct time
+  StackOutControl <= intmdStackEnable and ModOutTSig;
+  Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
+  MemWriteControl <= intmdMemWriteControl and ModReadTSig;
+  --need to drive some kind of instructino fetch cycle (probalby handled by the Sig Gen)
 
   --ALU
   ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
