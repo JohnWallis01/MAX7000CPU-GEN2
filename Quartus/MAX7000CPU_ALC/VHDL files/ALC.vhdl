@@ -33,24 +33,23 @@ entity AL_Controller is
   LowStackJump: out std_logic;
   HighStackJump: out std_logic;
   SYNC: out std_logic; --bidirectional
-  STATE: out std_logic; --bidirectional
-  debug_ALU_Enable: out std_logic
+  STATE: out std_logic --bidirectional
   );
 end AL_Controller;
 
 architecture AL_Controller_str of AL_Controller is
 
-  component ALU
-  port(
-  A: in std_logic_vector (3 downto 0);
-  B: in std_logic_vector (3 downto 0);
-  S: in std_logic_vector (3 downto 0);
-  M:  in std_logic;
-  CarryIn: in std_logic;
-  F: out std_logic_vector (3 downto 0);
-  CarryOut: out std_logic;
-  AequalB: out std_logic);
-end component;
+--   component ALU
+--   port(
+--   A: in std_logic_vector (3 downto 0);
+--   B: in std_logic_vector (3 downto 0);
+--   S: in std_logic_vector (3 downto 0);
+--   M:  in std_logic;
+--   CarryIn: in std_logic;
+--   F: out std_logic_vector (3 downto 0);
+--   CarryOut: out std_logic;
+--   AequalB: out std_logic);
+-- end component;
 
   component Octal_Bus_Driver
   port(
@@ -100,9 +99,26 @@ end component;
          StackOutControl: out std_logic;
          Ram_Addr_Enable: out std_logic;
          Constants: out std_logic_vector;
-         Const_Enable: out std_logic
+         Const_Enable: out std_logic;
+         MainRegOutputControl: out std_logic
          );
     end component;
+
+--verilog ALU
+
+component Circuit74181b is
+  port(A: in std_logic_vector(3 downto 0);
+       B: in std_logic_vector (3 downto 0);
+       S: in std_logic_vector (3 downto 0);
+       CNb: in std_logic;
+       M: in std_logic;
+       F: out std_logic_vector (3 downto 0);
+       AEB: out std_logic;
+       X: out std_logic;
+       Y: out std_logic;
+       CN4b: out std_logic
+  );
+end component;
 
 
 signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut, intmdMemWriteControl, Const_Enable: std_logic;
@@ -129,57 +145,99 @@ begin
   SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
 
   --instruction decoder
-  -- InstructionDecoder: Micro_Gen port map(ABFlag,
-  --                                       CarryFlag,
-  --                                       ModReadTSig,
-  --                                       Ins,
-  --                                       ModOutTSig,
-  --                                       JumpEnable,
-  --                                       RegBControl,
-  --                                       RegAControl,
-  --                                       DisplayControl,
-  --                                       LowJumpRegLoad,
-  --                                       HighJumpRegLoad,
-  --                                       Ram_LowControl,
-  --                                       Ram_HighControl,
-  --                                       MemOutEnable,
-  --                                       intmdMemWriteControl,
-  --                                       intmdStackCountUp,
-  --                                       intmdStackCountDown,
-  --                                       ALU_Enable,
-  --                                       intmdMainOut,
-  --                                       intmdStackEnable,
-  --                                       intmdRamAddrEnable,
-  --                                       Constants,
-  --                                       Const_Enable);
-  --
-  -- Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
-  -- MainRegOutputControl <= (not ALU_Enable) and (not MemOutEnable) and ModOutTSig;
-  -- StackOutControl <= intmdStackEnable and ModOutTSig;
-  -- Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
-  -- MemWriteControl <= intmdMemWriteControl and ModReadTSig;
+  InstructionDecoder: Micro_Gen port map(ABFlag,
+                                        CarryFlag,
+                                        ModReadTSig,
+                                        Ins,
+                                        ModOutTSig,
+                                        JumpEnable,
+                                        RegBControl,
+                                        RegAControl,
+                                        DisplayControl,
+                                        LowJumpRegLoad,
+                                        HighJumpRegLoad,
+                                        Ram_LowControl,
+                                        Ram_HighControl,
+                                        MemOutEnable,
+                                        intmdMemWriteControl,
+                                        intmdStackCountUp,
+                                        intmdStackCountDown,
+                                        ALU_Enable,
+                                        intmdMainOut,
+                                        intmdStackEnable,
+                                        intmdRamAddrEnable,
+                                        Constants,
+                                        Const_Enable,
+                                        MainRegOutputControl);
 
 
+
+
+
+
+
+  Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
+  StackOutControl <= intmdStackEnable and ModOutTSig;
+  --stack direction control and counting needs to be implemented
+  Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
+  MemWriteControl <= intmdMemWriteControl and ModReadTSig;
+  -- read on every instruction cylce
+  MainRegReadControl <= ModReadTSig;
+
+  --Jump Command Works
+  --Constants Output works
+  --ALU driver works -- actual alu doesn't
 
 
   --ALU
-  ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
-  ALU_High: ALU port map(regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), Ins(5), ALU_connect, ALU_Out(7 downto 4), CarryOut, ABHigh);
+  -- ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
+  -- ALU_High: ALU port map(regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), Ins(5), ALU_connect, ALU_Out(7 downto 4), CarryOut, ABHigh);
   CarryFlagFlop: D_flip_flop port map(InsRegControl, CarryOut, '0', '1', CarryFlag, open);
   ABLowHigh <= ABLow and ABHigh;
   ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, open);
   ALU_Buffer: Octal_Bus_Driver port map(ALU_Out(7 downto 0), MainBus(7 downto 0), ALU_Enable);
 
-  process(Ins, ModOutTSig)
-  begin
-  if Ins(7) = '1' and Ins(6)='1' and ModOutTSig = '1' then
-  ALU_Enable <= '1';
-  else
-  ALU_Enable <= '0';
-  end if;
-  end process;
 
-  debug_ALU_Enable <= ALU_Enable;
+  --verilog implementation
+  ALU_Low: Circuit74181b port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), not Ins(4), Ins(5),  ALU_Out(3 downto 0), ABLow, open, open, ALU_connect);
+  ALU_High: Circuit74181b port map(regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), ALU_connect, Ins(5),  ALU_Out(7 downto 4), ABHigh, open, open, CarryOut);
+
+  --commands
+                -- {"NOP": "10111111",
+                -- "AIN": "10000000",
+                -- "BIN": "10000001",
+                -- "JMP": "10000010",
+                -- "JPE": "10000101",
+                -- "JPC": "10000100",
+                -- "DSP": "10000011",
+                -- "JBI": "10000110",
+                -- "JBHI": "10000111",
+                --
+                -- "FLF": "11110011",
+                -- "FLT": "11111100",
+                -- "SUM": "11001001",
+                -- "SUB": "11010110",
+                -- "AOT": "11111111",
+                -- "BOT": "11111010",
+                -- "A--": "11001111",
+                -- "NTA": "11110000",
+                -- "NTB": "11110101",
+                -- "XOR": "11111001",
+                -- "AND": "11111110",
+                -- "ORR": "11111011",
+                -- "LSH": "11011100",
+                --
+                -- "MEO": "10110001",
+                -- "MEN": "10110000",
+                -- "SMA": "10100000",
+                -- "SMAH": "10100001",
+                --
+                -- "STK": "10110010",
+                -- "USK": "10110011",
+                --
+                -- }
+                --
+
 
 
 end architecture;

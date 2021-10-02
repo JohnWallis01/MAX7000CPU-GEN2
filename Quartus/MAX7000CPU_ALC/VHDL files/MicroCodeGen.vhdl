@@ -7,24 +7,25 @@ entity Micro_Gen is
        Module_Read: in std_logic;
        Ins: in std_logic_vector (7 downto 0);
        ModuleOuputEnable: in std_logic;
-       JumpEnable: out std_logic;
-       B_Read: out std_logic;
-       A_Read: out std_logic;
-       DSP_Read: out std_logic;
-       JumpBuffer_Read_Low: out std_logic;
-       JumpBuffer_Read_High: out std_logic;
-       Addr_Read_Low: out std_logic;
-       Addr_Read_High: out std_logic;
-       MemOutEnable: out std_logic;
-       MemWriteControl: out std_logic;
-       StackCountUp: out std_logic;
-       StackCountDown: out std_logic;
-       ALU_Enable: out std_logic;
-       MainRegOut_Enable: out std_logic;
-       StackOutControl: out std_logic;
-       Ram_Addr_Enable: out std_logic;
-       Constants: out std_logic_vector (7 downto 0);
-       Const_Enable: out std_logic
+       JumpEnable: buffer std_logic;
+       B_Read: buffer std_logic;
+       A_Read: buffer std_logic;
+       DSP_Read: buffer std_logic;
+       JumpBuffer_Read_Low: buffer std_logic;
+       JumpBuffer_Read_High: buffer std_logic;
+       Addr_Read_Low: buffer std_logic;
+       Addr_Read_High: buffer std_logic;
+       MemOutEnable: buffer std_logic;
+       MemWriteControl: buffer std_logic;
+       StackCountUp: buffer std_logic;
+       StackCountDown: buffer std_logic;
+       ALU_Enable: buffer std_logic;
+       MainRegOut_Enable: buffer std_logic;
+       StackOutControl: buffer std_logic;
+       Ram_Addr_Enable: buffer std_logic;
+       Constants: buffer std_logic_vector (7 downto 0);
+       Const_Enable: buffer std_logic;
+       MainRegOutputControl: buffer std_logic
        );
 end Micro_Gen;
 
@@ -160,7 +161,7 @@ begin
   end if;
   end process;
 
-
+  --
   process(Ins, Carry_Flag, AB_Flag,Module_Read, ModuleOuputEnable)
   begin
   if Ins(7) = '0' then
@@ -170,6 +171,16 @@ begin
   else
   Const_Enable <= '0';
   end if;
+  end process;
+
+  --drive the main reg at the correct times
+  process(ModuleOuputEnable, ALU_Enable, MemOutEnable, Const_Enable)
+  begin
+    if ModuleOuputEnable <= '1' and (ALU_Enable = '0' or MemOutEnable = '0' or Const_Enable = '0') then
+      MainRegOutputControl <= '1';
+    else
+      MainRegOutputControl <= '0';
+    end if;
   end process;
 --notes need to ensure the stack is never allowed to drive when the instruction fetch cyle is firing.
 
