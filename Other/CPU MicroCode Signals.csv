@@ -88,12 +88,12 @@ JBIH,10000111,5,1,0,0,X,X,Z,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,1,0,0,0,0
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ALU Commands,11XXXXXX,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Command Name,Instruction Code,STATE NAME,D2,D1,D0,AB FLAG,Carry Flag,MainBus,Count,CounterOutControl,InsRegControl,RegAControl,RegBControl,MainRegReadControl,LowJumpRegLoad,HighJumpRegLoad,JumpEnable,MainRegOutputControl,MemOutEnable,MemWriteControl,Ram_LowControl,Ram_HighControl,Ram_Addr_Enable,StackCount,StackOutControl,DisplayControl,LowStackJump,HighStackJump,StackCountDirection
-FLF,11,0,0,0,0,X,X,Z,1,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
-FLF,11,1,0,0,1,X,X,Z,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0
-FLF,11,2,0,1,1,X,X,Z,0,1,1,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0
-FLF,11,3,1,1,1,X,X,Z,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
-FLF,11,4,1,1,0,X,X,ALU,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
-FLF,11,5,1,0,0,X,X,ALU,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
+ALU,11,0,0,0,0,X,X,Z,1,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
+ALU,11,1,0,0,1,X,X,Z,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0
+ALU,11,2,0,1,1,X,X,Z,0,1,1,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0
+ALU,11,3,1,1,1,X,X,Z,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
+ALU,11,4,1,1,0,X,X,ALU,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
+ALU,11,5,1,0,0,X,X,ALU,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Command Name,Instruction Code,STATE NAME,D2,D1,D0,AB FLAG,Carry Flag,MainBus,Count,CounterOutControl,InsRegControl,RegAControl,RegBControl,MainRegReadControl,LowJumpRegLoad,HighJumpRegLoad,JumpEnable,MainRegOutputControl,MemOutEnable,MemWriteControl,Ram_LowControl,Ram_HighControl,Ram_Addr_Enable,StackCount,StackOutControl,DisplayControl,LowStackJump,HighStackJump,StackCountDirection
 MEO,10110001,0,0,0,0,X,X,Z,1,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0
