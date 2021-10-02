@@ -14,7 +14,7 @@ entity AL_Controller is
   CLK: out std_logic; -- this needs to be birectional
   Count: out std_logic;
   CounterOutControl: out std_logic;
-  InsRegControl: buffer std_logic;
+  InsRegControl: out std_logic;
   RegAControl: out std_logic;
   RegBControl: out std_logic;
   MainRegReadControl: out std_logic;
@@ -22,7 +22,7 @@ entity AL_Controller is
   HighJumpRegLoad: out std_logic;
   JumpEnable: out std_logic;
   MainRegOutputControl: out std_logic;
-  MemOutEnable: buffer std_logic;
+  MemOutEnable: out std_logic;
   MemWriteControl: out std_logic;
   Ram_LowControl: out std_logic;
   Ram_HighControl: out std_logic;
@@ -33,7 +33,8 @@ entity AL_Controller is
   LowStackJump: out std_logic;
   HighStackJump: out std_logic;
   SYNC: out std_logic; --bidirectional
-  STATE: out std_logic --bidirectional
+  STATE: out std_logic; --bidirectional
+  StackCountDirection: out std_logic
   );
 end AL_Controller;
 
@@ -58,17 +59,17 @@ architecture AL_Controller_str of AL_Controller is
   En: in std_logic
   );
   end component;
-
-  component Sig_Gen is
-    port (clk : in std_logic;
-  		    Reset : in std_logic;
-          Count : out std_logic;
-          InstructRead : out std_logic;
-          ModRead : out std_logic;
-          RamAddrAndModOut : out std_logic;
-          CounterOut: out std_logic
-          );
-  end component;
+  --
+  -- component Sig_Gen is
+  --   port (clk : in std_logic;
+  -- 		    Reset : in std_logic;
+  --         Count : out std_logic;
+  --         InstructRead : out std_logic;
+  --         ModRead : out std_logic;
+  --         RamAddrAndModOut : out std_logic;
+  --         CounterOut: out std_logic
+  --         );
+  -- end component;
 
   component D_flip_flop is
     port (clk,Din,rst,en : in std_logic;
@@ -76,33 +77,33 @@ architecture AL_Controller_str of AL_Controller is
              Qnot : out std_logic);
     end component;
 
-  component Micro_Gen is
-    port(AB_Flag: in std_logic;
-         Carry_Flag: in std_logic;
-         Module_Read: in std_logic;
-         Ins: in std_logic_vector (7 downto 0);
-         ModuleOuputEnable: in std_logic;
-         JumpEnable: out std_logic;
-         B_Read: out std_logic;
-         A_Read: out std_logic;
-         DSP_Read: out std_logic;
-         JumpBuffer_Read_Low: out std_logic;
-         JumpBuffer_Read_High: out std_logic;
-         Addr_Read_Low: out std_logic;
-         Addr_Read_High: out std_logic;
-         MemOutEnable: out std_logic;
-         MemWriteControl: out std_logic;
-         StackCountUp: out std_logic;
-         StackCountDown: out std_logic;
-         ALU_Enable: out std_logic;
-         MainRegOut_Enable: out std_logic;
-         StackOutControl: out std_logic;
-         Ram_Addr_Enable: out std_logic;
-         Constants: out std_logic_vector;
-         Const_Enable: out std_logic;
-         MainRegOutputControl: out std_logic
-         );
-    end component;
+  -- component Micro_Gen is
+  --   port(AB_Flag: in std_logic;
+  --        Carry_Flag: in std_logic;
+  --        Module_Read: in std_logic;
+  --        Ins: in std_logic_vector (7 downto 0);
+  --        ModuleOuputEnable: in std_logic;
+  --        JumpEnable: out std_logic;
+  --        B_Read: out std_logic;
+  --        A_Read: out std_logic;
+  --        DSP_Read: out std_logic;
+  --        JumpBuffer_Read_Low: out std_logic;
+  --        JumpBuffer_Read_High: out std_logic;
+  --        Addr_Read_Low: out std_logic;
+  --        Addr_Read_High: out std_logic;
+  --        MemOutEnable: out std_logic;
+  --        MemWriteControl: out std_logic;
+  --        StackCountUp: out std_logic;
+  --        StackCountDown: out std_logic;
+  --        ALU_Enable: out std_logic;
+  --        MainRegOut_Enable: out std_logic;
+  --        StackOutControl: out std_logic;
+  --        Ram_Addr_Enable: out std_logic;
+  --        Constants: out std_logic_vector;
+  --        Const_Enable: out std_logic;
+  --        MainRegOutputControl: out std_logic
+  --        );
+  --   end component;
 
 --verilog ALU
 
@@ -121,7 +122,42 @@ component Circuit74181b is
 end component;
 
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, intmdStackEnable, intmdRamAddrEnable, intmdStackCountUp, intmdStackCountDown, intmdMainOut, intmdMemWriteControl, Const_Enable: std_logic;
+component MircoCodeGen is
+  port(Instruction: in std_logic_vector (7 downto 0);
+       ABFlag: in std_logic;
+       CarryFlag: in std_logic;
+       Reset: in std_logic;
+       clk: in std_logic;
+       Count: out std_logic;
+       CounterOutControl: out std_logic;
+       InsRegControl: out std_logic;
+       RegAControl: out std_logic;
+       RegBControl: out std_logic;
+       MainRegReadControl: out std_logic;
+       LowJumpRegLoad: out std_logic;
+       HighJumpRegLoad: out std_logic;
+       JumpEnable: out std_logic;
+       MainRegOutputControl: out std_logic;
+       MemOutEnable: out std_logic;
+       MemWriteControl: out std_logic;
+       Ram_LowControl: out std_logic;
+       Ram_HighControl: out std_logic;
+       Ram_Addr_Enable: out std_logic;
+       StackCount: out std_logic;
+       StackOutControl: out std_logic;
+       DisplayControl: out std_logic;
+       LowStackJump: out std_logic;
+       HighStackJump: out std_logic;
+       StackCountDirection: out std_logic;
+       Constants: out std_logic_vector (7 downto 0);
+       Constant_Enable: out std_logic;
+       ALU_Enable: out std_logic
+  );
+
+end component;
+
+
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Constant_Enable: std_logic;
 signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
@@ -142,52 +178,71 @@ begin
 
   --This timing generator definetly works as intend
   --timing generator
-  SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
+  -- SignalGenerator: Sig_Gen port map (interntalCLK, Reset, Count, InsRegControl, ModReadTSig, ModOutTSig, CounterOutControl);
 
   --instruction decoder
-  InstructionDecoder: Micro_Gen port map(ABFlag,
-                                        CarryFlag,
-                                        ModReadTSig,
-                                        Ins,
-                                        ModOutTSig,
-                                        JumpEnable,
-                                        RegBControl,
-                                        RegAControl,
-                                        DisplayControl,
-                                        LowJumpRegLoad,
-                                        HighJumpRegLoad,
-                                        Ram_LowControl,
-                                        Ram_HighControl,
-                                        MemOutEnable,
-                                        intmdMemWriteControl,
-                                        intmdStackCountUp,
-                                        intmdStackCountDown,
-                                        ALU_Enable,
-                                        intmdMainOut,
-                                        intmdStackEnable,
-                                        intmdRamAddrEnable,
-                                        Constants,
-                                        Const_Enable,
-                                        MainRegOutputControl);
+  -- InstructionDecoder: Micro_Gen port map(ABFlag,
+  --                                       CarryFlag,
+  --                                       ModReadTSig,
+  --                                       Ins,
+  --                                       ModOutTSig,
+  --                                       JumpEnable,
+  --                                       RegBControl,
+  --                                       RegAControl,
+  --                                       DisplayControl,
+  --                                       LowJumpRegLoad,
+  --                                       HighJumpRegLoad,
+  --                                       Ram_LowControl,
+  --                                       Ram_HighControl,
+  --                                       MemOutEnable,
+  --                                       intmdMemWriteControl,
+  --                                       intmdStackCountUp,
+  --                                       intmdStackCountDown,
+  --                                       ALU_Enable,
+  --                                       intmdMainOut,
+  --                                       intmdStackEnable,
+  --                                       intmdRamAddrEnable,
+  --                                       Constants,
+  --                                       Const_Enable,
+  --                                       MainRegOutputControl);
+  --
+
+
+  Control_Unit: MircoCodeGen port map(
+       Instruction (7 downto 0),
+       ABFlag,
+       CarryFlag,
+       Reset,
+       interntalCLK,
+       Count,
+       CounterOutControl,
+       InsRegControl,
+       RegAControl,
+       RegBControl,
+       MainRegReadControl,
+       LowJumpRegLoad,
+       HighJumpRegLoad,
+       JumpEnable,
+       MainRegOutputControl,
+       MemOutEnable,
+       MemWriteControl,
+       Ram_LowControl,
+       Ram_HighControl,
+       Ram_Addr_Enable,
+       StackCount,
+       StackOutControl,
+       DisplayControl,
+       LowStackJump,
+       HighStackJum,
+       StackCountDirection,
+       Constants (7 downto 0),
+       Constant_Enable,
+       ALU_Enable
+  );
 
 
 
-
-
-
-
-  Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Const_Enable);
-  StackOutControl <= intmdStackEnable and ModOutTSig;
-  --stack direction control and counting needs to be implemented
-  Ram_Addr_Enable <= intmdRamAddrEnable and ModOutTSig;
-  MemWriteControl <= intmdMemWriteControl and ModReadTSig;
-  -- read on every instruction cylce
-  MainRegReadControl <= ModReadTSig;
-
-  --Jump Command Works
-  --Constants Output works
-  --ALU driver works -- actual alu doesn't
-
+  Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Constant_Enable);
 
   --ALU
   -- ALU_Low: ALU port map(regA (3 downto 0), regB (3 downto 0), Ins(3 downto 0), Ins(5), Ins(4), ALU_Out(3 downto 0), ALU_connect, ABLow);
@@ -238,6 +293,8 @@ begin
                 -- }
                 --
 
-
+                -- need some set stack pointer commands
+                --SSK 1010 0010
+                --SSKH 1010 0100
 
 end architecture;
