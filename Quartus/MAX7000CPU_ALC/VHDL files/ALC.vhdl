@@ -14,7 +14,7 @@ entity AL_Controller is
   CLK: out std_logic; -- this needs to be birectional
   Count: out std_logic;
   CounterOutControl: out std_logic;
-  InsRegControl: out std_logic;
+  InsRegControl: buffer std_logic;
   RegAControl: out std_logic;
   RegBControl: out std_logic;
   MainRegReadControl: out std_logic;
@@ -122,7 +122,43 @@ component Circuit74181b is
 end component;
 
 
-component MircoCodeGen is
+-- component MircoCodeGen is
+--   port(Instruction: in std_logic_vector (7 downto 0);
+--        ABFlag: in std_logic;
+--        CarryFlag: in std_logic;
+--        Reset: in std_logic;
+--        clk: in std_logic;
+--        Count: out std_logic;
+--        CounterOutControl: out std_logic;
+--        InsRegControl: out std_logic;
+--        RegAControl: out std_logic;
+--        RegBControl: out std_logic;
+--        MainRegReadControl: out std_logic;
+--        LowJumpRegLoad: out std_logic;
+--        HighJumpRegLoad: out std_logic;
+--        JumpEnable: out std_logic;
+--        MainRegOutputControl: out std_logic;
+--        MemOutEnable: out std_logic;
+--        MemWriteControl: out std_logic;
+--        Ram_LowControl: out std_logic;
+--        Ram_HighControl: out std_logic;
+--        Ram_Addr_Enable: out std_logic;
+--        StackCount: out std_logic;
+--        StackOutControl: out std_logic;
+--        DisplayControl: out std_logic;
+--        LowStackJump: out std_logic;
+--        HighStackJump: out std_logic;
+--        StackCountDirection: out std_logic;
+--        Constants: out std_logic_vector (7 downto 0);
+--        Constant_Enable: out std_logic;
+--        ALU_Enable: out std_logic
+--   );
+--
+-- end component;
+
+
+
+component StandbyGen is
   port(Instruction: in std_logic_vector (7 downto 0);
        ABFlag: in std_logic;
        CarryFlag: in std_logic;
@@ -208,8 +244,41 @@ begin
   --
 
 
-  Control_Unit: MircoCodeGen port map(
-       Instruction (7 downto 0),
+  -- Control_Unit: MircoCodeGen port map(
+  --      Ins (7 downto 0),
+  --      ABFlag,
+  --      CarryFlag,
+  --      Reset,
+  --      interntalCLK,
+  --      Count,
+  --      CounterOutControl,
+  --      InsRegControl,
+  --      RegAControl,
+  --      RegBControl,
+  --      MainRegReadControl,
+  --      LowJumpRegLoad,
+  --      HighJumpRegLoad,
+  --      JumpEnable,
+  --      MainRegOutputControl,
+  --      MemOutEnable,
+  --      MemWriteControl,
+  --      Ram_LowControl,
+  --      Ram_HighControl,
+  --      Ram_Addr_Enable,
+  --      StackCount,
+  --      StackOutControl,
+  --      DisplayControl,
+  --      LowStackJump,
+  --      HighStackJump,
+  --      StackCountDirection,
+  --      Constants (7 downto 0),
+  --      Constant_Enable,
+  --      ALU_Enable
+  -- );
+
+
+  Control_Unit: StandbyGen port map(
+       Ins (7 downto 0),
        ABFlag,
        CarryFlag,
        Reset,
@@ -233,13 +302,12 @@ begin
        StackOutControl,
        DisplayControl,
        LowStackJump,
-       HighStackJum,
+       HighStackJump,
        StackCountDirection,
        Constants (7 downto 0),
        Constant_Enable,
        ALU_Enable
   );
-
 
 
   Constants_Buffer: Octal_Bus_Driver port map(Constants(7 downto 0), MainBus(7 downto 0), Constant_Enable);

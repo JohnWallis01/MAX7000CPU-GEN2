@@ -35,7 +35,7 @@ entity MircoCodeGen is
 
 end MircoCodeGen;
 
-architecture MircoCodeGen_Arch of MircoCodeGen_ is
+architecture MircoCodeGen_Arch of MircoCodeGen is
 
   component D_flip_flop
   port (clk,Din,rst,en : in std_logic;
@@ -69,8 +69,8 @@ end process;
 
 process(Instruction, Q2, Q1, Q0, ABFlag, CarryFlag)
 begin
-  if Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+  if Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -93,8 +93,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -117,152 +117,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '1';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -285,8 +141,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -309,8 +165,152 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -333,8 +333,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '1';
@@ -357,8 +357,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -381,8 +381,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -405,8 +405,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -429,8 +429,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -453,8 +453,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -477,8 +477,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -501,8 +501,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -525,8 +525,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -549,152 +549,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '1';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '0';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '0';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 1
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 0
+   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -717,8 +573,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 0
+   elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -741,8 +597,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 0
+   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -765,8 +621,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '1' then
-                    Count <= 0
+   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -789,152 +645,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 1
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '1';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '0';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = '0' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '0';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -957,8 +669,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -981,8 +693,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '1' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1005,8 +717,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1029,8 +741,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1053,8 +765,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '1' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1077,8 +789,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1101,8 +813,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1125,8 +837,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1149,8 +861,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1173,8 +885,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1197,8 +909,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '0' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1221,8 +933,152 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1245,8 +1101,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1269,8 +1125,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1293,8 +1149,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1317,8 +1173,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1341,8 +1197,152 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1365,8 +1365,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1389,8 +1389,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1413,8 +1413,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1437,8 +1437,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1461,8 +1461,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1485,8 +1485,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1509,8 +1509,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1533,8 +1533,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1557,8 +1557,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1581,8 +1581,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1605,8 +1605,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1629,8 +1629,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1653,8 +1653,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "11" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "11" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1677,8 +1677,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "11" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "11" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1701,152 +1701,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "11" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '1';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "11" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "11" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "11" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
-                    CounterOutControl <= '0';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '1';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
-                    CounterOutControl <= '1';
-                    InsRegControl <= '0';
-                    RegAControl <= '0';
-                    RegBControl <= '0';
-                    MainRegReadControl <= '0';
-                    LowJumpRegLoad <= '0';
-                    HighJumpRegLoad <= '0';
-                    JumpEnable <= '0';
-                    MainRegOutputControl <= '1';
-                    MemOutEnable <= '0';
-                    MemWriteControl <= '1';
-                    Ram_LowControl <= '0';
-                    Ram_HighControl <= '0';
-                    Ram_Addr_Enable <='1';
-                    StackCount <= '0';
-                    StackOutControl <= '1';
-                    DisplayControl <='0';
-                    LowStackJump <='0';
-                    HighStackJump <= '0';
-                    Constant_Enable<='0';
-                    StackCountDirection <='0';
-
-   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "11" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -1869,8 +1725,152 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "11" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "11" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "11" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1893,8 +1893,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1917,8 +1917,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1941,8 +1941,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1965,8 +1965,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1989,8 +1989,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2013,8 +2013,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2037,8 +2037,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2061,8 +2061,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2085,8 +2085,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2109,8 +2109,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2133,8 +2133,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2157,8 +2157,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2181,8 +2181,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2205,8 +2205,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2229,8 +2229,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2253,8 +2253,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2277,8 +2277,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2301,8 +2301,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2325,8 +2325,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2349,8 +2349,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2373,8 +2373,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2397,8 +2397,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2421,8 +2421,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2445,8 +2445,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2469,8 +2469,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2493,8 +2493,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2517,8 +2517,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
-   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2541,8 +2541,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2565,8 +2565,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2589,8 +2589,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2613,8 +2613,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2637,8 +2637,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2661,8 +2661,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = '0' and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2685,8 +2685,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = '0' and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction(7) = '0' and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2709,8 +2709,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = '0' and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction(7) = '0' and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2733,8 +2733,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = '0' and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction(7) = '0' and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2757,8 +2757,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = '0' and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction(7) = '0' and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2784,8 +2784,8 @@ begin
                     Constants(7) <= '0';
 
 
-   elsif Instruction = '0' and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2810,8 +2810,8 @@ begin
                     Constants(6 downto 0) <= Instruction(6 downto 0);
                     Constants(7) <= '0';
 
-   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2834,8 +2834,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2858,8 +2858,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -2882,8 +2882,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2906,8 +2906,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2930,8 +2930,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2954,8 +2954,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 1
+   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -2978,8 +2978,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -3002,8 +3002,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
                     CounterOutControl <= '1';
                     InsRegControl <= '1';
                     RegAControl <= '0';
@@ -3026,8 +3026,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100100" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -3050,8 +3050,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -3074,8 +3074,8 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
 
-   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = 'X' and ABFlag = 'X' then
-                    Count <= 0
+   elsif Instruction = "10100100" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -3098,7 +3098,7 @@ begin
                     Constant_Enable<='0';
                     StackCountDirection <='1';
   else
-                   Count <= 0
+                   Count <= '0';
                    CounterOutControl <= '0';
                    InsRegControl <= '0';
                    RegAControl <= '0';
