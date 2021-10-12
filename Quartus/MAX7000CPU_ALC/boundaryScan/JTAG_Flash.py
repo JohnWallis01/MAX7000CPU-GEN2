@@ -112,7 +112,7 @@ def main():
     LowJumpRegLoad.set_value(0)
     HighJumpRegLoad.set_value(0)
     JumpEnable.set_value(0)
-    MemWriteControl.set_value(0)
+    MemWriteControl.set_value(1)
 
     #preset_the_counter
     JumpEnable.set_value(1)
@@ -128,8 +128,8 @@ def main():
 
         InsRegControl.set_value(1)
         InsRegControl.set_value(0)
-        MemWriteControl.set_value(1)
-        MemWriteControl.set_value(0) #just stored it in memory
+        MemWriteControl.set_value(0)
+        MemWriteControl.set_value(1) #just stored it in memory
         Count.set_value(1)
         Count.set_value(0) #incremeneted the program counter
 
@@ -144,9 +144,9 @@ def main():
     HighJumpRegLoad.set_value(0)
     JumpEnable.set_value(1)
     Count.set_value(1)
-    Count.set_value(0) #now the program counter is at 0
+    Count.set_value(0) #now the program counter is at 11111111
     JumpEnable.set_value(0)
-
+    
     #this bad boy is good to go now
     with open("upload.ahk", "w") as output_file:
             output_file.write("^p::\n")

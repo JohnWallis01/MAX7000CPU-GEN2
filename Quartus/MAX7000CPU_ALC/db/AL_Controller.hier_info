@@ -1,68 +1,84 @@
 |AL_Controller
-regA[0] => ALU:ALU_Low.A[0]
-regA[1] => ALU:ALU_Low.A[1]
-regA[2] => ALU:ALU_Low.A[2]
-regA[3] => ALU:ALU_Low.A[3]
-regA[4] => ALU:ALU_High.A[0]
-regA[5] => ALU:ALU_High.A[1]
-regA[6] => ALU:ALU_High.A[2]
-regA[7] => ALU:ALU_High.A[3]
-regB[0] => ALU:ALU_Low.B[0]
-regB[1] => ALU:ALU_Low.B[1]
-regB[2] => ALU:ALU_Low.B[2]
-regB[3] => ALU:ALU_Low.B[3]
-regB[4] => ALU:ALU_High.B[0]
-regB[5] => ALU:ALU_High.B[1]
-regB[6] => ALU:ALU_High.B[2]
-regB[7] => ALU:ALU_High.B[3]
-MainBus[0] <= Octal_Bus_Driver:ALU_Buffer.O[0]
-MainBus[1] <= Octal_Bus_Driver:ALU_Buffer.O[1]
-MainBus[2] <= Octal_Bus_Driver:ALU_Buffer.O[2]
-MainBus[3] <= Octal_Bus_Driver:ALU_Buffer.O[3]
-MainBus[4] <= Octal_Bus_Driver:ALU_Buffer.O[4]
-MainBus[5] <= Octal_Bus_Driver:ALU_Buffer.O[5]
-MainBus[6] <= Octal_Bus_Driver:ALU_Buffer.O[6]
-MainBus[7] <= Octal_Bus_Driver:ALU_Buffer.O[7]
-Ins[0] => ALU:ALU_Low.S[0]
-Ins[0] => ALU:ALU_High.S[0]
-Ins[1] => ALU:ALU_Low.S[1]
-Ins[1] => ALU:ALU_High.S[1]
-Ins[2] => ALU:ALU_Low.S[2]
-Ins[2] => ALU:ALU_High.S[2]
-Ins[3] => ALU:ALU_Low.S[3]
-Ins[3] => ALU:ALU_High.S[3]
-Ins[4] => ALU:ALU_Low.CarryIn
-Ins[5] => ALU:ALU_Low.M
-Ins[5] => ALU:ALU_High.M
-Ins[6] => ~NO_FANOUT~
-Ins[7] => ~NO_FANOUT~
-Reset => Sig_Gen:SignalGenerator.Reset
-UserCLK => interntalCLK.IN0
-SlowCLK => interntalCLK.IN0
+regA[0] => Circuit74181b:ALU_Low.A[0]
+regA[1] => Circuit74181b:ALU_Low.A[1]
+regA[2] => Circuit74181b:ALU_Low.A[2]
+regA[3] => Circuit74181b:ALU_Low.A[3]
+regA[4] => Circuit74181b:ALU_High.A[0]
+regA[5] => Circuit74181b:ALU_High.A[1]
+regA[6] => Circuit74181b:ALU_High.A[2]
+regA[7] => Circuit74181b:ALU_High.A[3]
+regB[0] => Circuit74181b:ALU_Low.B[0]
+regB[1] => Circuit74181b:ALU_Low.B[1]
+regB[2] => Circuit74181b:ALU_Low.B[2]
+regB[3] => Circuit74181b:ALU_Low.B[3]
+regB[4] => Circuit74181b:ALU_High.B[0]
+regB[5] => Circuit74181b:ALU_High.B[1]
+regB[6] => Circuit74181b:ALU_High.B[2]
+regB[7] => Circuit74181b:ALU_High.B[3]
+MainBus[0] <= MainBus[0].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[1] <= MainBus[1].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[2] <= MainBus[2].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[3] <= MainBus[3].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[4] <= MainBus[4].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[5] <= MainBus[5].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[6] <= MainBus[6].DB_MAX_OUTPUT_PORT_TYPE
+MainBus[7] <= MainBus[7].DB_MAX_OUTPUT_PORT_TYPE
+Ins[0] => StandbyGen:Control_Unit.Instruction[0]
+Ins[0] => Octal_Bus_Driver:Constants_Buffer.A[0]
+Ins[0] => Circuit74181b:ALU_Low.S[0]
+Ins[0] => Circuit74181b:ALU_High.S[0]
+Ins[1] => StandbyGen:Control_Unit.Instruction[1]
+Ins[1] => Octal_Bus_Driver:Constants_Buffer.A[1]
+Ins[1] => Circuit74181b:ALU_Low.S[1]
+Ins[1] => Circuit74181b:ALU_High.S[1]
+Ins[2] => StandbyGen:Control_Unit.Instruction[2]
+Ins[2] => Octal_Bus_Driver:Constants_Buffer.A[2]
+Ins[2] => Circuit74181b:ALU_Low.S[2]
+Ins[2] => Circuit74181b:ALU_High.S[2]
+Ins[3] => StandbyGen:Control_Unit.Instruction[3]
+Ins[3] => Octal_Bus_Driver:Constants_Buffer.A[3]
+Ins[3] => Circuit74181b:ALU_Low.S[3]
+Ins[3] => Circuit74181b:ALU_High.S[3]
+Ins[4] => comb.IN0
+Ins[4] => StandbyGen:Control_Unit.Instruction[4]
+Ins[4] => Octal_Bus_Driver:Constants_Buffer.A[4]
+Ins[5] => StandbyGen:Control_Unit.Instruction[5]
+Ins[5] => Octal_Bus_Driver:Constants_Buffer.A[5]
+Ins[5] => Circuit74181b:ALU_Low.M
+Ins[5] => Circuit74181b:ALU_High.M
+Ins[6] => StandbyGen:Control_Unit.Instruction[6]
+Ins[6] => Octal_Bus_Driver:Constants_Buffer.A[6]
+Ins[7] => StandbyGen:Control_Unit.Instruction[7]
+Ins[7] => Octal_Bus_Driver:Constants_Buffer.A[7]
+Reset => D_flip_flop:CLKFLOP.rst
+Reset => StandbyGen:Control_Unit.Reset
+UserCLK => interntalCLK.DATAA
+SlowCLK => interntalCLK.DATAB
 CLK_Select => D_flip_flop:CLKFLOP.clk
 CLK <= interntalCLK.DB_MAX_OUTPUT_PORT_TYPE
-Count <= Sig_Gen:SignalGenerator.Count
-CounterOutControl <= Sig_Gen:SignalGenerator.CounterOut
-InsRegControl << Sig_Gen:SignalGenerator.InstructRead
-RegAControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-RegBControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-MainRegReadControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-LowJumpRegLoad <= comb.DB_MAX_OUTPUT_PORT_TYPE
-HighJumpRegLoad <= comb.DB_MAX_OUTPUT_PORT_TYPE
-JumpEnable <= comb.DB_MAX_OUTPUT_PORT_TYPE
-MainRegOutputControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-MemOutEnable <= comb.DB_MAX_OUTPUT_PORT_TYPE
-MemWriteControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-Ram_LowControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-Ram_HighControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-Ram_Addr_Enable <= comb.DB_MAX_OUTPUT_PORT_TYPE
-StackCount <= comb.DB_MAX_OUTPUT_PORT_TYPE
-StackOutControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-DisplayControl <= comb.DB_MAX_OUTPUT_PORT_TYPE
-LowStackJump <= comb.DB_MAX_OUTPUT_PORT_TYPE
-HighStackJump <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Count <= StandbyGen:Control_Unit.Count
+CounterOutControl <= StandbyGen:Control_Unit.CounterOutControl
+InsRegControl << StandbyGen:Control_Unit.InsRegControl
+RegAControl <= StandbyGen:Control_Unit.RegAControl
+RegBControl <= StandbyGen:Control_Unit.RegBControl
+MainRegReadControl <= StandbyGen:Control_Unit.MainRegReadControl
+LowJumpRegLoad <= StandbyGen:Control_Unit.LowJumpRegLoad
+HighJumpRegLoad <= StandbyGen:Control_Unit.HighJumpRegLoad
+JumpEnable <= StandbyGen:Control_Unit.JumpEnable
+MainRegOutputControl <= StandbyGen:Control_Unit.MainRegOutputControl
+MemOutEnable <= StandbyGen:Control_Unit.MemOutEnable
+MemWriteControl <= StandbyGen:Control_Unit.MemWriteControl
+Ram_LowControl <= StandbyGen:Control_Unit.Ram_LowControl
+Ram_HighControl <= StandbyGen:Control_Unit.Ram_HighControl
+Ram_Addr_Enable <= StandbyGen:Control_Unit.Ram_Addr_Enable
+StackCount <= StandbyGen:Control_Unit.StackCount
+StackOutControl <= StandbyGen:Control_Unit.StackOutControl
+DisplayControl <= StandbyGen:Control_Unit.DisplayControl
+LowStackJump <= StandbyGen:Control_Unit.LowStackJump
+HighStackJump <= StandbyGen:Control_Unit.HighStackJump
 SYNC <= comb.DB_MAX_OUTPUT_PORT_TYPE
 STATE <= comb.DB_MAX_OUTPUT_PORT_TYPE
+StackCountDirection <= StandbyGen:Control_Unit.StackCountDirection
 
 
 |AL_Controller|D_flip_flop:CLKFLOP
@@ -83,21 +99,92 @@ Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
 Qnot <= Qnot.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|AL_Controller|Sig_Gen:SignalGenerator
-clk => D_flip_flop:D0.clk
-clk => D_flip_flop:D1.clk
-clk => D_flip_flop:D2.clk
+|AL_Controller|StandbyGen:Control_Unit
+Instruction[0] => Equal1.IN15
+Instruction[0] => Equal2.IN15
+Instruction[0] => Equal3.IN15
+Instruction[0] => Equal4.IN15
+Instruction[0] => Equal5.IN15
+Instruction[0] => Equal6.IN15
+Instruction[1] => Equal1.IN14
+Instruction[1] => Equal2.IN14
+Instruction[1] => Equal3.IN14
+Instruction[1] => Equal4.IN14
+Instruction[1] => Equal5.IN14
+Instruction[1] => Equal6.IN14
+Instruction[2] => Equal1.IN13
+Instruction[2] => Equal2.IN13
+Instruction[2] => Equal3.IN13
+Instruction[2] => Equal4.IN13
+Instruction[2] => Equal5.IN13
+Instruction[2] => Equal6.IN13
+Instruction[3] => Equal1.IN12
+Instruction[3] => Equal2.IN12
+Instruction[3] => Equal3.IN12
+Instruction[3] => Equal4.IN12
+Instruction[3] => Equal5.IN12
+Instruction[3] => Equal6.IN12
+Instruction[4] => Equal1.IN11
+Instruction[4] => Equal2.IN11
+Instruction[4] => Equal3.IN11
+Instruction[4] => Equal4.IN11
+Instruction[4] => Equal5.IN11
+Instruction[4] => Equal6.IN11
+Instruction[5] => Equal1.IN10
+Instruction[5] => Equal2.IN10
+Instruction[5] => Equal3.IN10
+Instruction[5] => Equal4.IN10
+Instruction[5] => Equal5.IN10
+Instruction[5] => Equal6.IN10
+Instruction[6] => Equal0.IN3
+Instruction[6] => Equal1.IN9
+Instruction[6] => Equal2.IN9
+Instruction[6] => Equal3.IN9
+Instruction[6] => Equal4.IN9
+Instruction[6] => Equal5.IN9
+Instruction[6] => Equal6.IN9
+Instruction[7] => process_0.IN0
+Instruction[7] => Equal0.IN2
+Instruction[7] => Equal1.IN8
+Instruction[7] => Equal2.IN8
+Instruction[7] => Equal3.IN8
+Instruction[7] => Equal4.IN8
+Instruction[7] => Equal5.IN8
+Instruction[7] => Equal6.IN8
+ABFlag => ~NO_FANOUT~
+CarryFlag => ~NO_FANOUT~
 Reset => D_flip_flop:D0.rst
 Reset => D_flip_flop:D1.rst
 Reset => D_flip_flop:D2.rst
+clk => D_flip_flop:D0.clk
+clk => D_flip_flop:D1.clk
+clk => D_flip_flop:D2.clk
 Count <= Count.DB_MAX_OUTPUT_PORT_TYPE
-InstructRead <= InstructRead.DB_MAX_OUTPUT_PORT_TYPE
-ModRead <= ModRead.DB_MAX_OUTPUT_PORT_TYPE
-RamAddrAndModOut <= RamAddrAndModOut.DB_MAX_OUTPUT_PORT_TYPE
-CounterOut <= CounterOut.DB_MAX_OUTPUT_PORT_TYPE
+CounterOutControl <= CounterOutControl.DB_MAX_OUTPUT_PORT_TYPE
+InsRegControl <= InsRegControl.DB_MAX_OUTPUT_PORT_TYPE
+RegAControl <= RegAControl.DB_MAX_OUTPUT_PORT_TYPE
+RegBControl <= RegBControl.DB_MAX_OUTPUT_PORT_TYPE
+MainRegReadControl <= MainRegReadControl.DB_MAX_OUTPUT_PORT_TYPE
+LowJumpRegLoad <= LowJumpRegLoad.DB_MAX_OUTPUT_PORT_TYPE
+HighJumpRegLoad <= HighJumpRegLoad.DB_MAX_OUTPUT_PORT_TYPE
+JumpEnable <= JumpEnable.DB_MAX_OUTPUT_PORT_TYPE
+MainRegOutputControl <= MainRegOutputControl.DB_MAX_OUTPUT_PORT_TYPE
+MemOutEnable <= MemOutEnable.DB_MAX_OUTPUT_PORT_TYPE
+MemWriteControl <= <VCC>
+Ram_LowControl <= <GND>
+Ram_HighControl <= <GND>
+Ram_Addr_Enable <= <VCC>
+StackCount <= <GND>
+StackOutControl <= <VCC>
+DisplayControl <= DisplayControl.DB_MAX_OUTPUT_PORT_TYPE
+LowStackJump <= <GND>
+HighStackJump <= <GND>
+StackCountDirection <= <GND>
+Constant_Enable <= Constant_Enable.DB_MAX_OUTPUT_PORT_TYPE
+ALU_Enable <= ALU_Enable$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D0
+|AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D0
 clk => Qnot~reg0.CLK
 clk => Qnot~en.CLK
 clk => Q~reg0.CLK
@@ -115,7 +202,7 @@ Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
 Qnot <= Qnot.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D1
+|AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D1
 clk => Qnot~reg0.CLK
 clk => Qnot~en.CLK
 clk => Q~reg0.CLK
@@ -133,7 +220,7 @@ Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
 Qnot <= Qnot.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D2
+|AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D2
 clk => Qnot~reg0.CLK
 clk => Qnot~en.CLK
 clk => Q~reg0.CLK
@@ -151,938 +238,31 @@ Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
 Qnot <= Qnot.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|AL_Controller|ALU:ALU_Low
-A[0] => triple_AND:triAnd0.B
-A[0] => triple_AND:triAnd1.A
-A[0] => triple_NOR:triNOR0.A
-A[1] => triple_AND:triAnd2.B
-A[1] => triple_AND:triAnd3.A
-A[1] => triple_NOR:triNOR1.A
-A[2] => triple_AND:triAnd4.B
-A[2] => triple_AND:triAnd5.A
-A[2] => triple_NOR:triNOR2.A
-A[3] => triple_AND:triAnd6.B
-A[3] => triple_AND:triAnd7.A
-A[3] => triple_NOR:triNOR3.A
-B[0] => INV:I0.A
-B[0] => dual_AND:dualAnd0.A
-B[0] => triple_AND:triAnd1.B
-B[1] => INV:I1.A
-B[1] => dual_AND:dualAnd2.A
-B[1] => triple_AND:triAnd3.B
-B[2] => INV:I2.A
-B[2] => dual_AND:dualAnd4.A
-B[2] => triple_AND:triAnd5.B
-B[3] => INV:I3.A
-B[3] => dual_AND:dualAnd6.A
-B[3] => triple_AND:triAnd7.B
-S[0] => dual_AND:dualAnd0.B
-S[0] => dual_AND:dualAnd2.B
-S[0] => dual_AND:dualAnd4.B
-S[0] => dual_AND:dualAnd6.B
-S[1] => dual_AND:dualAnd1.B
-S[1] => dual_AND:dualAnd3.B
-S[1] => dual_AND:dualAnd5.B
-S[1] => dual_AND:dualAnd7.B
-S[2] => triple_AND:triAnd0.C
-S[2] => triple_AND:triAnd2.C
-S[2] => triple_AND:triAnd4.C
-S[2] => triple_AND:triAnd6.C
-S[3] => triple_AND:triAnd1.C
-S[3] => triple_AND:triAnd3.C
-S[3] => triple_AND:triAnd5.C
-S[3] => triple_AND:triAnd7.C
-M => INV:MInverter.A
-CarryIn => dual_NAND:dualNAND0.A
-CarryIn => triple_AND:triAND8.B
-CarryIn => quad_AND:quadAND0.B
-CarryIn => pent_AND:pentAND0.B
-CarryIn => pent_AND:pentNAND0.A
-F[0] <= BUF:BUF0.F
-F[1] <= BUF:BUF1.F
-F[2] <= BUF:BUF2.F
-F[3] <= BUF:BUF3.F
-CarryOut <= dual_NOR:dualNOR_X.F
-AequalB <= quad_AND:quadAND_X.F
-
-
-|AL_Controller|ALU:ALU_Low|INV:MInverter
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I0
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I1
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I2
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I3
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd1
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd2
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd3
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd4
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd5
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd4
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd5
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd6
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAnd7
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd6
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAnd7
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_NOR:triNOR0
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_NOR:triNOR1
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_NOR:triNOR2
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_NOR:triNOR3
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NAND:dualNAND0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I4
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND8
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAND8
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I5
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND9
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAND9
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_AND:quadAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I6
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND10
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAND10
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_AND:quadAND1
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|pent_AND:pentAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-E => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|INV:I7
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|pent_AND:pentNAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-E => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_AND:quadAND2
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_AND:triAND11
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND11
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND12
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR4
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND13
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|triple_NOR:triNOR4
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND14
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_NOR:quadNOR0
-A => F.IN0
-B => F.IN0
-C => F.IN0
-D => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_AND:dualAND15
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_OR:quadOR0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_XOR:XOR0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_XOR:XOR1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_XOR:XOR2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_XOR:XOR3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|BUF:BUF0
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|BUF:BUF1
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|BUF:BUF2
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|BUF:BUF3
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|quad_AND:quadAND_X
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR_X
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High
-A[0] => triple_AND:triAnd0.B
-A[0] => triple_AND:triAnd1.A
-A[0] => triple_NOR:triNOR0.A
-A[1] => triple_AND:triAnd2.B
-A[1] => triple_AND:triAnd3.A
-A[1] => triple_NOR:triNOR1.A
-A[2] => triple_AND:triAnd4.B
-A[2] => triple_AND:triAnd5.A
-A[2] => triple_NOR:triNOR2.A
-A[3] => triple_AND:triAnd6.B
-A[3] => triple_AND:triAnd7.A
-A[3] => triple_NOR:triNOR3.A
-B[0] => INV:I0.A
-B[0] => dual_AND:dualAnd0.A
-B[0] => triple_AND:triAnd1.B
-B[1] => INV:I1.A
-B[1] => dual_AND:dualAnd2.A
-B[1] => triple_AND:triAnd3.B
-B[2] => INV:I2.A
-B[2] => dual_AND:dualAnd4.A
-B[2] => triple_AND:triAnd5.B
-B[3] => INV:I3.A
-B[3] => dual_AND:dualAnd6.A
-B[3] => triple_AND:triAnd7.B
-S[0] => dual_AND:dualAnd0.B
-S[0] => dual_AND:dualAnd2.B
-S[0] => dual_AND:dualAnd4.B
-S[0] => dual_AND:dualAnd6.B
-S[1] => dual_AND:dualAnd1.B
-S[1] => dual_AND:dualAnd3.B
-S[1] => dual_AND:dualAnd5.B
-S[1] => dual_AND:dualAnd7.B
-S[2] => triple_AND:triAnd0.C
-S[2] => triple_AND:triAnd2.C
-S[2] => triple_AND:triAnd4.C
-S[2] => triple_AND:triAnd6.C
-S[3] => triple_AND:triAnd1.C
-S[3] => triple_AND:triAnd3.C
-S[3] => triple_AND:triAnd5.C
-S[3] => triple_AND:triAnd7.C
-M => INV:MInverter.A
-CarryIn => dual_NAND:dualNAND0.A
-CarryIn => triple_AND:triAND8.B
-CarryIn => quad_AND:quadAND0.B
-CarryIn => pent_AND:pentAND0.B
-CarryIn => pent_AND:pentNAND0.A
-F[0] <= BUF:BUF0.F
-F[1] <= BUF:BUF1.F
-F[2] <= BUF:BUF2.F
-F[3] <= BUF:BUF3.F
-CarryOut <= dual_NOR:dualNOR_X.F
-AequalB <= quad_AND:quadAND_X.F
-
-
-|AL_Controller|ALU:ALU_High|INV:MInverter
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I0
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I1
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I2
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I3
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd1
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd2
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd3
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd4
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd5
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd4
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd5
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd6
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAnd7
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd6
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAnd7
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_NOR:triNOR0
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_NOR:triNOR1
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_NOR:triNOR2
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_NOR:triNOR3
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NAND:dualNAND0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I4
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND8
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAND8
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I5
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND9
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAND9
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_AND:quadAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I6
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND10
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAND10
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_AND:quadAND1
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|pent_AND:pentAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-E => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|INV:I7
-A => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|pent_AND:pentNAND0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-E => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_AND:quadAND2
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_AND:triAND11
-A => F.IN0
-B => F.IN1
-C => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND11
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND12
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR4
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND13
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|triple_NOR:triNOR4
-A => F.IN0
-B => F.IN0
-C => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND14
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_NOR:quadNOR0
-A => F.IN0
-B => F.IN0
-C => F.IN0
-D => F.IN0
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_AND:dualAND15
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_OR:quadOR0
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_XOR:XOR0
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_XOR:XOR1
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_XOR:XOR2
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_XOR:XOR3
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|BUF:BUF0
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|BUF:BUF1
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|BUF:BUF2
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|BUF:BUF3
-A => F.DATAIN
-F <= A.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|quad_AND:quadAND_X
-A => F.IN0
-B => F.IN1
-C => F.IN1
-D => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|AL_Controller|ALU:ALU_High|dual_NOR:dualNOR_X
-A => F.IN0
-B => F.IN1
-F <= F.DB_MAX_OUTPUT_PORT_TYPE
+|AL_Controller|Octal_Bus_Driver:Constants_Buffer
+A[0] => O[0].DATAIN
+A[1] => O[1].DATAIN
+A[2] => O[2].DATAIN
+A[3] => O[3].DATAIN
+A[4] => O[4].DATAIN
+A[5] => O[5].DATAIN
+A[6] => O[6].DATAIN
+A[7] => O[7].DATAIN
+O[0] <= O[0].DB_MAX_OUTPUT_PORT_TYPE
+O[1] <= O[1].DB_MAX_OUTPUT_PORT_TYPE
+O[2] <= O[2].DB_MAX_OUTPUT_PORT_TYPE
+O[3] <= O[3].DB_MAX_OUTPUT_PORT_TYPE
+O[4] <= O[4].DB_MAX_OUTPUT_PORT_TYPE
+O[5] <= O[5].DB_MAX_OUTPUT_PORT_TYPE
+O[6] <= O[6].DB_MAX_OUTPUT_PORT_TYPE
+O[7] <= O[7].DB_MAX_OUTPUT_PORT_TYPE
+En => O[0].OE
+En => O[1].OE
+En => O[2].OE
+En => O[3].OE
+En => O[4].OE
+En => O[5].OE
+En => O[6].OE
+En => O[7].OE
 
 
 |AL_Controller|D_flip_flop:CarryFlagFlop
@@ -1138,6 +318,359 @@ O[4] <= O[4].DB_MAX_OUTPUT_PORT_TYPE
 O[5] <= O[5].DB_MAX_OUTPUT_PORT_TYPE
 O[6] <= O[6].DB_MAX_OUTPUT_PORT_TYPE
 O[7] <= O[7].DB_MAX_OUTPUT_PORT_TYPE
-En => O.IN0
+En => O[0].OE
+En => O[1].OE
+En => O[2].OE
+En => O[3].OE
+En => O[4].OE
+En => O[5].OE
+En => O[6].OE
+En => O[7].OE
+
+
+|AL_Controller|Circuit74181b:ALU_Low
+S[0] => S[0].IN1
+S[1] => S[1].IN1
+S[2] => S[2].IN1
+S[3] => S[3].IN1
+A[0] => A[0].IN1
+A[1] => A[1].IN1
+A[2] => A[2].IN1
+A[3] => A[3].IN1
+B[0] => B[0].IN1
+B[1] => B[1].IN1
+B[2] => B[2].IN1
+B[3] => B[3].IN1
+M => M.IN1
+CNb => CNb.IN1
+F[0] <= TopLevel74181b:Ckt74181b.port5
+F[1] <= TopLevel74181b:Ckt74181b.port5
+F[2] <= TopLevel74181b:Ckt74181b.port5
+F[3] <= TopLevel74181b:Ckt74181b.port5
+X <= TopLevel74181b:Ckt74181b.port6
+Y <= TopLevel74181b:Ckt74181b.port7
+CN4b <= TopLevel74181b:Ckt74181b.port8
+AEB <= TopLevel74181b:Ckt74181b.port9
+
+
+|AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b
+S[0] => S[0].IN2
+S[1] => S[1].IN2
+S[2] => S[2].IN2
+S[3] => S[3].IN2
+A[0] => A[0].IN2
+A[1] => A[1].IN2
+A[2] => A[2].IN2
+A[3] => A[3].IN2
+B[0] => B[0].IN2
+B[1] => B[1].IN2
+B[2] => B[2].IN2
+B[3] => B[3].IN2
+M => M.IN1
+CNb => CNb.IN1
+F[0] <= Summodule:Summod4.port4
+F[1] <= Summodule:Summod4.port4
+F[2] <= Summodule:Summod4.port4
+F[3] <= Summodule:Summod4.port4
+X <= CLAmodule:CLAmod3.port4
+Y <= CLAmodule:CLAmod3.port5
+CN4b <= CLAmodule:CLAmod3.port6
+AEB <= Summodule:Summod4.port5
+
+
+|AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Emodule:Emod1
+A[0] => ABS3.IN0
+A[0] => ABbS2.IN1
+A[1] => ABS3.IN0
+A[1] => ABbS2.IN1
+A[2] => ABS3.IN0
+A[2] => ABbS2.IN1
+A[3] => ABS3.IN0
+A[3] => ABbS2.IN1
+B[0] => ABS3.IN1
+B[0] => ABbS2.IN0
+B[1] => ABS3.IN1
+B[1] => ABbS2.IN0
+B[2] => ABS3.IN1
+B[2] => ABbS2.IN0
+B[3] => ABS3.IN1
+B[3] => ABbS2.IN0
+S[0] => ~NO_FANOUT~
+S[1] => ~NO_FANOUT~
+S[2] => ABbS2[0].IN1
+S[2] => ABbS2[1].IN1
+S[2] => ABbS2[2].IN1
+S[2] => ABbS2[3].IN1
+S[3] => ABS3[0].IN1
+S[3] => ABS3[1].IN1
+S[3] => ABS3[2].IN1
+S[3] => ABS3[3].IN1
+E[0] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[1] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[2] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[3] <= E.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Dmodule:Dmod2
+A[0] => D.IN1
+A[1] => D.IN1
+A[2] => D.IN1
+A[3] => D.IN1
+B[0] => BbS1.IN0
+B[0] => BS0[0].IN0
+B[1] => BbS1.IN0
+B[1] => BS0[1].IN0
+B[2] => BbS1.IN0
+B[2] => BS0[2].IN0
+B[3] => BbS1.IN0
+B[3] => BS0[3].IN0
+S[0] => BS0[0].IN1
+S[0] => BS0[1].IN1
+S[0] => BS0[2].IN1
+S[0] => BS0[3].IN1
+S[1] => BbS1[0].IN1
+S[1] => BbS1[1].IN1
+S[1] => BbS1[2].IN1
+S[1] => BbS1[3].IN1
+S[2] => ~NO_FANOUT~
+S[3] => ~NO_FANOUT~
+D[0] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[1] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[2] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[3] <= D.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|CLAmodule:CLAmod3
+Gb[0] => C.IN0
+Gb[0] => WideNand0.IN3
+Gb[0] => WideAnd0.IN3
+Gb[1] => C.IN0
+Gb[1] => C.IN1
+Gb[1] => WideNand0.IN2
+Gb[1] => WideAnd0.IN2
+Gb[2] => C.IN0
+Gb[2] => C.IN1
+Gb[2] => C.IN1
+Gb[2] => WideNand0.IN1
+Gb[2] => WideAnd0.IN1
+Gb[3] => WideNand0.IN0
+Gb[3] => Y.IN0
+Gb[3] => Y.IN1
+Gb[3] => Y.IN1
+Gb[3] => WideAnd0.IN0
+Pb[0] => C.IN1
+Pb[0] => C.IN1
+Pb[1] => C.IN1
+Pb[1] => C.IN1
+Pb[2] => C.IN1
+Pb[2] => Y.IN1
+Pb[3] => Y.IN1
+CNb => C.IN0
+CNb => C.IN1
+CNb => CN4b.IN1
+C[0] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[1] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[2] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[3] <= C.DB_MAX_OUTPUT_PORT_TYPE
+X <= WideNand0.DB_MAX_OUTPUT_PORT_TYPE
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+CN4b <= CN4b.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Summodule:Summod4
+E[0] => F.IN0
+E[1] => F.IN0
+E[2] => F.IN0
+E[3] => F.IN0
+D[0] => F.IN1
+D[1] => F.IN1
+D[2] => F.IN1
+D[3] => F.IN1
+C[0] => F.IN0
+C[1] => F.IN0
+C[2] => F.IN0
+C[3] => F.IN0
+M => F.IN1
+M => F.IN1
+M => F.IN1
+M => F.IN1
+F[0] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[1] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[2] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
+AEB <= WideAnd0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_High
+S[0] => S[0].IN1
+S[1] => S[1].IN1
+S[2] => S[2].IN1
+S[3] => S[3].IN1
+A[0] => A[0].IN1
+A[1] => A[1].IN1
+A[2] => A[2].IN1
+A[3] => A[3].IN1
+B[0] => B[0].IN1
+B[1] => B[1].IN1
+B[2] => B[2].IN1
+B[3] => B[3].IN1
+M => M.IN1
+CNb => CNb.IN1
+F[0] <= TopLevel74181b:Ckt74181b.port5
+F[1] <= TopLevel74181b:Ckt74181b.port5
+F[2] <= TopLevel74181b:Ckt74181b.port5
+F[3] <= TopLevel74181b:Ckt74181b.port5
+X <= TopLevel74181b:Ckt74181b.port6
+Y <= TopLevel74181b:Ckt74181b.port7
+CN4b <= TopLevel74181b:Ckt74181b.port8
+AEB <= TopLevel74181b:Ckt74181b.port9
+
+
+|AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b
+S[0] => S[0].IN2
+S[1] => S[1].IN2
+S[2] => S[2].IN2
+S[3] => S[3].IN2
+A[0] => A[0].IN2
+A[1] => A[1].IN2
+A[2] => A[2].IN2
+A[3] => A[3].IN2
+B[0] => B[0].IN2
+B[1] => B[1].IN2
+B[2] => B[2].IN2
+B[3] => B[3].IN2
+M => M.IN1
+CNb => CNb.IN1
+F[0] <= Summodule:Summod4.port4
+F[1] <= Summodule:Summod4.port4
+F[2] <= Summodule:Summod4.port4
+F[3] <= Summodule:Summod4.port4
+X <= CLAmodule:CLAmod3.port4
+Y <= CLAmodule:CLAmod3.port5
+CN4b <= CLAmodule:CLAmod3.port6
+AEB <= Summodule:Summod4.port5
+
+
+|AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Emodule:Emod1
+A[0] => ABS3.IN0
+A[0] => ABbS2.IN1
+A[1] => ABS3.IN0
+A[1] => ABbS2.IN1
+A[2] => ABS3.IN0
+A[2] => ABbS2.IN1
+A[3] => ABS3.IN0
+A[3] => ABbS2.IN1
+B[0] => ABS3.IN1
+B[0] => ABbS2.IN0
+B[1] => ABS3.IN1
+B[1] => ABbS2.IN0
+B[2] => ABS3.IN1
+B[2] => ABbS2.IN0
+B[3] => ABS3.IN1
+B[3] => ABbS2.IN0
+S[0] => ~NO_FANOUT~
+S[1] => ~NO_FANOUT~
+S[2] => ABbS2[0].IN1
+S[2] => ABbS2[1].IN1
+S[2] => ABbS2[2].IN1
+S[2] => ABbS2[3].IN1
+S[3] => ABS3[0].IN1
+S[3] => ABS3[1].IN1
+S[3] => ABS3[2].IN1
+S[3] => ABS3[3].IN1
+E[0] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[1] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[2] <= E.DB_MAX_OUTPUT_PORT_TYPE
+E[3] <= E.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Dmodule:Dmod2
+A[0] => D.IN1
+A[1] => D.IN1
+A[2] => D.IN1
+A[3] => D.IN1
+B[0] => BbS1.IN0
+B[0] => BS0[0].IN0
+B[1] => BbS1.IN0
+B[1] => BS0[1].IN0
+B[2] => BbS1.IN0
+B[2] => BS0[2].IN0
+B[3] => BbS1.IN0
+B[3] => BS0[3].IN0
+S[0] => BS0[0].IN1
+S[0] => BS0[1].IN1
+S[0] => BS0[2].IN1
+S[0] => BS0[3].IN1
+S[1] => BbS1[0].IN1
+S[1] => BbS1[1].IN1
+S[1] => BbS1[2].IN1
+S[1] => BbS1[3].IN1
+S[2] => ~NO_FANOUT~
+S[3] => ~NO_FANOUT~
+D[0] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[1] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[2] <= D.DB_MAX_OUTPUT_PORT_TYPE
+D[3] <= D.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|CLAmodule:CLAmod3
+Gb[0] => C.IN0
+Gb[0] => WideNand0.IN3
+Gb[0] => WideAnd0.IN3
+Gb[1] => C.IN0
+Gb[1] => C.IN1
+Gb[1] => WideNand0.IN2
+Gb[1] => WideAnd0.IN2
+Gb[2] => C.IN0
+Gb[2] => C.IN1
+Gb[2] => C.IN1
+Gb[2] => WideNand0.IN1
+Gb[2] => WideAnd0.IN1
+Gb[3] => WideNand0.IN0
+Gb[3] => Y.IN0
+Gb[3] => Y.IN1
+Gb[3] => Y.IN1
+Gb[3] => WideAnd0.IN0
+Pb[0] => C.IN1
+Pb[0] => C.IN1
+Pb[1] => C.IN1
+Pb[1] => C.IN1
+Pb[2] => C.IN1
+Pb[2] => Y.IN1
+Pb[3] => Y.IN1
+CNb => C.IN0
+CNb => C.IN1
+CNb => CN4b.IN1
+C[0] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[1] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[2] <= C.DB_MAX_OUTPUT_PORT_TYPE
+C[3] <= C.DB_MAX_OUTPUT_PORT_TYPE
+X <= WideNand0.DB_MAX_OUTPUT_PORT_TYPE
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+CN4b <= CN4b.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Summodule:Summod4
+E[0] => F.IN0
+E[1] => F.IN0
+E[2] => F.IN0
+E[3] => F.IN0
+D[0] => F.IN1
+D[1] => F.IN1
+D[2] => F.IN1
+D[3] => F.IN1
+C[0] => F.IN0
+C[1] => F.IN0
+C[2] => F.IN0
+C[3] => F.IN0
+M => F.IN1
+M => F.IN1
+M => F.IN1
+M => F.IN1
+F[0] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[1] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[2] <= F.DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= F.DB_MAX_OUTPUT_PORT_TYPE
+AEB <= WideAnd0.DB_MAX_OUTPUT_PORT_TYPE
 
 

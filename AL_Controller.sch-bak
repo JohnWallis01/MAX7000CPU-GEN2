@@ -1744,7 +1744,13 @@ Wire Wire Line
 Text Label 13550 3300 2    50   ~ 0
 MemWriteControl
 Text Label 13550 3400 2    50   ~ 0
-CountDown
+StackCountDown
 Wire Wire Line
 	13550 3550 13550 3300
+Text Label 14900 3350 2    50   ~ 0
+MemWriteControl
+Text Label 14900 3450 2    50   ~ 0
+StackCountUp
+Wire Wire Line
+	14900 3600 14900 3350
 $EndSCHEMATC

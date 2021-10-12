@@ -47,8 +47,6 @@ set_global_assignment -name DEVICE_FILTER_PACKAGE PLCC
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 84
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 15
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "Design Compiler"
 set_global_assignment -name EDA_INPUT_VCC_NAME VDD -section_id eda_design_synthesis
 set_global_assignment -name EDA_LMF_FILE altsyn.lmf -section_id eda_design_synthesis
@@ -56,11 +54,6 @@ set_global_assignment -name EDA_INPUT_DATA_FORMAT VHDL -section_id eda_design_sy
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE "VHDL files/SignalGen.vhdl"
-set_global_assignment -name VHDL_FILE "VHDL files/logic.vhdl"
-set_global_assignment -name VHDL_FILE "VHDL files/ALC.vhdl"
-set_global_assignment -name VHDL_FILE "VHDL files/74181 ALU.vhdl"
-set_global_assignment -name VHDL_FILE "VHDL files/test_flipFlop.vhdl"
 set_global_assignment -name MAX7000_DEVICE_IO_STANDARD TTL
 set_location_assignment PIN_74 -to regB[7]
 set_location_assignment PIN_73 -to regB[6]
@@ -125,3 +118,12 @@ set_location_assignment PIN_41 -to DisplayControl
 set_location_assignment PIN_21 -to CounterOutControl
 set_location_assignment PIN_20 -to Count
 set_location_assignment PIN_79 -to CLK
+set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_location_assignment PIN_77 -to StackCountDirection
+set_global_assignment -name VHDL_FILE "VHDL files/StandbyGenerator.vhdl"
+set_global_assignment -name VHDL_FILE "VHDL files/MicroCodeGen2.vhdl"
+set_global_assignment -name VERILOG_FILE "VHDL files/Alt_ALU.verilog"
+set_global_assignment -name VHDL_FILE "VHDL files/logic.vhdl"
+set_global_assignment -name VHDL_FILE "VHDL files/ALC.vhdl"

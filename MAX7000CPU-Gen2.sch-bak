@@ -4254,4 +4254,6 @@ Wire Notes Line
 	9900 7450 13200 7450
 Wire Notes Line
 	9900 9450 13200 9450
+Text Notes 10200 300  0    50   ~ 0
+Main RegOutput Should probs be pulled high!!!\n\n
 $EndSCHEMATC

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for AL_Controller
-Sun Sep 26 22:11:28 2021
+Tue Oct 12 19:37:05 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -29,12 +29,16 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  21. Minimum Clock to Output Times
  22. Propagation Delay
  23. Minimum Propagation Delay
- 24. Setup Transfers
- 25. Hold Transfers
- 26. Report TCCS
- 27. Report RSKM
- 28. Unconstrained Paths
- 29. TimeQuest Timing Analyzer Messages
+ 24. Output Enable Times
+ 25. Minimum Output Enable Times
+ 26. Output Disable Times
+ 27. Minimum Output Disable Times
+ 28. Setup Transfers
+ 29. Hold Transfers
+ 30. Report TCCS
+ 31. Report RSKM
+ 32. Unconstrained Paths
+ 33. TimeQuest Timing Analyzer Messages
 
 
 
@@ -149,476 +153,868 @@ No paths to report.
 +------------+--------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'SlowCLK'                                                                                                                                                                    ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack   ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'SlowCLK'                                                                                                                                                              ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                                     ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; SlowCLK     ; 1.000        ; 0.000      ; 9.000      ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'UserCLK'                                                                                                                                                                    ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack   ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
-+---------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'UserCLK'                                                                                                                                                              ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                                     ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; UserCLK     ; 1.000        ; 0.000      ; 9.000      ;
++---------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'CLK_Select'                                                                                                                           ;
-+---------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack   ; From Node                     ; To Node                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+---------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
-; -12.000 ; D_flip_flop:CLKFLOP|Qnot~reg0 ; D_flip_flop:CLKFLOP|Qnot~reg0 ; CLK_Select   ; CLK_Select  ; 1.000        ; 0.000      ; 9.000      ;
-; -12.000 ; D_flip_flop:CLKFLOP|Qnot~en   ; D_flip_flop:CLKFLOP|Qnot~reg0 ; CLK_Select   ; CLK_Select  ; 1.000        ; 0.000      ; 9.000      ;
-+---------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'CLK_Select'                                                                                                                     ;
++---------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; -12.000 ; D_flip_flop:CLKFLOP|Q~reg0 ; D_flip_flop:CLKFLOP|Q~reg0 ; CLK_Select   ; CLK_Select  ; 1.000        ; 0.000      ; 9.000      ;
+; -12.000 ; D_flip_flop:CLKFLOP|Q~en   ; D_flip_flop:CLKFLOP|Q~reg0 ; CLK_Select   ; CLK_Select  ; 1.000        ; 0.000      ; 9.000      ;
++---------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'CLK_Select'                                                                                                                          ;
-+-------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node                     ; To Node                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
-; 5.000 ; D_flip_flop:CLKFLOP|Qnot~reg0 ; D_flip_flop:CLKFLOP|Qnot~reg0 ; CLK_Select   ; CLK_Select  ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; D_flip_flop:CLKFLOP|Qnot~en   ; D_flip_flop:CLKFLOP|Qnot~reg0 ; CLK_Select   ; CLK_Select  ; 0.000        ; 0.000      ; 9.000      ;
-+-------+-------------------------------+-------------------------------+--------------+-------------+--------------+------------+------------+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'CLK_Select'                                                                                                                    ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 5.000 ; D_flip_flop:CLKFLOP|Q~reg0 ; D_flip_flop:CLKFLOP|Q~reg0 ; CLK_Select   ; CLK_Select  ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; D_flip_flop:CLKFLOP|Q~en   ; D_flip_flop:CLKFLOP|Q~reg0 ; CLK_Select   ; CLK_Select  ; 0.000        ; 0.000      ; 9.000      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'SlowCLK'                                                                                                                                                                   ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'SlowCLK'                                                                                                                                                             ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                     ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; SlowCLK     ; 0.000        ; 0.000      ; 9.000      ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'UserCLK'                                                                                                                                                                   ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-; 5.000 ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
-+-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'UserCLK'                                                                                                                                                             ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                     ; To Node                                       ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; UserCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
+; 5.000 ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ; SlowCLK      ; UserCLK     ; 0.000        ; 0.000      ; 9.000      ;
++-------+-----------------------------------------------+-----------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Minimum Pulse Width: 'SlowCLK'                                                                                                      ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
-; Slack  ; Actual Width ; Required Width ; Type             ; Clock   ; Clock Edge ; Target                                           ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[1]                   ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[1]                   ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[2]                   ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[2]                   ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[4]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[4]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[3]                    ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[3]                    ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[4]                    ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[4]                    ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[4]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[4]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Rise       ; SlowCLK|dataout                                  ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Rise       ; SlowCLK|dataout                                  ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Rise       ; interntalCLK~14|datain[1]                        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Rise       ; interntalCLK~14|datain[1]                        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; interntalCLK~14|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; interntalCLK~14|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Rise       ; interntalCLK~15|datain[2]                        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Rise       ; interntalCLK~15|datain[2]                        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; interntalCLK~15|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; interntalCLK~15|dataout                          ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'SlowCLK'                                                                                                   ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock   ; Clock Edge ; Target                                        ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; Control_Unit|D0|Q~en|[0]                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Control_Unit|D0|Q~en|[0]                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; Control_Unit|D0|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Control_Unit|D0|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; Control_Unit|D1|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Control_Unit|D1|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; Control_Unit|D2|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; Control_Unit|D2|Q~reg0|[2]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Rise       ; SlowCLK|dataout                               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Rise       ; SlowCLK|dataout                               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Rise       ; interntalCLK~12|datain[0]                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Rise       ; interntalCLK~12|datain[0]                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; SlowCLK ; Fall       ; interntalCLK~12|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; SlowCLK ; Fall       ; interntalCLK~12|dataout                       ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Minimum Pulse Width: 'UserCLK'                                                                                                      ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
-; Slack  ; Actual Width ; Required Width ; Type             ; Clock   ; Clock Edge ; Target                                           ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~reg0    ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~reg0 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[0]                   ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[0]                   ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[1]                   ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~en|[1]                   ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[2]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[2]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D0|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[2]                    ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[2]                    ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[3]                    ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D1|Q~reg0|[3]                    ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[2]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[2]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; SignalGenerator|D2|Qnot~reg0|[3]                 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; UserCLK|dataout                                  ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; UserCLK|dataout                                  ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; interntalCLK~13|datain[0]                        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; interntalCLK~13|datain[0]                        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; interntalCLK~13|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; interntalCLK~13|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; interntalCLK~14|datain[0]                        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; interntalCLK~14|datain[0]                        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; interntalCLK~14|dataout                          ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; interntalCLK~14|dataout                          ;
-+--------+--------------+----------------+------------------+---------+------------+--------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'UserCLK'                                                                                                   ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock   ; Clock Edge ; Target                                        ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D0|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D1|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; UserCLK ; Fall       ; StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D0|Q~en|[1]                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D0|Q~en|[1]                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D0|Q~en|[2]                      ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D0|Q~en|[2]                      ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D0|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D0|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D0|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D0|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D1|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D1|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D1|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D1|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D2|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D2|Q~reg0|[3]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; Control_Unit|D2|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; Control_Unit|D2|Q~reg0|[4]                    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; UserCLK|dataout                               ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; UserCLK|dataout                               ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; interntalCLK~13|datain[1]                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; interntalCLK~13|datain[1]                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; interntalCLK~13|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; interntalCLK~13|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Rise       ; interntalCLK~14|datain[1]                     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Rise       ; interntalCLK~14|datain[1]                     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; UserCLK ; Fall       ; interntalCLK~14|dataout                       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; UserCLK ; Fall       ; interntalCLK~14|dataout                       ;
++--------+--------------+----------------+------------------+---------+------------+-----------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Minimum Pulse Width: 'CLK_Select'                                                                                   ;
-+--------+--------------+----------------+------------------+------------+------------+-------------------------------+
-; Slack  ; Actual Width ; Required Width ; Type             ; Clock      ; Clock Edge ; Target                        ;
-+--------+--------------+----------------+------------------+------------+------------+-------------------------------+
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Qnot~en   ;
-; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Qnot~reg0 ;
-; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Qnot~reg0 ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLKFLOP|Qnot~en|[0]           ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLKFLOP|Qnot~en|[0]           ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLKFLOP|Qnot~reg0|[2]         ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLKFLOP|Qnot~reg0|[2]         ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLK_Select|dataout            ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLK_Select|dataout            ;
-+--------+--------------+----------------+------------------+------------+------------+-------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'CLK_Select'                                                                                ;
++--------+--------------+----------------+------------------+------------+------------+----------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock      ; Clock Edge ; Target                     ;
++--------+--------------+----------------+------------------+------------+------------+----------------------------+
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Q~en   ;
+; -5.500 ; 0.500        ; 6.000          ; High Pulse Width ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Q~reg0 ;
+; -5.500 ; 0.500        ; 6.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; D_flip_flop:CLKFLOP|Q~reg0 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLKFLOP|Q~en|[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLKFLOP|Q~en|[0]           ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLKFLOP|Q~reg0|[2]         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLKFLOP|Q~reg0|[2]         ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; CLK_Select ; Rise       ; CLK_Select|dataout         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; CLK_Select ; Rise       ; CLK_Select|dataout         ;
++--------+--------------+----------------+------------------+------------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Clock to Output Times                                                              ;
++----------------------+------------+--------+--------+------------+-----------------+
+; Data Port            ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------------+------------+--------+--------+------------+-----------------+
+; CLK                  ; CLK_Select ; 24.000 ; 24.000 ; Rise       ; CLK_Select      ;
+; CLK                  ; SlowCLK    ; 15.000 ; 15.000 ; Rise       ; SlowCLK         ;
+; CLK                  ; SlowCLK    ; 15.000 ; 15.000 ; Fall       ; SlowCLK         ;
+; Count                ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; CounterOutControl    ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; DisplayControl       ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; HighJumpRegLoad      ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; InsRegControl        ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; JumpEnable           ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; LowJumpRegLoad       ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MainBus[*]           ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[0]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[1]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[2]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[3]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[4]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[5]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[6]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+;  MainBus[7]          ; SlowCLK    ; 50.000 ; 50.000 ; Fall       ; SlowCLK         ;
+; MainRegOutputControl ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MainRegReadControl   ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MemOutEnable         ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; RegAControl          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; RegBControl          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; CLK                  ; UserCLK    ; 15.000 ; 15.000 ; Rise       ; UserCLK         ;
+; CLK                  ; UserCLK    ; 15.000 ; 15.000 ; Fall       ; UserCLK         ;
+; Count                ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; CounterOutControl    ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; DisplayControl       ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; HighJumpRegLoad      ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; InsRegControl        ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; JumpEnable           ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; LowJumpRegLoad       ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MainBus[*]           ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[0]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[1]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[2]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[3]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[4]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[5]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[6]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+;  MainBus[7]          ; UserCLK    ; 50.000 ; 50.000 ; Fall       ; UserCLK         ;
+; MainRegOutputControl ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MainRegReadControl   ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MemOutEnable         ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; RegAControl          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; RegBControl          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
++----------------------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                      ;
++----------------------+------------+--------+--------+------------+-----------------+
+; Data Port            ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------------+------------+--------+--------+------------+-----------------+
+; CLK                  ; CLK_Select ; 24.000 ; 24.000 ; Rise       ; CLK_Select      ;
+; CLK                  ; SlowCLK    ; 15.000 ; 15.000 ; Rise       ; SlowCLK         ;
+; CLK                  ; SlowCLK    ; 15.000 ; 15.000 ; Fall       ; SlowCLK         ;
+; Count                ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; CounterOutControl    ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; DisplayControl       ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; HighJumpRegLoad      ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; InsRegControl        ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; JumpEnable           ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; LowJumpRegLoad       ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MainBus[*]           ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[0]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[1]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[2]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[3]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[4]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[5]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[6]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+;  MainBus[7]          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MainRegOutputControl ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MainRegReadControl   ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; MemOutEnable         ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; RegAControl          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; RegBControl          ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
+; CLK                  ; UserCLK    ; 15.000 ; 15.000 ; Rise       ; UserCLK         ;
+; CLK                  ; UserCLK    ; 15.000 ; 15.000 ; Fall       ; UserCLK         ;
+; Count                ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; CounterOutControl    ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; DisplayControl       ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; HighJumpRegLoad      ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; InsRegControl        ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; JumpEnable           ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; LowJumpRegLoad       ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MainBus[*]           ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[0]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[1]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[2]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[3]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[4]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[5]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[6]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+;  MainBus[7]          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MainRegOutputControl ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MainRegReadControl   ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; MemOutEnable         ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; RegAControl          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
+; RegBControl          ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
++----------------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Propagation Delay                                                     ;
++------------+----------------------+--------+--------+--------+--------+
+; Input Port ; Output Port          ; RR     ; RF     ; FR     ; FF     ;
++------------+----------------------+--------+--------+--------+--------+
+; Ins[0]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[0]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[0]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; MainBus[0]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[0]     ; MainBus[1]           ; 24.000 ; 32.000 ; 32.000 ; 24.000 ;
+; Ins[0]     ; MainBus[2]           ; 32.000 ;        ;        ; 32.000 ;
+; Ins[0]     ; MainBus[3]           ; 36.000 ; 32.000 ; 32.000 ; 36.000 ;
+; Ins[0]     ; MainBus[4]           ; 36.000 ; 32.000 ; 32.000 ; 36.000 ;
+; Ins[0]     ; MainBus[5]           ; 36.000 ; 32.000 ; 32.000 ; 36.000 ;
+; Ins[0]     ; MainBus[6]           ; 36.000 ; 32.000 ; 32.000 ; 36.000 ;
+; Ins[0]     ; MainBus[7]           ; 36.000 ; 32.000 ; 32.000 ; 36.000 ;
+; Ins[0]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; RegBControl          ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; Count                ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; CounterOutControl    ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; InsRegControl        ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; JumpEnable           ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; MainBus[0]           ; 34.000 ; 41.000 ; 41.000 ; 34.000 ;
+; Ins[1]     ; MainBus[1]           ; 34.000 ; 41.000 ; 41.000 ; 34.000 ;
+; Ins[1]     ; MainBus[2]           ; 34.000 ; 41.000 ; 41.000 ; 34.000 ;
+; Ins[1]     ; MainBus[3]           ; 36.000 ; 41.000 ; 41.000 ; 36.000 ;
+; Ins[1]     ; MainBus[4]           ; 36.000 ; 41.000 ; 41.000 ; 36.000 ;
+; Ins[1]     ; MainBus[5]           ; 36.000 ; 41.000 ; 41.000 ; 36.000 ;
+; Ins[1]     ; MainBus[6]           ; 36.000 ; 41.000 ; 41.000 ; 36.000 ;
+; Ins[1]     ; MainBus[7]           ; 36.000 ; 41.000 ; 41.000 ; 36.000 ;
+; Ins[1]     ; MainRegOutputControl ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; MemOutEnable         ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[1]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[2]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[2]     ; MainBus[0]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[1]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[2]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[3]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[4]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[5]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[6]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainBus[7]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[2]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; MainBus[0]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[1]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[2]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[3]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[4]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[5]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[6]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainBus[7]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[3]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; MainBus[0]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[1]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[2]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[3]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[4]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[5]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[6]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainBus[7]           ; 41.000 ; 34.000 ; 34.000 ; 41.000 ;
+; Ins[4]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; MainBus[0]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[1]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[2]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[3]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[4]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[5]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[6]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainBus[7]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[5]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; Count                ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
+; Ins[6]     ; CounterOutControl    ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; InsRegControl        ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; MainBus[0]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[1]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[2]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[3]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[4]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[5]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[6]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainBus[7]           ; 40.000 ; 33.000 ; 33.000 ; 40.000 ;
+; Ins[6]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; MainRegReadControl   ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; MemOutEnable         ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; Count                ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
+; Ins[7]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; JumpEnable           ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; MainBus[0]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[1]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[2]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[3]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[4]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[5]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[6]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainBus[7]           ; 33.000 ; 40.000 ; 40.000 ; 33.000 ;
+; Ins[7]     ; MainRegOutputControl ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; MainRegReadControl   ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; RegAControl          ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; RegBControl          ; 15.000 ;        ;        ; 15.000 ;
+; regA[0]    ; MainBus[0]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regA[0]    ; MainBus[1]           ;        ; 32.000 ; 32.000 ;        ;
+; regA[0]    ; MainBus[2]           ; 26.000 ;        ;        ; 26.000 ;
+; regA[0]    ; MainBus[3]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[0]    ; MainBus[4]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[0]    ; MainBus[5]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[0]    ; MainBus[6]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[0]    ; MainBus[7]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[1]    ; MainBus[1]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regA[1]    ; MainBus[2]           ; 32.000 ;        ;        ; 32.000 ;
+; regA[1]    ; MainBus[3]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[1]    ; MainBus[4]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[1]    ; MainBus[5]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[1]    ; MainBus[6]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[1]    ; MainBus[7]           ; 35.000 ;        ;        ; 35.000 ;
+; regA[2]    ; MainBus[2]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[2]    ; MainBus[3]           ; 36.000 ;        ;        ; 36.000 ;
+; regA[2]    ; MainBus[4]           ; 36.000 ;        ;        ; 36.000 ;
+; regA[2]    ; MainBus[5]           ; 36.000 ;        ;        ; 36.000 ;
+; regA[2]    ; MainBus[6]           ; 36.000 ;        ;        ; 36.000 ;
+; regA[2]    ; MainBus[7]           ; 36.000 ;        ;        ; 36.000 ;
+; regA[3]    ; MainBus[3]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[3]    ; MainBus[4]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[4]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[4]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[5]    ; MainBus[5]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[5]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[5]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[6]    ; MainBus[6]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[6]    ; MainBus[7]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[7]    ; MainBus[7]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[0]    ; MainBus[0]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[0]    ; MainBus[1]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[0]    ; MainBus[2]           ; 25.000 ; 26.000 ; 26.000 ; 25.000 ;
+; regB[0]    ; MainBus[3]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[0]    ; MainBus[4]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[0]    ; MainBus[5]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[0]    ; MainBus[6]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[0]    ; MainBus[7]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[1]    ; MainBus[1]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[1]    ; MainBus[2]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[1]    ; MainBus[3]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[1]    ; MainBus[4]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[1]    ; MainBus[5]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[1]    ; MainBus[6]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[1]    ; MainBus[7]           ; 35.000 ; 35.000 ; 35.000 ; 35.000 ;
+; regB[2]    ; MainBus[2]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[2]    ; MainBus[3]           ; 36.000 ; 36.000 ; 36.000 ; 36.000 ;
+; regB[2]    ; MainBus[4]           ; 36.000 ; 36.000 ; 36.000 ; 36.000 ;
+; regB[2]    ; MainBus[5]           ; 36.000 ; 36.000 ; 36.000 ; 36.000 ;
+; regB[2]    ; MainBus[6]           ; 36.000 ; 36.000 ; 36.000 ; 36.000 ;
+; regB[2]    ; MainBus[7]           ; 36.000 ; 36.000 ; 36.000 ; 36.000 ;
+; regB[3]    ; MainBus[3]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[3]    ; MainBus[4]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[4]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[4]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[5]    ; MainBus[5]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[5]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[5]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[6]    ; MainBus[6]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[6]    ; MainBus[7]           ; 34.000 ; 34.000 ; 34.000 ; 34.000 ;
+; regB[7]    ; MainBus[7]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
++------------+----------------------+--------+--------+--------+--------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Propagation Delay                                             ;
++------------+----------------------+--------+--------+--------+--------+
+; Input Port ; Output Port          ; RR     ; RF     ; FR     ; FF     ;
++------------+----------------------+--------+--------+--------+--------+
+; Ins[0]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[0]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[0]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; MainBus[0]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[0]     ; MainBus[1]           ; 24.000 ; 32.000 ; 32.000 ; 24.000 ;
+; Ins[0]     ; MainBus[2]           ; 25.000 ;        ;        ; 25.000 ;
+; Ins[0]     ; MainBus[3]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[0]     ; MainBus[4]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[0]     ; MainBus[5]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[0]     ; MainBus[6]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[0]     ; MainBus[7]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[0]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[0]     ; RegBControl          ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; Count                ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; CounterOutControl    ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; InsRegControl        ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; JumpEnable           ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; MainBus[0]           ; 24.000 ; 41.000 ; 41.000 ; 24.000 ;
+; Ins[1]     ; MainBus[1]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[1]     ; MainBus[2]           ; 25.000 ; 41.000 ; 41.000 ; 25.000 ;
+; Ins[1]     ; MainBus[3]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[1]     ; MainBus[4]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[1]     ; MainBus[5]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[1]     ; MainBus[6]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[1]     ; MainBus[7]           ; 33.000 ; 32.000 ; 32.000 ; 33.000 ;
+; Ins[1]     ; MainRegOutputControl ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; MemOutEnable         ; 15.000 ;        ;        ; 15.000 ;
+; Ins[1]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[1]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[2]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[2]     ; MainBus[0]           ; 41.000 ; 24.000 ; 24.000 ; 41.000 ;
+; Ins[2]     ; MainBus[1]           ; 41.000 ; 24.000 ; 24.000 ; 41.000 ;
+; Ins[2]     ; MainBus[2]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[2]     ; MainBus[3]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[2]     ; MainBus[4]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[2]     ; MainBus[5]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[2]     ; MainBus[6]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[2]     ; MainBus[7]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[2]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[2]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; MainBus[0]           ; 41.000 ; 24.000 ; 24.000 ; 41.000 ;
+; Ins[3]     ; MainBus[1]           ; 41.000 ; 24.000 ; 24.000 ; 41.000 ;
+; Ins[3]     ; MainBus[2]           ; 24.000 ; 32.000 ; 32.000 ; 24.000 ;
+; Ins[3]     ; MainBus[3]           ; 32.000 ; 15.000 ; 15.000 ; 32.000 ;
+; Ins[3]     ; MainBus[4]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[3]     ; MainBus[5]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[3]     ; MainBus[6]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[3]     ; MainBus[7]           ; 32.000 ; 34.000 ; 34.000 ; 32.000 ;
+; Ins[3]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[3]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; MainBus[0]           ; 41.000 ; 24.000 ; 24.000 ; 41.000 ;
+; Ins[4]     ; MainBus[1]           ; 41.000 ; 32.000 ; 32.000 ; 41.000 ;
+; Ins[4]     ; MainBus[2]           ; 24.000 ; 34.000 ; 34.000 ; 24.000 ;
+; Ins[4]     ; MainBus[3]           ; 33.000 ; 34.000 ; 34.000 ; 33.000 ;
+; Ins[4]     ; MainBus[4]           ; 33.000 ; 15.000 ; 15.000 ; 33.000 ;
+; Ins[4]     ; MainBus[5]           ; 33.000 ; 34.000 ; 34.000 ; 33.000 ;
+; Ins[4]     ; MainBus[6]           ; 33.000 ; 34.000 ; 34.000 ; 33.000 ;
+; Ins[4]     ; MainBus[7]           ; 33.000 ; 34.000 ; 34.000 ; 33.000 ;
+; Ins[4]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[4]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; Count                ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; MainBus[0]           ; 40.000 ; 24.000 ; 24.000 ; 40.000 ;
+; Ins[5]     ; MainBus[1]           ; 40.000 ; 24.000 ; 24.000 ; 40.000 ;
+; Ins[5]     ; MainBus[2]           ; 24.000 ; 33.000 ; 33.000 ; 24.000 ;
+; Ins[5]     ; MainBus[3]           ; 24.000 ; 33.000 ; 33.000 ; 24.000 ;
+; Ins[5]     ; MainBus[4]           ; 24.000 ; 33.000 ; 33.000 ; 24.000 ;
+; Ins[5]     ; MainBus[5]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[5]     ; MainBus[6]           ; 25.000 ; 33.000 ; 33.000 ; 25.000 ;
+; Ins[5]     ; MainBus[7]           ; 25.000 ; 33.000 ; 33.000 ; 25.000 ;
+; Ins[5]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[5]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; Count                ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
+; Ins[6]     ; CounterOutControl    ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; DisplayControl       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; HighJumpRegLoad      ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; InsRegControl        ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; JumpEnable           ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; LowJumpRegLoad       ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; MainBus[0]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[1]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[2]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[3]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[4]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[5]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainBus[6]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[6]     ; MainBus[7]           ; 24.000 ; 31.000 ; 31.000 ; 24.000 ;
+; Ins[6]     ; MainRegOutputControl ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; MainRegReadControl   ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; MemOutEnable         ; 15.000 ;        ;        ; 15.000 ;
+; Ins[6]     ; RegAControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[6]     ; RegBControl          ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; Count                ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
+; Ins[7]     ; CounterOutControl    ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; DisplayControl       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; HighJumpRegLoad      ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; InsRegControl        ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; JumpEnable           ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; LowJumpRegLoad       ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; MainBus[0]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[1]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[2]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[3]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[4]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[5]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[6]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainBus[7]           ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
+; Ins[7]     ; MainRegOutputControl ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; MainRegReadControl   ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; MemOutEnable         ;        ; 15.000 ; 15.000 ;        ;
+; Ins[7]     ; RegAControl          ; 15.000 ;        ;        ; 15.000 ;
+; Ins[7]     ; RegBControl          ; 15.000 ;        ;        ; 15.000 ;
+; regA[0]    ; MainBus[0]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regA[0]    ; MainBus[1]           ;        ; 32.000 ; 32.000 ;        ;
+; regA[0]    ; MainBus[2]           ; 24.000 ;        ;        ; 24.000 ;
+; regA[0]    ; MainBus[3]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[0]    ; MainBus[4]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[0]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[0]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[0]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[1]    ; MainBus[1]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regA[1]    ; MainBus[2]           ; 25.000 ;        ;        ; 25.000 ;
+; regA[1]    ; MainBus[3]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[1]    ; MainBus[4]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[1]    ; MainBus[5]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[1]    ; MainBus[6]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[1]    ; MainBus[7]           ; 34.000 ;        ;        ; 34.000 ;
+; regA[2]    ; MainBus[2]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[2]    ; MainBus[3]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[2]    ; MainBus[4]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[2]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[2]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[2]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[3]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[3]    ; MainBus[4]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[3]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[4]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[4]    ; MainBus[5]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[4]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[5]    ; MainBus[5]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[5]    ; MainBus[6]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[5]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[6]    ; MainBus[6]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regA[6]    ; MainBus[7]           ; 33.000 ;        ;        ; 33.000 ;
+; regA[7]    ; MainBus[7]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[0]    ; MainBus[0]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[0]    ; MainBus[1]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[0]    ; MainBus[2]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[0]    ; MainBus[3]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[0]    ; MainBus[4]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[0]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[0]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[0]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[1]    ; MainBus[1]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[1]    ; MainBus[2]           ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
+; regB[1]    ; MainBus[3]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[1]    ; MainBus[4]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[1]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[1]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[1]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[2]    ; MainBus[2]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[2]    ; MainBus[3]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[2]    ; MainBus[4]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[2]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[2]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[2]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[3]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[3]    ; MainBus[4]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[3]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[4]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[4]    ; MainBus[5]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[4]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[5]    ; MainBus[5]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[5]    ; MainBus[6]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[5]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[6]    ; MainBus[6]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
+; regB[6]    ; MainBus[7]           ; 33.000 ; 33.000 ; 33.000 ; 33.000 ;
+; regB[7]    ; MainBus[7]           ; 32.000 ; 32.000 ; 32.000 ; 32.000 ;
++------------+----------------------+--------+--------+--------+--------+
+
+
++-------------------------------------------------------------------------+
+; Output Enable Times                                                     ;
++-------------+------------+--------+------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+------+------------+-----------------+
+; MainBus[*]  ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[0] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[1] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[2] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[3] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[4] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[5] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[6] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[7] ; SlowCLK    ; 57.000 ;      ; Fall       ; SlowCLK         ;
+; MainBus[*]  ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[0] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[1] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[2] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[3] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[4] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[5] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[6] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[7] ; UserCLK    ; 57.000 ;      ; Fall       ; UserCLK         ;
++-------------+------------+--------+------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Output Enable Times                                             ;
++-------------+------------+--------+------+------------+-----------------+
+; Data Port   ; Clock Port ; Rise   ; Fall ; Clock Edge ; Clock Reference ;
++-------------+------------+--------+------+------------+-----------------+
+; MainBus[*]  ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[0] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[1] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[2] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[3] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[4] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[5] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[6] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+;  MainBus[7] ; SlowCLK    ; 47.000 ;      ; Fall       ; SlowCLK         ;
+; MainBus[*]  ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[0] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[1] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[2] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[3] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[4] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[5] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[6] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
+;  MainBus[7] ; UserCLK    ; 47.000 ;      ; Fall       ; UserCLK         ;
++-------------+------------+--------+------+------------+-----------------+
 
 
 +---------------------------------------------------------------------------------+
-; Clock to Output Times                                                           ;
-+-------------------+------------+--------+--------+------------+-----------------+
-; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
-+-------------------+------------+--------+--------+------------+-----------------+
-; CLK               ; CLK_Select ; 24.000 ; 24.000 ; Rise       ; CLK_Select      ;
-; CLK               ; SlowCLK    ; 15.000 ; 15.000 ; Rise       ; SlowCLK         ;
-; CLK               ; SlowCLK    ; 15.000 ; 15.000 ; Fall       ; SlowCLK         ;
-; Count             ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; CounterOutControl ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; InsRegControl     ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; CLK               ; UserCLK    ; 15.000 ; 15.000 ; Rise       ; UserCLK         ;
-; CLK               ; UserCLK    ; 15.000 ; 15.000 ; Fall       ; UserCLK         ;
-; Count             ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-; CounterOutControl ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-; InsRegControl     ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-+-------------------+------------+--------+--------+------------+-----------------+
+; Output Disable Times                                                            ;
++-------------+------------+-----------+-----------+------------+-----------------+
+; Data Port   ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------+------------+-----------+-----------+------------+-----------------+
+; MainBus[*]  ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[0] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[1] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[2] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[3] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[4] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[5] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[6] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[7] ; SlowCLK    ; 57.000    ;           ; Fall       ; SlowCLK         ;
+; MainBus[*]  ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[0] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[1] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[2] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[3] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[4] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[5] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[6] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[7] ; UserCLK    ; 57.000    ;           ; Fall       ; UserCLK         ;
++-------------+------------+-----------+-----------+------------+-----------------+
 
 
 +---------------------------------------------------------------------------------+
-; Minimum Clock to Output Times                                                   ;
-+-------------------+------------+--------+--------+------------+-----------------+
-; Data Port         ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
-+-------------------+------------+--------+--------+------------+-----------------+
-; CLK               ; CLK_Select ; 24.000 ; 24.000 ; Rise       ; CLK_Select      ;
-; CLK               ; SlowCLK    ; 15.000 ; 15.000 ; Rise       ; SlowCLK         ;
-; CLK               ; SlowCLK    ; 15.000 ; 15.000 ; Fall       ; SlowCLK         ;
-; Count             ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; CounterOutControl ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; InsRegControl     ; SlowCLK    ; 32.000 ; 32.000 ; Fall       ; SlowCLK         ;
-; CLK               ; UserCLK    ; 15.000 ; 15.000 ; Rise       ; UserCLK         ;
-; CLK               ; UserCLK    ; 15.000 ; 15.000 ; Fall       ; UserCLK         ;
-; Count             ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-; CounterOutControl ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-; InsRegControl     ; UserCLK    ; 32.000 ; 32.000 ; Fall       ; UserCLK         ;
-+-------------------+------------+--------+--------+------------+-----------------+
-
-
-+--------------------------------------------------------------+
-; Propagation Delay                                            ;
-+------------+-------------+--------+--------+--------+--------+
-; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
-+------------+-------------+--------+--------+--------+--------+
-; Ins[0]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[0]     ; MainBus[1]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[0]     ; MainBus[2]  ; 24.000 ; 26.000 ; 26.000 ; 24.000 ;
-; Ins[0]     ; MainBus[3]  ; 26.000 ; 24.000 ; 24.000 ; 26.000 ;
-; Ins[0]     ; MainBus[4]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[0]     ; MainBus[5]  ; 23.000 ; 25.000 ; 25.000 ; 23.000 ;
-; Ins[0]     ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[0]     ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[1]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[1]     ; MainBus[1]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[1]     ; MainBus[2]  ; 24.000 ; 26.000 ; 26.000 ; 24.000 ;
-; Ins[1]     ; MainBus[3]  ; 26.000 ; 24.000 ; 24.000 ; 26.000 ;
-; Ins[1]     ; MainBus[4]  ; 25.000 ; 15.000 ; 15.000 ; 25.000 ;
-; Ins[1]     ; MainBus[5]  ; 23.000 ; 26.000 ; 26.000 ; 23.000 ;
-; Ins[1]     ; MainBus[6]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[1]     ; MainBus[7]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[2]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[2]     ; MainBus[1]  ; 24.000 ;        ;        ; 24.000 ;
-; Ins[2]     ; MainBus[2]  ; 25.000 ; 26.000 ; 26.000 ; 25.000 ;
-; Ins[2]     ; MainBus[3]  ; 26.000 ; 25.000 ; 25.000 ; 26.000 ;
-; Ins[2]     ; MainBus[4]  ; 25.000 ;        ;        ; 25.000 ;
-; Ins[2]     ; MainBus[5]  ; 15.000 ; 26.000 ; 26.000 ; 15.000 ;
-; Ins[2]     ; MainBus[6]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[2]     ; MainBus[7]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[3]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[3]     ; MainBus[1]  ; 24.000 ;        ;        ; 24.000 ;
-; Ins[3]     ; MainBus[2]  ; 25.000 ; 26.000 ; 26.000 ; 25.000 ;
-; Ins[3]     ; MainBus[3]  ; 26.000 ; 25.000 ; 25.000 ; 26.000 ;
-; Ins[3]     ; MainBus[4]  ; 25.000 ;        ;        ; 25.000 ;
-; Ins[3]     ; MainBus[5]  ; 15.000 ; 26.000 ; 26.000 ; 15.000 ;
-; Ins[3]     ; MainBus[6]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[3]     ; MainBus[7]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[4]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[4]     ; MainBus[1]  ;        ; 24.000 ; 24.000 ;        ;
-; Ins[4]     ; MainBus[2]  ; 26.000 ; 25.000 ; 25.000 ; 26.000 ;
-; Ins[4]     ; MainBus[3]  ; 25.000 ; 26.000 ; 26.000 ; 25.000 ;
-; Ins[5]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[1]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[2]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[3]  ; 16.000 ;        ;        ; 16.000 ;
-; Ins[5]     ; MainBus[4]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[5]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[5]     ; MainBus[6]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[7]  ;        ; 15.000 ; 15.000 ;        ;
-; regA[0]    ; MainBus[0]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[0]    ; MainBus[1]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[0]    ; MainBus[2]  ; 26.000 ; 25.000 ; 25.000 ; 26.000 ;
-; regA[0]    ; MainBus[3]  ; 25.000 ; 26.000 ; 26.000 ; 25.000 ;
-; regA[0]    ; MainBus[4]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[0]    ; MainBus[5]  ;        ; 26.000 ; 26.000 ;        ;
-; regA[0]    ; MainBus[6]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[0]    ; MainBus[7]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[1]    ; MainBus[1]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[1]    ; MainBus[2]  ; 24.000 ; 26.000 ; 26.000 ; 24.000 ;
-; regA[1]    ; MainBus[3]  ; 26.000 ; 24.000 ; 24.000 ; 26.000 ;
-; regA[2]    ; MainBus[2]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[2]    ; MainBus[3]  ; 16.000 ;        ;        ; 16.000 ;
-; regA[2]    ; MainBus[4]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[2]    ; MainBus[5]  ;        ; 26.000 ; 26.000 ;        ;
-; regA[2]    ; MainBus[6]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[2]    ; MainBus[7]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[3]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regA[3]    ; MainBus[4]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[3]    ; MainBus[5]  ;        ; 26.000 ; 26.000 ;        ;
-; regA[3]    ; MainBus[6]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[3]    ; MainBus[7]  ; 25.000 ;        ;        ; 25.000 ;
-; regA[4]    ; MainBus[4]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[4]    ; MainBus[5]  ; 16.000 ;        ;        ; 16.000 ;
-; regA[4]    ; MainBus[6]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[4]    ; MainBus[7]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[5]    ; MainBus[5]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regA[5]    ; MainBus[6]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[5]    ; MainBus[7]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[6]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regA[6]    ; MainBus[7]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[7]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[0]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[0]    ; MainBus[1]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[2]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[0]    ; MainBus[3]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[0]    ; MainBus[4]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[0]    ; MainBus[5]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[0]    ; MainBus[6]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[0]    ; MainBus[7]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[1]    ; MainBus[1]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[1]    ; MainBus[2]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[1]    ; MainBus[3]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[2]    ; MainBus[2]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[2]    ; MainBus[3]  ; 15.000 ; 16.000 ; 16.000 ; 15.000 ;
-; regB[2]    ; MainBus[4]  ; 24.000 ; 25.000 ; 25.000 ; 24.000 ;
-; regB[2]    ; MainBus[5]  ; 26.000 ; 25.000 ; 25.000 ; 26.000 ;
-; regB[2]    ; MainBus[6]  ; 24.000 ; 25.000 ; 25.000 ; 24.000 ;
-; regB[2]    ; MainBus[7]  ; 24.000 ; 25.000 ; 25.000 ; 24.000 ;
-; regB[3]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[3]    ; MainBus[4]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[3]    ; MainBus[5]  ; 26.000 ; 26.000 ; 26.000 ; 26.000 ;
-; regB[3]    ; MainBus[6]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[3]    ; MainBus[7]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[4]    ; MainBus[4]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[4]    ; MainBus[5]  ; 16.000 ; 16.000 ; 16.000 ; 16.000 ;
-; regB[4]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[4]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[5]    ; MainBus[5]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[5]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[5]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[6]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[6]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[7]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-+------------+-------------+--------+--------+--------+--------+
-
-
-+--------------------------------------------------------------+
-; Minimum Propagation Delay                                    ;
-+------------+-------------+--------+--------+--------+--------+
-; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
-+------------+-------------+--------+--------+--------+--------+
-; Ins[0]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[0]     ; MainBus[1]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[0]     ; MainBus[2]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[0]     ; MainBus[3]  ; 15.000 ; 24.000 ; 24.000 ; 15.000 ;
-; Ins[0]     ; MainBus[4]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[0]     ; MainBus[5]  ; 16.000 ; 24.000 ; 24.000 ; 16.000 ;
-; Ins[0]     ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[0]     ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[1]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[1]     ; MainBus[1]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[1]     ; MainBus[2]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[1]     ; MainBus[3]  ; 15.000 ; 24.000 ; 24.000 ; 15.000 ;
-; Ins[1]     ; MainBus[4]  ; 24.000 ; 15.000 ; 15.000 ; 24.000 ;
-; Ins[1]     ; MainBus[5]  ; 15.000 ; 25.000 ; 25.000 ; 15.000 ;
-; Ins[1]     ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[1]     ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; Ins[2]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[2]     ; MainBus[1]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[2]     ; MainBus[2]  ; 15.000 ; 26.000 ; 26.000 ; 15.000 ;
-; Ins[2]     ; MainBus[3]  ; 16.000 ; 24.000 ; 24.000 ; 16.000 ;
-; Ins[2]     ; MainBus[4]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[2]     ; MainBus[5]  ; 15.000 ; 23.000 ; 23.000 ; 15.000 ;
-; Ins[2]     ; MainBus[6]  ; 24.000 ; 23.000 ; 23.000 ; 24.000 ;
-; Ins[2]     ; MainBus[7]  ; 24.000 ; 23.000 ; 23.000 ; 24.000 ;
-; Ins[3]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[3]     ; MainBus[1]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[3]     ; MainBus[2]  ; 15.000 ; 26.000 ; 26.000 ; 15.000 ;
-; Ins[3]     ; MainBus[3]  ; 15.000 ; 24.000 ; 24.000 ; 15.000 ;
-; Ins[3]     ; MainBus[4]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[3]     ; MainBus[5]  ; 15.000 ; 23.000 ; 23.000 ; 15.000 ;
-; Ins[3]     ; MainBus[6]  ; 24.000 ; 23.000 ; 23.000 ; 24.000 ;
-; Ins[3]     ; MainBus[7]  ; 24.000 ; 23.000 ; 23.000 ; 24.000 ;
-; Ins[4]     ; MainBus[0]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[4]     ; MainBus[1]  ;        ; 24.000 ; 24.000 ;        ;
-; Ins[4]     ; MainBus[2]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; Ins[4]     ; MainBus[3]  ; 24.000 ; 25.000 ; 25.000 ; 24.000 ;
-; Ins[5]     ; MainBus[0]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[1]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[2]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[3]  ; 16.000 ;        ;        ; 16.000 ;
-; Ins[5]     ; MainBus[4]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[5]  ; 15.000 ;        ;        ; 15.000 ;
-; Ins[5]     ; MainBus[6]  ;        ; 15.000 ; 15.000 ;        ;
-; Ins[5]     ; MainBus[7]  ;        ; 15.000 ; 15.000 ;        ;
-; regA[0]    ; MainBus[0]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[0]    ; MainBus[1]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[0]    ; MainBus[2]  ; 25.000 ; 24.000 ; 24.000 ; 25.000 ;
-; regA[0]    ; MainBus[3]  ; 24.000 ; 25.000 ; 25.000 ; 24.000 ;
-; regA[0]    ; MainBus[4]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[0]    ; MainBus[5]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[0]    ; MainBus[6]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[0]    ; MainBus[7]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[1]    ; MainBus[1]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[1]    ; MainBus[2]  ; 24.000 ; 26.000 ; 26.000 ; 24.000 ;
-; regA[1]    ; MainBus[3]  ; 26.000 ; 24.000 ; 24.000 ; 26.000 ;
-; regA[2]    ; MainBus[2]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[2]    ; MainBus[3]  ; 15.000 ;        ;        ; 15.000 ;
-; regA[2]    ; MainBus[4]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[2]    ; MainBus[5]  ;        ; 24.000 ; 24.000 ;        ;
-; regA[2]    ; MainBus[6]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[2]    ; MainBus[7]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[3]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regA[3]    ; MainBus[4]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[3]    ; MainBus[5]  ;        ; 25.000 ; 25.000 ;        ;
-; regA[3]    ; MainBus[6]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[3]    ; MainBus[7]  ; 24.000 ;        ;        ; 24.000 ;
-; regA[4]    ; MainBus[4]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regA[4]    ; MainBus[5]  ; 15.000 ;        ;        ; 15.000 ;
-; regA[4]    ; MainBus[6]  ;        ; 23.000 ; 23.000 ;        ;
-; regA[4]    ; MainBus[7]  ;        ; 23.000 ; 23.000 ;        ;
-; regA[5]    ; MainBus[5]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regA[5]    ; MainBus[6]  ;        ; 23.000 ; 23.000 ;        ;
-; regA[5]    ; MainBus[7]  ;        ; 23.000 ; 23.000 ;        ;
-; regA[6]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regA[6]    ; MainBus[7]  ;        ; 23.000 ; 23.000 ;        ;
-; regA[7]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[0]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[0]    ; MainBus[1]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[2]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[4]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[5]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[0]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[1]    ; MainBus[1]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[1]    ; MainBus[2]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[1]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[2]    ; MainBus[2]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[2]    ; MainBus[3]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[2]    ; MainBus[4]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[2]    ; MainBus[5]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[2]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[2]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[3]    ; MainBus[3]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[3]    ; MainBus[4]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[3]    ; MainBus[5]  ; 25.000 ; 25.000 ; 25.000 ; 25.000 ;
-; regB[3]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[3]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[4]    ; MainBus[4]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[4]    ; MainBus[5]  ; 15.000 ; 15.000 ; 15.000 ; 15.000 ;
-; regB[4]    ; MainBus[6]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[4]    ; MainBus[7]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[5]    ; MainBus[5]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[5]    ; MainBus[6]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[5]    ; MainBus[7]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[6]    ; MainBus[6]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-; regB[6]    ; MainBus[7]  ; 23.000 ; 23.000 ; 23.000 ; 23.000 ;
-; regB[7]    ; MainBus[7]  ; 24.000 ; 24.000 ; 24.000 ; 24.000 ;
-+------------+-------------+--------+--------+--------+--------+
+; Minimum Output Disable Times                                                    ;
++-------------+------------+-----------+-----------+------------+-----------------+
+; Data Port   ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-------------+------------+-----------+-----------+------------+-----------------+
+; MainBus[*]  ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[0] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[1] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[2] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[3] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[4] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[5] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[6] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+;  MainBus[7] ; SlowCLK    ; 47.000    ;           ; Fall       ; SlowCLK         ;
+; MainBus[*]  ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[0] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[1] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[2] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[3] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[4] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[5] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[6] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
+;  MainBus[7] ; UserCLK    ; 47.000    ;           ; Fall       ; UserCLK         ;
++-------------+------------+-----------+-----------+------------+-----------------+
 
 
 +---------------------------------------------------------------------+
@@ -668,10 +1064,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 25    ; 25   ;
-; Unconstrained Input Port Paths  ; 114   ; 114  ;
-; Unconstrained Output Ports      ; 12    ; 12   ;
-; Unconstrained Output Port Paths ; 121   ; 121  ;
+; Unconstrained Input Ports       ; 27    ; 27   ;
+; Unconstrained Input Port Paths  ; 230   ; 230  ;
+; Unconstrained Output Ports      ; 21    ; 21   ;
+; Unconstrained Output Port Paths ; 303   ; 303  ;
 +---------------------------------+-------+------+
 
 
@@ -681,7 +1077,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Sep 26 22:11:27 2021
+    Info: Processing started: Tue Oct 12 19:37:04 2021
 Info: Command: quartus_sta AL_Controller -c AL_Controller
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -692,8 +1088,11 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: 'AL_
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name CLK_Select CLK_Select
-    Info (332105): create_clock -period 1.000 -name SlowCLK SlowCLK
     Info (332105): create_clock -period 1.000 -name UserCLK UserCLK
+    Info (332105): create_clock -period 1.000 -name SlowCLK SlowCLK
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "Control_Unit|ALU_Enable~21|[2]"
+    Warning (332126): Node "Control_Unit|ALU_Enable~21|dataout"
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Critical Warning (332148): Timing requirements not met
 Info (332146): Worst-case setup slack is -12.000
@@ -719,10 +1118,10 @@ Info (332146): Worst-case minimum pulse width slack is -5.500
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4503 megabytes
-    Info: Processing ended: Sun Sep 26 22:11:27 2021
-    Info: Elapsed time: 00:00:00
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4508 megabytes
+    Info: Processing ended: Tue Oct 12 19:37:05 2021
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 
 

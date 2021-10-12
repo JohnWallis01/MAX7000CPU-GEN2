@@ -28,7 +28,6 @@ entity StandbyGen is
        LowStackJump: out std_logic;
        HighStackJump: out std_logic;
        StackCountDirection: out std_logic;
-       Constants: out std_logic_vector (7 downto 0);
        Constant_Enable: out std_logic;
        ALU_Enable: out std_logic
   );
@@ -53,10 +52,9 @@ architecture StandbyGen_Arch of StandbyGen is
 
 
 
-
-  process(Q2, Q1, Q0)
+  process(Instruction, Q2, Q1, Q0)
   begin
-    --load constants (LDI)
+    -- load constants (LDI)
     if  Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
                       CounterOutControl <= '0';
@@ -81,7 +79,7 @@ architecture StandbyGen_Arch of StandbyGen is
                       Constant_Enable<='0';
                       StackCountDirection <='0';
                       ALU_Enable <= '0';
-
+     --
      elsif  Instruction(7) = '0' and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                       Count <= '0';
                       CounterOutControl <= '1';
@@ -156,7 +154,7 @@ architecture StandbyGen_Arch of StandbyGen is
                       Constant_Enable<='0';
                       StackCountDirection <='0';
                       ALU_Enable <= '0';
-
+     --
      elsif  Instruction(7) = '0' and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
                       CounterOutControl <= '0';
@@ -180,8 +178,7 @@ architecture StandbyGen_Arch of StandbyGen is
                       HighStackJump <= '0';
                       Constant_Enable<='1';
                       StackCountDirection <='0';
-                      Constants(6 downto 0) <= Instruction(6 downto 0);
-                      Constants(7) <= '0';
+                      -- Constants(7 downto 0) <= Instruction(7 downto 0);
                       ALU_Enable <= '0';
 
      elsif Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '1' then
@@ -207,13 +204,12 @@ architecture StandbyGen_Arch of StandbyGen is
                       HighStackJump <= '0';
                       Constant_Enable<='1';
                       StackCountDirection <='0';
-                      Constants(6 downto 0) <= Instruction(6 downto 0);
-                      Constants(7) <= '0';
+                      -- Constants(7 downto 0) <= Instruction(7 downto 0);
                       ALU_Enable <= '0';
 
 
     --ALU commmands
-    elsif  Instruction(7 downto 6) = "11" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+  elsif  Instruction(7 downto 6) = "11" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
                       CounterOutControl <= '0';
                       InsRegControl <= '0';
@@ -359,11 +355,11 @@ architecture StandbyGen_Arch of StandbyGen is
                       DisplayControl <='0';
                       LowStackJump <='0';
                       HighStackJump <= '0';
-                      Constant_Enable<='1';
+                      Constant_Enable<='0';
                       StackCountDirection <='0';
                       ALU_Enable <= '1';
 
-    elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+  elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                      Count <= '1';
                      CounterOutControl <= '0';
                      InsRegControl <= '0';
@@ -372,7 +368,7 @@ architecture StandbyGen_Arch of StandbyGen is
                      MainRegReadControl <= '0';
                      LowJumpRegLoad <= '0';
                      HighJumpRegLoad <= '0';
-                     JumpEnable <= '1';
+                     JumpEnable <= '0';
                      MainRegOutputControl <= '1';
                      MemOutEnable <= '1';
                      MemWriteControl <= '1';
@@ -460,7 +456,7 @@ architecture StandbyGen_Arch of StandbyGen is
                      StackCountDirection <='0';
 
     elsif Instruction = "10000010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
-                     Count <= '0';
+                     Count <= '1';
                      CounterOutControl <= '0';
                      InsRegControl <= '0';
                      RegAControl <= '0';
@@ -492,7 +488,7 @@ architecture StandbyGen_Arch of StandbyGen is
                      MainRegReadControl <= '0';
                      LowJumpRegLoad <= '0';
                      HighJumpRegLoad <= '0';
-                     JumpEnable <= '1';
+                     JumpEnable <= '0';
                      MainRegOutputControl <= '0';
                      MemOutEnable <= '1';
                      MemWriteControl <= '1';
@@ -506,6 +502,30 @@ architecture StandbyGen_Arch of StandbyGen is
                      HighStackJump <= '0';
                      Constant_Enable<='0';
                      StackCountDirection <='0';
+
+     elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                      Count <= '1';
+                      CounterOutControl <= '0';
+                      InsRegControl <= '0';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '1';
+                      MemOutEnable <= '1';
+                      MemWriteControl <= '1';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='1';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
 
    elsif Instruction = "10000011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                     Count <= '0';
@@ -1060,6 +1080,152 @@ architecture StandbyGen_Arch of StandbyGen is
                      StackCountDirection <='0';
 
 
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '1';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+
+
 
       else
                       Count <= '0';
@@ -1087,4 +1253,6 @@ architecture StandbyGen_Arch of StandbyGen is
                       ALU_Enable <= '0';
         end if;
       end process;
+
+
 end architecture;

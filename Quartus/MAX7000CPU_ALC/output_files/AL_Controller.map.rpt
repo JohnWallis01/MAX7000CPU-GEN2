@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AL_Controller
-Sun Sep 26 22:11:24 2021
+Tue Oct 12 19:37:01 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,15 +13,17 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. Port Connectivity Checks: "D_flip_flop:ABFlagFlop"
- 10. Port Connectivity Checks: "D_flip_flop:CarryFlagFlop"
- 11. Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D2"
- 12. Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D1"
- 13. Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D0"
- 14. Port Connectivity Checks: "Sig_Gen:SignalGenerator"
- 15. Port Connectivity Checks: "D_flip_flop:CLKFLOP"
- 16. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. Port Connectivity Checks: "Circuit74181b:ALU_High"
+ 11. Port Connectivity Checks: "Circuit74181b:ALU_Low"
+ 12. Port Connectivity Checks: "D_flip_flop:ABFlagFlop"
+ 13. Port Connectivity Checks: "D_flip_flop:CarryFlagFlop"
+ 14. Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D2"
+ 15. Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D1"
+ 16. Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D0"
+ 17. Port Connectivity Checks: "D_flip_flop:CLKFLOP"
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -47,13 +49,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sun Sep 26 22:11:24 2021           ;
+; Analysis & Synthesis Status ; Successful - Tue Oct 12 19:37:01 2021           ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; AL_Controller                                   ;
 ; Top-level Entity Name       ; AL_Controller                                   ;
 ; Family                      ; MAX7000S                                        ;
-; Total macrocells            ; 52                                              ;
-; Total pins                  ; 59                                              ;
+; Total macrocells            ; 68                                              ;
+; Total pins                  ; 60                                              ;
 +-----------------------------+-------------------------------------------------+
 
 
@@ -136,16 +138,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                   ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                            ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
-; VHDL files/SignalGen.vhdl        ; yes             ; User VHDL File  ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/SignalGen.vhdl ;         ;
-; VHDL files/logic.vhdl            ; yes             ; User VHDL File  ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/logic.vhdl     ;         ;
-; VHDL files/ALC.vhdl              ; yes             ; User VHDL File  ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/ALC.vhdl       ;         ;
-; VHDL files/74181 ALU.vhdl        ; yes             ; User VHDL File  ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/74181 ALU.vhdl ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
+; VHDL files/StandbyGenerator.vhdl ; yes             ; User VHDL File         ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/StandbyGenerator.vhdl ;         ;
+; VHDL files/Alt_ALU.verilog       ; yes             ; User Verilog HDL File  ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/Alt_ALU.verilog       ;         ;
+; VHDL files/logic.vhdl            ; yes             ; User VHDL File         ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/logic.vhdl            ;         ;
+; VHDL files/ALC.vhdl              ; yes             ; User VHDL File         ; E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/ALC.vhdl              ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------+
@@ -153,63 +155,88 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------+----------------------+
 ; Resource             ; Usage                ;
 +----------------------+----------------------+
-; Logic cells          ; 52                   ;
+; Logic cells          ; 68                   ;
 ; Total registers      ; 6                    ;
-; I/O pins             ; 59                   ;
-; Shareable expanders  ; 11                   ;
-; Parallel expanders   ; 5                    ;
-; Maximum fan-out node ; Ins[1]               ;
-; Maximum fan-out      ; 20                   ;
-; Total fan-out        ; 274                  ;
-; Average fan-out      ; 2.25                 ;
+; I/O pins             ; 60                   ;
+; Shareable expanders  ; 35                   ;
+; Parallel expanders   ; 8                    ;
+; Maximum fan-out node ; Ins[2]               ;
+; Maximum fan-out      ; 33                   ;
+; Total fan-out        ; 568                  ;
+; Average fan-out      ; 3.48                 ;
 +----------------------+----------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                     ;
-+------------------------------+------------+------+-------------------------------------------------------+--------------+
-; Compilation Hierarchy Node   ; Macrocells ; Pins ; Full Hierarchy Name                                   ; Library Name ;
-+------------------------------+------------+------+-------------------------------------------------------+--------------+
-; |AL_Controller               ; 52         ; 59   ; |AL_Controller                                        ; work         ;
-;    |ALU:ALU_High|            ; 10         ; 0    ; |AL_Controller|ALU:ALU_High                           ; work         ;
-;       |dual_NOR:dualNOR0|    ; 0          ; 0    ; |AL_Controller|ALU:ALU_High|dual_NOR:dualNOR0         ; work         ;
-;       |dual_NOR:dualNOR2|    ; 0          ; 0    ; |AL_Controller|ALU:ALU_High|dual_NOR:dualNOR2         ; work         ;
-;       |dual_XOR:XOR0|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR0             ; work         ;
-;       |dual_XOR:XOR1|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR1             ; work         ;
-;       |dual_XOR:XOR2|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR2             ; work         ;
-;       |dual_XOR:XOR3|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_High|dual_XOR:XOR3             ; work         ;
-;       |triple_NOR:triNOR0|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR0        ; work         ;
-;       |triple_NOR:triNOR1|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR1        ; work         ;
-;       |triple_NOR:triNOR2|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_High|triple_NOR:triNOR2        ; work         ;
-;    |ALU:ALU_Low|             ; 13         ; 0    ; |AL_Controller|ALU:ALU_Low                            ; work         ;
-;       |dual_NOR:dualNOR_X|   ; 2          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_NOR:dualNOR_X         ; work         ;
-;       |dual_XOR:XOR0|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR0              ; work         ;
-;       |dual_XOR:XOR1|        ; 2          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR1              ; work         ;
-;       |dual_XOR:XOR2|        ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR2              ; work         ;
-;       |dual_XOR:XOR3|        ; 3          ; 0    ; |AL_Controller|ALU:ALU_Low|dual_XOR:XOR3              ; work         ;
-;       |quad_NOR:quadNOR0|    ; 3          ; 0    ; |AL_Controller|ALU:ALU_Low|quad_NOR:quadNOR0          ; work         ;
-;       |triple_NOR:triNOR3|   ; 1          ; 0    ; |AL_Controller|ALU:ALU_Low|triple_NOR:triNOR3         ; work         ;
-;    |D_flip_flop:CLKFLOP|     ; 2          ; 0    ; |AL_Controller|D_flip_flop:CLKFLOP                    ; work         ;
-;    |Sig_Gen:SignalGenerator| ; 7          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator                ; work         ;
-;       |D_flip_flop:D0|       ; 2          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D0 ; work         ;
-;       |D_flip_flop:D1|       ; 1          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D1 ; work         ;
-;       |D_flip_flop:D2|       ; 1          ; 0    ; |AL_Controller|Sig_Gen:SignalGenerator|D_flip_flop:D2 ; work         ;
-+------------------------------+------------+------+-------------------------------------------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                    ;
++----------------------------------+------------+------+----------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node       ; Macrocells ; Pins ; Full Hierarchy Name                                                              ; Library Name ;
++----------------------------------+------------+------+----------------------------------------------------------------------------------+--------------+
+; |AL_Controller                   ; 68         ; 60   ; |AL_Controller                                                                   ; work         ;
+;    |Circuit74181b:ALU_High|      ; 12         ; 0    ; |AL_Controller|Circuit74181b:ALU_High                                            ; work         ;
+;       |TopLevel74181b:Ckt74181b| ; 12         ; 0    ; |AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b                   ; work         ;
+;          |Dmodule:Dmod2|         ; 3          ; 0    ; |AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Dmodule:Dmod2     ; work         ;
+;          |Emodule:Emod1|         ; 3          ; 0    ; |AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Emodule:Emod1     ; work         ;
+;          |Summodule:Summod4|     ; 6          ; 0    ; |AL_Controller|Circuit74181b:ALU_High|TopLevel74181b:Ckt74181b|Summodule:Summod4 ; work         ;
+;    |Circuit74181b:ALU_Low|       ; 13         ; 0    ; |AL_Controller|Circuit74181b:ALU_Low                                             ; work         ;
+;       |TopLevel74181b:Ckt74181b| ; 13         ; 0    ; |AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b                    ; work         ;
+;          |CLAmodule:CLAmod3|     ; 4          ; 0    ; |AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|CLAmodule:CLAmod3  ; work         ;
+;          |Dmodule:Dmod2|         ; 2          ; 0    ; |AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Dmodule:Dmod2      ; work         ;
+;          |Emodule:Emod1|         ; 1          ; 0    ; |AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Emodule:Emod1      ; work         ;
+;          |Summodule:Summod4|     ; 6          ; 0    ; |AL_Controller|Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Summodule:Summod4  ; work         ;
+;    |D_flip_flop:CLKFLOP|         ; 2          ; 0    ; |AL_Controller|D_flip_flop:CLKFLOP                                               ; work         ;
+;    |Octal_Bus_Driver:ALU_Buffer| ; 9          ; 0    ; |AL_Controller|Octal_Bus_Driver:ALU_Buffer                                       ; work         ;
+;    |StandbyGen:Control_Unit|     ; 20         ; 0    ; |AL_Controller|StandbyGen:Control_Unit                                           ; work         ;
+;       |D_flip_flop:D0|           ; 2          ; 0    ; |AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D0                            ; work         ;
+;       |D_flip_flop:D1|           ; 1          ; 0    ; |AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D1                            ; work         ;
+;       |D_flip_flop:D2|           ; 1          ; 0    ; |AL_Controller|StandbyGen:Control_Unit|D_flip_flop:D2                            ; work         ;
++----------------------------------+------------+------+----------------------------------------------------------------------------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                            ;
-+------------------------------------------------+--------------------------------------------------------------+
-; Register name                                  ; Reason for Removal                                           ;
-+------------------------------------------------+--------------------------------------------------------------+
-; D_flip_flop:CLKFLOP|Q~en                       ; Merged with D_flip_flop:CLKFLOP|Qnot~en                      ;
-; Sig_Gen:SignalGenerator|D_flip_flop:D1|Q~en    ; Merged with Sig_Gen:SignalGenerator|D_flip_flop:D0|Q~en      ;
-; Sig_Gen:SignalGenerator|D_flip_flop:D0|Q~en    ; Merged with Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~en   ;
-; Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot~en ; Merged with Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~en   ;
-; D_flip_flop:CLKFLOP|Q~reg0                     ; Merged with D_flip_flop:CLKFLOP|Qnot~reg0                    ;
-; Sig_Gen:SignalGenerator|D_flip_flop:D0|Q~reg0  ; Merged with Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot~reg0 ;
-; Total Number of Removed Registers = 6          ;                                                              ;
-+------------------------------------------------+--------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                              ;
++----------------------------------------------------+------------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal                ; Free of Timing Hazards ;
++----------------------------------------------------+------------------------------------+------------------------+
+; StandbyGen:Control_Unit|ALU_Enable                 ; StandbyGen:Control_Unit|ALU_Enable ; yes                    ;
+; Number of user-specified and inferred latches = 1  ;                                    ;                        ;
++----------------------------------------------------+------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                           ;
++--------------------------------------------------+-----------------------------------------------------------+
+; Register name                                    ; Reason for Removal                                        ;
++--------------------------------------------------+-----------------------------------------------------------+
+; StandbyGen:Control_Unit|D_flip_flop:D2|Qnot~en   ; Merged with StandbyGen:Control_Unit|D_flip_flop:D2|Q~en   ;
+; StandbyGen:Control_Unit|D_flip_flop:D2|Q~en      ; Merged with StandbyGen:Control_Unit|D_flip_flop:D1|Q~en   ;
+; StandbyGen:Control_Unit|D_flip_flop:D1|Q~en      ; Merged with StandbyGen:Control_Unit|D_flip_flop:D0|Q~en   ;
+; D_flip_flop:CLKFLOP|Qnot~en                      ; Merged with D_flip_flop:CLKFLOP|Q~en                      ;
+; D_flip_flop:CLKFLOP|Qnot~reg0                    ; Merged with D_flip_flop:CLKFLOP|Q~reg0                    ;
+; StandbyGen:Control_Unit|D_flip_flop:D2|Qnot~reg0 ; Merged with StandbyGen:Control_Unit|D_flip_flop:D2|Q~reg0 ;
+; Total Number of Removed Registers = 6            ;                                                           ;
++--------------------------------------------------+-----------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Circuit74181b:ALU_High"                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; X    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Y    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Circuit74181b:ALU_Low"                                                              ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; X    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Y    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------+
@@ -219,7 +246,6 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; rst  ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; en   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; qnot ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -231,13 +257,12 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; rst  ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; en   ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; qnot ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------+
-; Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D2" ;
+; Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D2" ;
 +------+-------+----------+------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                  ;
 +------+-------+----------+------------------------------------------+
@@ -245,32 +270,24 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------+-------+----------+------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D1" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; en   ; Input ; Info     ; Stuck at VCC                             ;
-+------+-------+----------+------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D1"                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; en   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; qnot ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Port Connectivity Checks: "Sig_Gen:SignalGenerator|D_flip_flop:D0" ;
-+------+-------+----------+------------------------------------------+
-; Port ; Type  ; Severity ; Details                                  ;
-+------+-------+----------+------------------------------------------+
-; en   ; Input ; Info     ; Stuck at VCC                             ;
-+------+-------+----------+------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Sig_Gen:SignalGenerator"                                                                        ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port             ; Type   ; Severity ; Details                                                                             ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; modread          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; ramaddrandmodout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "StandbyGen:Control_Unit|D_flip_flop:D0"                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; en   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; qnot ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------+
@@ -278,7 +295,6 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------+-------+----------+-----------------------+
 ; Port ; Type  ; Severity ; Details               ;
 +------+-------+----------+-----------------------+
-; rst  ; Input ; Info     ; Stuck at GND          ;
 ; en   ; Input ; Info     ; Stuck at VCC          ;
 +------+-------+----------+-----------------------+
 
@@ -289,137 +305,74 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Sep 26 22:11:23 2021
+    Info: Processing started: Tue Oct 12 19:37:00 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AL_Controller -c AL_Controller
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file vhdl files/signalgen.vhdl
-    Info (12022): Found design unit 1: Sig_Gen-Sig_Gen_Arch
-    Info (12023): Found entity 1: Sig_Gen
-Info (12021): Found 28 design units, including 14 entities, in source file vhdl files/logic.vhdl
-    Info (12022): Found design unit 1: INV-INV_beh
-    Info (12022): Found design unit 2: dual_AND-dual_AND_beh
-    Info (12022): Found design unit 3: triple_AND-triple_AND_beh
-    Info (12022): Found design unit 4: quad_AND-quad_AND_beh
-    Info (12022): Found design unit 5: pent_AND-pent_AND_beh
-    Info (12022): Found design unit 6: dual_XOR-dual_XOR_beh
-    Info (12022): Found design unit 7: dual_NOR-dual_NOR_beh
-    Info (12022): Found design unit 8: triple_NOR-triple_NOR_beh
-    Info (12022): Found design unit 9: quad_NOR-quad_NOR_beh
-    Info (12022): Found design unit 10: quad_OR-quad_OR_beh
-    Info (12022): Found design unit 11: BUF-BUF_beh
-    Info (12022): Found design unit 12: dual_NAND-dual_NAND_beh
-    Info (12022): Found design unit 13: Octal_Bus_Driver-Octal_Bus_Driver_beh
-    Info (12022): Found design unit 14: D_flip_flop-DFF_arch
-    Info (12023): Found entity 1: INV
-    Info (12023): Found entity 2: dual_AND
-    Info (12023): Found entity 3: triple_AND
-    Info (12023): Found entity 4: quad_AND
-    Info (12023): Found entity 5: pent_AND
-    Info (12023): Found entity 6: dual_XOR
-    Info (12023): Found entity 7: dual_NOR
-    Info (12023): Found entity 8: triple_NOR
-    Info (12023): Found entity 9: quad_NOR
-    Info (12023): Found entity 10: quad_OR
-    Info (12023): Found entity 11: BUF
-    Info (12023): Found entity 12: dual_NAND
-    Info (12023): Found entity 13: Octal_Bus_Driver
-    Info (12023): Found entity 14: D_flip_flop
+Info (12021): Found 2 design units, including 1 entities, in source file vhdl files/standbygenerator.vhdl
+    Info (12022): Found design unit 1: StandbyGen-StandbyGen_Arch
+    Info (12023): Found entity 1: StandbyGen
+Info (12021): Found 2 design units, including 1 entities, in source file vhdl files/microcodegen2.vhdl
+    Info (12022): Found design unit 1: MircoCodeGen-MircoCodeGen_Arch
+    Info (12023): Found entity 1: MircoCodeGen
+Info (12021): Found 6 design units, including 6 entities, in source file vhdl files/alt_alu.verilog
+    Info (12023): Found entity 1: Circuit74181b
+    Info (12023): Found entity 2: TopLevel74181b
+    Info (12023): Found entity 3: Emodule
+    Info (12023): Found entity 4: Dmodule
+    Info (12023): Found entity 5: CLAmodule
+    Info (12023): Found entity 6: Summodule
+Info (12021): Found 4 design units, including 2 entities, in source file vhdl files/logic.vhdl
+    Info (12022): Found design unit 1: Octal_Bus_Driver-Octal_Bus_Driver_beh
+    Info (12022): Found design unit 2: D_flip_flop-DFF_arch
+    Info (12023): Found entity 1: Octal_Bus_Driver
+    Info (12023): Found entity 2: D_flip_flop
 Info (12021): Found 2 design units, including 1 entities, in source file vhdl files/alc.vhdl
     Info (12022): Found design unit 1: AL_Controller-AL_Controller_str
     Info (12023): Found entity 1: AL_Controller
-Info (12021): Found 2 design units, including 1 entities, in source file vhdl files/74181 alu.vhdl
-    Info (12022): Found design unit 1: ALU-ALU_str
-    Info (12023): Found entity 1: ALU
-Warning (12019): Can't analyze file -- file VHDL files/test_flipFlop.vhdl is missing
 Info (12127): Elaborating entity "AL_Controller" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(18): used implicit default value for signal "RegAControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(19): used implicit default value for signal "RegBControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(20): used implicit default value for signal "MainRegReadControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(21): used implicit default value for signal "LowJumpRegLoad" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(22): used implicit default value for signal "HighJumpRegLoad" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(23): used implicit default value for signal "JumpEnable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(24): used implicit default value for signal "MainRegOutputControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(25): used implicit default value for signal "MemOutEnable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(26): used implicit default value for signal "MemWriteControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(27): used implicit default value for signal "Ram_LowControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(28): used implicit default value for signal "Ram_HighControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(29): used implicit default value for signal "Ram_Addr_Enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(30): used implicit default value for signal "StackCount" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(31): used implicit default value for signal "StackOutControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(32): used implicit default value for signal "DisplayControl" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(33): used implicit default value for signal "LowStackJump" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(34): used implicit default value for signal "HighStackJump" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(35): used implicit default value for signal "SYNC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(36): used implicit default value for signal "STATE" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at ALC.vhdl(80): object "ModReadTSig" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ALC.vhdl(80): object "ModOutTSig" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ALC.vhdl(80): object "CarryFlag" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ALC.vhdl(80): object "ABFlag" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at ALC.vhdl(80): used implicit default value for signal "ALU_Enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "D_flip_flop" for hierarchy "D_flip_flop:CLKFLOP"
-Info (12128): Elaborating entity "Sig_Gen" for hierarchy "Sig_Gen:SignalGenerator"
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:ALU_Low"
-Info (12128): Elaborating entity "INV" for hierarchy "ALU:ALU_Low|INV:MInverter"
-Info (12128): Elaborating entity "dual_AND" for hierarchy "ALU:ALU_Low|dual_AND:dualAnd0"
-Info (12128): Elaborating entity "triple_AND" for hierarchy "ALU:ALU_Low|triple_AND:triAnd0"
-Info (12128): Elaborating entity "triple_NOR" for hierarchy "ALU:ALU_Low|triple_NOR:triNOR0"
-Info (12128): Elaborating entity "dual_NOR" for hierarchy "ALU:ALU_Low|dual_NOR:dualNOR0"
-Info (12128): Elaborating entity "dual_NAND" for hierarchy "ALU:ALU_Low|dual_NAND:dualNAND0"
-Info (12128): Elaborating entity "quad_AND" for hierarchy "ALU:ALU_Low|quad_AND:quadAND0"
-Info (12128): Elaborating entity "pent_AND" for hierarchy "ALU:ALU_Low|pent_AND:pentAND0"
-Info (12128): Elaborating entity "quad_NOR" for hierarchy "ALU:ALU_Low|quad_NOR:quadNOR0"
-Info (12128): Elaborating entity "quad_OR" for hierarchy "ALU:ALU_Low|quad_OR:quadOR0"
-Info (12128): Elaborating entity "dual_XOR" for hierarchy "ALU:ALU_Low|dual_XOR:XOR0"
-Info (12128): Elaborating entity "BUF" for hierarchy "ALU:ALU_Low|BUF:BUF0"
-Info (12128): Elaborating entity "Octal_Bus_Driver" for hierarchy "Octal_Bus_Driver:ALU_Buffer"
-Warning (13044): Always-enabled tri-state buffer(s) removed
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[0]" to the node "MainBus[0]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[1]" to the node "MainBus[1]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[2]" to the node "MainBus[2]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[3]" to the node "MainBus[3]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[4]" to the node "MainBus[4]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[5]" to the node "MainBus[5]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[6]" to the node "MainBus[6]" into a wire
-    Warning (13045): Converted the fanout from the always-enabled tri-state buffer "Octal_Bus_Driver:ALU_Buffer|O[7]" to the node "MainBus[7]" into a wire
+Info (12128): Elaborating entity "StandbyGen" for hierarchy "StandbyGen:Control_Unit"
+Warning (10036): Verilog HDL or VHDL warning at StandbyGenerator.vhdl(45): object "Qn0" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at StandbyGenerator.vhdl(45): object "Qn1" assigned a value but never read
+Warning (10631): VHDL Process Statement warning at StandbyGenerator.vhdl(55): inferring latch(es) for signal or variable "ALU_Enable", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "ALU_Enable" at StandbyGenerator.vhdl(55)
+Info (12128): Elaborating entity "Octal_Bus_Driver" for hierarchy "Octal_Bus_Driver:Constants_Buffer"
+Info (12128): Elaborating entity "Circuit74181b" for hierarchy "Circuit74181b:ALU_Low"
+Info (12128): Elaborating entity "TopLevel74181b" for hierarchy "Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b"
+Info (12128): Elaborating entity "Emodule" for hierarchy "Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Emodule:Emod1"
+Info (12128): Elaborating entity "Dmodule" for hierarchy "Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Dmodule:Dmod2"
+Info (12128): Elaborating entity "CLAmodule" for hierarchy "Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|CLAmodule:CLAmod3"
+Info (12128): Elaborating entity "Summodule" for hierarchy "Circuit74181b:ALU_Low|TopLevel74181b:Ckt74181b|Summodule:Summod4"
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13047): Converted the fan-out from the tri-state buffer "D_flip_flop:CLKFLOP|Qnot" to the node "interntalCLK" into an OR gate
     Warning (13047): Converted the fan-out from the tri-state buffer "D_flip_flop:CLKFLOP|Q" to the node "interntalCLK" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "Sig_Gen:SignalGenerator|D_flip_flop:D0|Qnot" to the node "Sig_Gen:SignalGenerator|Count" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "Sig_Gen:SignalGenerator|D_flip_flop:D2|Qnot" to the node "Sig_Gen:SignalGenerator|Count" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "Sig_Gen:SignalGenerator|D_flip_flop:D0|Q" to the node "Sig_Gen:SignalGenerator|CounterOut" into an OR gate
-    Warning (13047): Converted the fan-out from the tri-state buffer "Sig_Gen:SignalGenerator|D_flip_flop:D1|Q" to the node "Sig_Gen:SignalGenerator|InstructRead" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "StandbyGen:Control_Unit|D_flip_flop:D0|Q" to the node "StandbyGen:Control_Unit|process_0" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "StandbyGen:Control_Unit|D_flip_flop:D1|Q" to the node "StandbyGen:Control_Unit|process_0" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "StandbyGen:Control_Unit|D_flip_flop:D2|Q" to the node "StandbyGen:Control_Unit|process_0" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "D_flip_flop:CLKFLOP|Qnot" to the node "D_flip_flop:CLKFLOP|Q" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "StandbyGen:Control_Unit|D_flip_flop:D2|Qnot" to the node "StandbyGen:Control_Unit|D_flip_flop:D0|Q" into an OR gate
 Info (13000): Registers with preset signals will power-up high
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "RegAControl" is stuck at GND
-    Warning (13410): Pin "RegBControl" is stuck at GND
-    Warning (13410): Pin "MainRegReadControl" is stuck at GND
-    Warning (13410): Pin "LowJumpRegLoad" is stuck at GND
-    Warning (13410): Pin "HighJumpRegLoad" is stuck at GND
-    Warning (13410): Pin "JumpEnable" is stuck at GND
-    Warning (13410): Pin "MainRegOutputControl" is stuck at GND
-    Warning (13410): Pin "MemOutEnable" is stuck at GND
-    Warning (13410): Pin "MemWriteControl" is stuck at GND
+    Warning (13410): Pin "MemWriteControl" is stuck at VCC
     Warning (13410): Pin "Ram_LowControl" is stuck at GND
     Warning (13410): Pin "Ram_HighControl" is stuck at GND
-    Warning (13410): Pin "Ram_Addr_Enable" is stuck at GND
+    Warning (13410): Pin "Ram_Addr_Enable" is stuck at VCC
     Warning (13410): Pin "StackCount" is stuck at GND
-    Warning (13410): Pin "StackOutControl" is stuck at GND
-    Warning (13410): Pin "DisplayControl" is stuck at GND
+    Warning (13410): Pin "StackOutControl" is stuck at VCC
     Warning (13410): Pin "LowStackJump" is stuck at GND
     Warning (13410): Pin "HighStackJump" is stuck at GND
     Warning (13410): Pin "SYNC" is stuck at GND
     Warning (13410): Pin "STATE" is stuck at GND
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "Ins[6]"
-    Warning (15610): No output dependent on input pin "Ins[7]"
-Info (21057): Implemented 122 device resources after synthesis - the final resource count might be different
+    Warning (13410): Pin "StackCountDirection" is stuck at GND
+Info (21057): Implemented 163 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 28 input pins
-    Info (21059): Implemented 31 output pins
-    Info (21063): Implemented 52 macrocells
-    Info (21073): Implemented 11 shareable expanders
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 65 warnings
-    Info: Peak virtual memory: 4615 megabytes
-    Info: Processing ended: Sun Sep 26 22:11:24 2021
+    Info (21059): Implemented 32 output pins
+    Info (21063): Implemented 68 macrocells
+    Info (21073): Implemented 35 shareable expanders
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 25 warnings
+    Info: Peak virtual memory: 4600 megabytes
+    Info: Processing ended: Tue Oct 12 19:37:01 2021
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

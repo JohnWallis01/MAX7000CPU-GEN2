@@ -43,5 +43,9 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
+vcom -93 -work work {E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/MicroCodeGen.vhdl}
+vcom -93 -work work {E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/SignalGen.vhdl}
+vcom -93 -work work {E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/logic.vhdl}
 vcom -93 -work work {E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/ALC.vhdl}
+vcom -93 -work work {E:/Libraries/Documents/MAX7000CPU-GEN2/Quartus/MAX7000CPU_ALC/VHDL files/74181 ALU.vhdl}
 

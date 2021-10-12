@@ -1,5 +1,5 @@
 Assembler report for AL_Controller
-Sun Sep 26 22:11:26 2021
+Tue Oct 12 19:37:04 2021
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Sep 26 22:11:26 2021 ;
+; Assembler Status      ; Successful - Tue Oct 12 19:37:04 2021 ;
 ; Revision Name         ; AL_Controller                         ;
 ; Top-level Entity Name ; AL_Controller                         ;
 ; Family                ; MAX7000S                              ;
@@ -89,7 +89,7 @@ applicable agreement for further details.
 +----------------+-------------------------------------------------------------------------------------------------------+
 ; Device         ; EPM7128SLC84-15                                                                                       ;
 ; JTAG usercode  ; 0x00000000                                                                                            ;
-; Checksum       ; 0x001A8DCA                                                                                            ;
+; Checksum       ; 0x001A1EAE                                                                                            ;
 +----------------+-------------------------------------------------------------------------------------------------------+
 
 
@@ -99,13 +99,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Sep 26 22:11:26 2021
+    Info: Processing started: Tue Oct 12 19:37:03 2021
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off AL_Controller -c AL_Controller
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4500 megabytes
-    Info: Processing ended: Sun Sep 26 22:11:26 2021
-    Info: Elapsed time: 00:00:00
+    Info: Processing ended: Tue Oct 12 19:37:04 2021
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 
 

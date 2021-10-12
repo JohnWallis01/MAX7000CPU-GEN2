@@ -137,7 +137,7 @@ regB[6]                      : 73        : input  : TTL               :         
 regB[7]                      : 74        : input  : TTL               :         :           : Y              
 LowStackJump                 : 75        : output : TTL               :         :           : Y              
 HighStackJump                : 76        : output : TTL               :         :           : Y              
-RESERVED                     : 77        :        :                   :         :           :                
+StackCountDirection          : 77        : output : TTL               :         :           : Y              
 VCCIO                        : 78        : power  :                   : 5.0V    :           :                
 CLK                          : 79        : output : TTL               :         :           : Y              
 SYNC                         : 80        : output : TTL               :         :           : Y              
