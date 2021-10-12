@@ -1233,7 +1233,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                    MainRegReadControl <= '0';
                    LowJumpRegLoad <= '0';
                    HighJumpRegLoad <= '0';
-                   JumpEnable <= '1';
+                   JumpEnable <= '0';
                    MainRegOutputControl <= '1';
                    MemOutEnable <= '1';
                    MemWriteControl <= '1';
@@ -1321,7 +1321,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                    StackCountDirection <='0';
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
-                   Count <= '0';
+                   Count <= '1';
                    CounterOutControl <= '0';
                    InsRegControl <= '0';
                    RegAControl <= '0';
@@ -1353,7 +1353,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                    MainRegReadControl <= '0';
                    LowJumpRegLoad <= '0';
                    HighJumpRegLoad <= '0';
-                   JumpEnable <= '1';
+                   JumpEnable <= '0';
                    MainRegOutputControl <= '0';
                    MemOutEnable <= '1';
                    MemWriteControl <= '1';
@@ -1522,7 +1522,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                     MainRegReadControl <= '0';
                     LowJumpRegLoad <= '0';
                     HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
+                    JumpEnable <= '0';
                     MainRegOutputControl <= '1';
                     MemOutEnable <= '1';
                     MemWriteControl <= '1';
@@ -1610,7 +1610,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                     StackCountDirection <='0';
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
-                    Count <= '0';
+                    Count <= '1';
                     CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
@@ -1642,7 +1642,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                     MainRegReadControl <= '0';
                     LowJumpRegLoad <= '0';
                     HighJumpRegLoad <= '0';
-                    JumpEnable <= '1';
+                    JumpEnable <= '0';
                     MainRegOutputControl <= '0';
                     MemOutEnable <= '1';
                     MemWriteControl <= '1';
