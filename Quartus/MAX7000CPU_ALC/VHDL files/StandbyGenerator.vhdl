@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity StandbyGen is
+entity MicroCodeGen is
   port(Instruction: in std_logic_vector (7 downto 0);
        ABFlag: in std_logic;
        CarryFlag: in std_logic;
@@ -32,9 +32,9 @@ entity StandbyGen is
        ALU_Enable: out std_logic
   );
 
-end StandbyGen;
+end MicroCodeGen;
 
-architecture StandbyGen_Arch of StandbyGen is
+architecture StandbyGen_Arch of MicroCodeGen is
 
   component D_flip_flop
   port (clk,Din,rst,en : in std_logic;
@@ -52,7 +52,7 @@ architecture StandbyGen_Arch of StandbyGen is
 
 
 
-  process(Instruction, Q2, Q1, Q0)
+  process(Instruction, Q2, Q1, Q0, ABFlag, CarryFlag)
   begin
     -- load constants (LDI)
     if  Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '0' then
@@ -1224,10 +1224,801 @@ architecture StandbyGen_Arch of StandbyGen is
                     Constant_Enable<='0';
                     StackCountDirection <='0';
 
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
+                   Count <= '1';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
+                   Count <= '0';
+                   CounterOutControl <= '1';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '0';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '1' then
+                   Count <= '0';
+                   CounterOutControl <= '1';
+                   InsRegControl <= '1';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '0';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '0';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '1' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '1';
+                   MainRegOutputControl <= '0';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
+                   Count <= '1';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
+                   Count <= '0';
+                   CounterOutControl <= '1';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '0';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '0' then
+                   Count <= '0';
+                   CounterOutControl <= '1';
+                   InsRegControl <= '1';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '0';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '1';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '0';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
+
+  elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '0' then
+                   Count <= '0';
+                   CounterOutControl <= '0';
+                   InsRegControl <= '0';
+                   RegAControl <= '0';
+                   RegBControl <= '0';
+                   MainRegReadControl <= '0';
+                   LowJumpRegLoad <= '0';
+                   HighJumpRegLoad <= '0';
+                   JumpEnable <= '0';
+                   MainRegOutputControl <= '0';
+                   MemOutEnable <= '1';
+                   MemWriteControl <= '1';
+                   Ram_LowControl <= '0';
+                   Ram_HighControl <= '0';
+                   Ram_Addr_Enable <='1';
+                   StackCount <= '0';
+                   StackOutControl <= '1';
+                   DisplayControl <='0';
+                   LowStackJump <='0';
+                   HighStackJump <= '0';
+                   Constant_Enable<='0';
+                   StackCountDirection <='0';
 
 
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
 
-      else
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '1' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '1';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '1';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '1';
+                    InsRegControl <= '1';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '0';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '1';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+   elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '0' then
+                    Count <= '0';
+                    CounterOutControl <= '0';
+                    InsRegControl <= '0';
+                    RegAControl <= '0';
+                    RegBControl <= '0';
+                    MainRegReadControl <= '0';
+                    LowJumpRegLoad <= '0';
+                    HighJumpRegLoad <= '0';
+                    JumpEnable <= '0';
+                    MainRegOutputControl <= '0';
+                    MemOutEnable <= '1';
+                    MemWriteControl <= '1';
+                    Ram_LowControl <= '0';
+                    Ram_HighControl <= '0';
+                    Ram_Addr_Enable <='1';
+                    StackCount <= '0';
+                    StackOutControl <= '1';
+                    DisplayControl <='0';
+                    LowStackJump <='0';
+                    HighStackJump <= '0';
+                    Constant_Enable<='0';
+                    StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                     Count <= '1';
+                     CounterOutControl <= '0';
+                     InsRegControl <= '0';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '0';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '1';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='1';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                     Count <= '0';
+                     CounterOutControl <= '1';
+                     InsRegControl <= '0';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '0';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '0';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='1';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                     Count <= '0';
+                     CounterOutControl <= '1';
+                     InsRegControl <= '1';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '0';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '0';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='1';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                     Count <= '0';
+                     CounterOutControl <= '0';
+                     InsRegControl <= '0';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '0';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '0';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='1';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                     Count <= '0';
+                     CounterOutControl <= '0';
+                     InsRegControl <= '0';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '0';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '0';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='0';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+    elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                     Count <= '0';
+                     CounterOutControl <= '0';
+                     InsRegControl <= '0';
+                     RegAControl <= '0';
+                     RegBControl <= '0';
+                     MainRegReadControl <= '1';
+                     LowJumpRegLoad <= '0';
+                     HighJumpRegLoad <= '0';
+                     JumpEnable <= '0';
+                     MainRegOutputControl <= '1';
+                     MemOutEnable <= '0';
+                     MemWriteControl <= '1';
+                     Ram_LowControl <= '0';
+                     Ram_HighControl <= '0';
+                     Ram_Addr_Enable <='0';
+                     StackCount <= '0';
+                     StackOutControl <= '1';
+                     DisplayControl <='0';
+                     LowStackJump <='0';
+                     HighStackJump <= '0';
+                     Constant_Enable<='0';
+                     StackCountDirection <='0';
+
+
+     elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                      Count <= '1';
+                      CounterOutControl <= '0';
+                      InsRegControl <= '0';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '1';
+                      MemOutEnable <= '1';
+                      MemWriteControl <= '1';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='1';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
+
+     elsif Instruction = "10110000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                      Count <= '0';
+                      CounterOutControl <= '1';
+                      InsRegControl <= '0';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '1';
+                      MemOutEnable <= '0';
+                      MemWriteControl <= '1';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='1';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
+
+     elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                      Count <= '0';
+                      CounterOutControl <= '1';
+                      InsRegControl <= '1';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '1';
+                      MemOutEnable <= '0';
+                      MemWriteControl <= '1';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='1';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
+
+     elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
                       CounterOutControl <= '0';
                       InsRegControl <= '0';
@@ -1250,7 +2041,804 @@ architecture StandbyGen_Arch of StandbyGen is
                       HighStackJump <= '0';
                       Constant_Enable<='0';
                       StackCountDirection <='0';
-                      ALU_Enable <= '0';
+
+     elsif Instruction = "10110000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                      Count <= '0';
+                      CounterOutControl <= '0';
+                      InsRegControl <= '0';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '0';
+                      MemOutEnable <= '1';
+                      MemWriteControl <= '1';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='0';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
+
+     elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                      Count <= '0';
+                      CounterOutControl <= '0';
+                      InsRegControl <= '0';
+                      RegAControl <= '0';
+                      RegBControl <= '0';
+                      MainRegReadControl <= '0';
+                      LowJumpRegLoad <= '0';
+                      HighJumpRegLoad <= '0';
+                      JumpEnable <= '0';
+                      MainRegOutputControl <= '0';
+                      MemOutEnable <= '1';
+                      MemWriteControl <= '0';
+                      Ram_LowControl <= '0';
+                      Ram_HighControl <= '0';
+                      Ram_Addr_Enable <='0';
+                      StackCount <= '0';
+                      StackOutControl <= '1';
+                      DisplayControl <='0';
+                      LowStackJump <='0';
+                      HighStackJump <= '0';
+                      Constant_Enable<='0';
+                      StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                       Count <= '1';
+                       CounterOutControl <= '0';
+                       InsRegControl <= '0';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '1';
+                       MemOutEnable <= '1';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '0';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                       Count <= '0';
+                       CounterOutControl <= '1';
+                       InsRegControl <= '0';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '1';
+                       MemOutEnable <= '0';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '0';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                       Count <= '0';
+                       CounterOutControl <= '1';
+                       InsRegControl <= '1';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '1';
+                       MemOutEnable <= '0';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '0';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                       Count <= '0';
+                       CounterOutControl <= '0';
+                       InsRegControl <= '0';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '1';
+                       MemOutEnable <= '1';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '0';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                       Count <= '0';
+                       CounterOutControl <= '0';
+                       InsRegControl <= '0';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '0';
+                       MemOutEnable <= '1';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '0';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+      elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                       Count <= '0';
+                       CounterOutControl <= '0';
+                       InsRegControl <= '0';
+                       RegAControl <= '0';
+                       RegBControl <= '0';
+                       MainRegReadControl <= '0';
+                       LowJumpRegLoad <= '0';
+                       HighJumpRegLoad <= '0';
+                       JumpEnable <= '0';
+                       MainRegOutputControl <= '0';
+                       MemOutEnable <= '1';
+                       MemWriteControl <= '1';
+                       Ram_LowControl <= '1';
+                       Ram_HighControl <= '0';
+                       Ram_Addr_Enable <='1';
+                       StackCount <= '0';
+                       StackOutControl <= '1';
+                       DisplayControl <='0';
+                       LowStackJump <='0';
+                       HighStackJump <= '0';
+                       Constant_Enable<='0';
+                       StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                        Count <= '1';
+                        CounterOutControl <= '0';
+                        InsRegControl <= '0';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '1';
+                        MemOutEnable <= '1';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '0';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                        Count <= '0';
+                        CounterOutControl <= '1';
+                        InsRegControl <= '0';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '1';
+                        MemOutEnable <= '0';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '0';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                        Count <= '0';
+                        CounterOutControl <= '1';
+                        InsRegControl <= '1';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '1';
+                        MemOutEnable <= '0';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '0';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                        Count <= '0';
+                        CounterOutControl <= '0';
+                        InsRegControl <= '0';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '1';
+                        MemOutEnable <= '1';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '0';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                        Count <= '0';
+                        CounterOutControl <= '0';
+                        InsRegControl <= '0';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '0';
+                        MemOutEnable <= '1';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '0';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+       elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                        Count <= '0';
+                        CounterOutControl <= '0';
+                        InsRegControl <= '0';
+                        RegAControl <= '0';
+                        RegBControl <= '0';
+                        MainRegReadControl <= '0';
+                        LowJumpRegLoad <= '0';
+                        HighJumpRegLoad <= '0';
+                        JumpEnable <= '0';
+                        MainRegOutputControl <= '0';
+                        MemOutEnable <= '1';
+                        MemWriteControl <= '1';
+                        Ram_LowControl <= '0';
+                        Ram_HighControl <= '1';
+                        Ram_Addr_Enable <='1';
+                        StackCount <= '0';
+                        StackOutControl <= '1';
+                        DisplayControl <='0';
+                        LowStackJump <='0';
+                        HighStackJump <= '0';
+                        Constant_Enable<='0';
+                        StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                         Count <= '1';
+                         CounterOutControl <= '0';
+                         InsRegControl <= '0';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '1';
+                         MemOutEnable <= '1';
+                         MemWriteControl <= '1';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '1';
+                         StackOutControl <= '1';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                         Count <= '0';
+                         CounterOutControl <= '1';
+                         InsRegControl <= '0';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '1';
+                         MemOutEnable <= '0';
+                         MemWriteControl <= '1';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '0';
+                         StackOutControl <= '1';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                         Count <= '0';
+                         CounterOutControl <= '1';
+                         InsRegControl <= '1';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '1';
+                         MemOutEnable <= '0';
+                         MemWriteControl <= '1';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '0';
+                         StackOutControl <= '1';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                         Count <= '0';
+                         CounterOutControl <= '0';
+                         InsRegControl <= '0';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '1';
+                         MemOutEnable <= '1';
+                         MemWriteControl <= '1';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '0';
+                         StackOutControl <= '1';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                         Count <= '0';
+                         CounterOutControl <= '0';
+                         InsRegControl <= '0';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '0';
+                         MemOutEnable <= '1';
+                         MemWriteControl <= '1';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '0';
+                         StackOutControl <= '0';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+        elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                         Count <= '0';
+                         CounterOutControl <= '0';
+                         InsRegControl <= '0';
+                         RegAControl <= '0';
+                         RegBControl <= '0';
+                         MainRegReadControl <= '0';
+                         LowJumpRegLoad <= '0';
+                         HighJumpRegLoad <= '0';
+                         JumpEnable <= '0';
+                         MainRegOutputControl <= '0';
+                         MemOutEnable <= '1';
+                         MemWriteControl <= '0';
+                         Ram_LowControl <= '0';
+                         Ram_HighControl <= '0';
+                         Ram_Addr_Enable <='1';
+                         StackCount <= '0';
+                         StackOutControl <= '0';
+                         DisplayControl <='0';
+                         LowStackJump <='0';
+                         HighStackJump <= '0';
+                         Constant_Enable<='0';
+                         StackCountDirection <='0';
+
+
+          elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+                           Count <= '1';
+                           CounterOutControl <= '0';
+                           InsRegControl <= '0';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '1';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '1';
+                           StackOutControl <= '1';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+          elsif Instruction = "10110011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+                           Count <= '0';
+                           CounterOutControl <= '1';
+                           InsRegControl <= '0';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '0';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '0';
+                           StackOutControl <= '1';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+          elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+                           Count <= '0';
+                           CounterOutControl <= '1';
+                           InsRegControl <= '1';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '0';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '0';
+                           StackOutControl <= '1';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+          elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+                           Count <= '0';
+                           CounterOutControl <= '0';
+                           InsRegControl <= '0';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '0';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '0';
+                           StackOutControl <= '1';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+          elsif Instruction = "10110011" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+                           Count <= '0';
+                           CounterOutControl <= '0';
+                           InsRegControl <= '0';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '0';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '0';
+                           StackOutControl <= '0';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+          elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+                           Count <= '0';
+                           CounterOutControl <= '0';
+                           InsRegControl <= '0';
+                           RegAControl <= '0';
+                           RegBControl <= '0';
+                           MainRegReadControl <= '0';
+                           LowJumpRegLoad <= '0';
+                           HighJumpRegLoad <= '0';
+                           JumpEnable <= '0';
+                           MainRegOutputControl <= '1';
+                           MemOutEnable <= '0';
+                           MemWriteControl <= '1';
+                           Ram_LowControl <= '0';
+                           Ram_HighControl <= '0';
+                           Ram_Addr_Enable <='1';
+                           StackCount <= '0';
+                           StackOutControl <= '0';
+                           DisplayControl <='0';
+                           LowStackJump <='0';
+                           HighStackJump <= '0';
+                           Constant_Enable<='0';
+                           StackCountDirection <='1';
+
+         -- elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
+         --                   Count <= '1';
+         --                   CounterOutControl <= '0';
+         --                   InsRegControl <= '0';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '1';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+         --
+         --  elsif Instruction = "10111111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
+         --                   Count <= '0';
+         --                   CounterOutControl <= '1';
+         --                   InsRegControl <= '0';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '0';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+         --
+         --  elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
+         --                   Count <= '0';
+         --                   CounterOutControl <= '1';
+         --                   InsRegControl <= '1';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '0';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+         --
+         --  elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
+         --                   Count <= '0';
+         --                   CounterOutControl <= '0';
+         --                   InsRegControl <= '0';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '1';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+         --
+         --  elsif Instruction = "10111111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
+         --                   Count <= '0';
+         --                   CounterOutControl <= '0';
+         --                   InsRegControl <= '0';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '1';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+         --
+         --  elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
+         --                   Count <= '0';
+         --                   CounterOutControl <= '0';
+         --                   InsRegControl <= '0';
+         --                   RegAControl <= '0';
+         --                   RegBControl <= '0';
+         --                   MainRegReadControl <= '0';
+         --                   LowJumpRegLoad <= '0';
+         --                   HighJumpRegLoad <= '0';
+         --                   JumpEnable <= '0';
+         --                   MainRegOutputControl <= '1';
+         --                   MemOutEnable <= '1';
+         --                   MemWriteControl <= '1';
+         --                   Ram_LowControl <= '0';
+         --                   Ram_HighControl <= '0';
+         --                   Ram_Addr_Enable <='1';
+         --                   StackCount <= '0';
+         --                   StackOutControl <= '1';
+         --                   DisplayControl <='0';
+         --                   LowStackJump <='0';
+         --                   HighStackJump <= '0';
+         --                   Constant_Enable<='0';
+         --                   StackCountDirection <='0';
+
+            else
+                            Count <= '0';
+                            CounterOutControl <= '0';
+                            InsRegControl <= '0';
+                            RegAControl <= '0';
+                            RegBControl <= '0';
+                            MainRegReadControl <= '0';
+                            LowJumpRegLoad <= '0';
+                            HighJumpRegLoad <= '0';
+                            JumpEnable <= '0';
+                            MainRegOutputControl <= '1';
+                            MemOutEnable <= '1';
+                            MemWriteControl <= '1';
+                            Ram_LowControl <= '0';
+                            Ram_HighControl <= '0';
+                            Ram_Addr_Enable <='1';
+                            StackCount <= '0';
+                            StackOutControl <= '1';
+                            DisplayControl <='0';
+                            LowStackJump <='0';
+                            HighStackJump <= '0';
+                            Constant_Enable<='0';
+                            StackCountDirection <='0';
+                            ALU_Enable <= '0';
+
+
+
+
         end if;
       end process;
 

@@ -71,44 +71,7 @@ component Circuit74181b is
   );
 end component;
 
-
--- component MircoCodeGen is
---   port(Instruction: in std_logic_vector (7 downto 0);
---        ABFlag: in std_logic;
---        CarryFlag: in std_logic;
---        Reset: in std_logic;
---        clk: in std_logic;
---        Count: out std_logic;
---        CounterOutControl: out std_logic;
---        InsRegControl: out std_logic;
---        RegAControl: out std_logic;
---        RegBControl: out std_logic;
---        MainRegReadControl: out std_logic;
---        LowJumpRegLoad: out std_logic;
---        HighJumpRegLoad: out std_logic;
---        JumpEnable: out std_logic;
---        MainRegOutputControl: out std_logic;
---        MemOutEnable: out std_logic;
---        MemWriteControl: out std_logic;
---        Ram_LowControl: out std_logic;
---        Ram_HighControl: out std_logic;
---        Ram_Addr_Enable: out std_logic;
---        StackCount: out std_logic;
---        StackOutControl: out std_logic;
---        DisplayControl: out std_logic;
---        LowStackJump: out std_logic;
---        HighStackJump: out std_logic;
---        StackCountDirection: out std_logic;
---        Constants: out std_logic_vector (7 downto 0);
---        Constant_Enable: out std_logic;
---        ALU_Enable: out std_logic
---   );
---
--- end component;
-
-
-
-component StandbyGen is
+component MicroCodeGen is
   port(Instruction: in std_logic_vector (7 downto 0);
        ABFlag: in std_logic;
        CarryFlag: in std_logic;
@@ -146,13 +109,11 @@ signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, A
 signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
-  --Clock Based Circuitary All works
-  --signal buffering
   CLK <= interntalCLK;
 
   --clock selector
   CLKFLOP : D_flip_flop port map (CLK_Select, nClkSelectState, Reset, '1', ClkSelectState, nClkSelectState);
-
+  --want to defualt this to user clock
   process(UserCLK, SlowCLK, ClkSelectState)
   begin
     if ClkSelectState = '0' then
@@ -162,41 +123,7 @@ begin
     end if;
   end process;
 
-
-  -- Control_Unit: MircoCodeGen port map(
-  --      Ins (7 downto 0),
-  --      ABFlag,
-  --      CarryFlag,
-  --      Reset,
-  --      interntalCLK,
-  --      Count,
-  --      CounterOutControl,
-  --      InsRegControl,
-  --      RegAControl,
-  --      RegBControl,
-  --      MainRegReadControl,
-  --      LowJumpRegLoad,
-  --      HighJumpRegLoad,
-  --      JumpEnable,
-  --      MainRegOutputControl,
-  --      MemOutEnable,
-  --      MemWriteControl,
-  --      Ram_LowControl,
-  --      Ram_HighControl,
-  --      Ram_Addr_Enable,
-  --      StackCount,
-  --      StackOutControl,
-  --      DisplayControl,
-  --      LowStackJump,
-  --      HighStackJump,
-  --      StackCountDirection,
-  --      Constants (7 downto 0),
-  --      Constant_Enable,
-  --      ALU_Enable
-  -- );
-
-
-  Control_Unit: StandbyGen port map(
+  Control_Unit: MicroCodeGen port map(
        Ins (7 downto 0),
        ABFlag,
        CarryFlag,
@@ -242,7 +169,7 @@ begin
   ALU_High: Circuit74181b port map(regA (7 downto 4), regB (7 downto 4), Ins(3 downto 0), ALU_connect, Ins(5),  ALU_Out(7 downto 4), ABHigh, open, open, CarryOut);
 
   --commands
-                -- {"NOP": "10111111",
+                -- {"NOP": "10111111", --nop is not dealt with
                 -- "AIN": "10000000",
                 -- "BIN": "10000001",
                 -- "JMP": "10000010",
@@ -252,7 +179,7 @@ begin
                 -- "JBI": "10000110",
                 -- "JBHI": "10000111",
                 --
-                -- "FLF": "11110011",
+                -- "FLF": "11110011", -- all alu functions are dealt with
                 -- "FLT": "11111100",
                 -- "SUM": "11001001",
                 -- "SUB": "11010110",
