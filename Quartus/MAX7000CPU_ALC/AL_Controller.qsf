@@ -122,8 +122,7 @@ set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
 set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
 set_location_assignment PIN_77 -to StackCountDirection
-set_global_assignment -name VHDL_FILE "VHDL files/StandbyGenerator.vhdl"
-set_global_assignment -name VHDL_FILE "VHDL files/MicroCodeGen2.vhdl"
-set_global_assignment -name VERILOG_FILE "VHDL files/Alt_ALU.verilog"
+set_global_assignment -name VHDL_FILE "VHDL files/MicroCodeGen.vhdl"
+set_global_assignment -name VERILOG_FILE "VHDL files/ALU.verilog"
 set_global_assignment -name VHDL_FILE "VHDL files/logic.vhdl"
 set_global_assignment -name VHDL_FILE "VHDL files/ALC.vhdl"
