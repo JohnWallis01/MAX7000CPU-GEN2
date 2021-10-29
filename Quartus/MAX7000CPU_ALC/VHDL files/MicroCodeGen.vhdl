@@ -57,7 +57,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
     -- load constants (LDI)
     if  Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -82,7 +82,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
      --
      elsif  Instruction(7) = '0' and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -107,7 +107,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7) = '0' and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '1';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -132,7 +132,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7) = '0' and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -157,7 +157,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
      --
      elsif  Instruction(7) = '0' and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -183,7 +183,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction(7) = '0' and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -211,7 +211,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
     --ALU commmands
   elsif  Instruction(7 downto 6) = "11" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -236,7 +236,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7 downto 6) = "11" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -261,7 +261,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7 downto 6) = "11" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '1';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -286,7 +286,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7 downto 6) = "11" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -311,7 +311,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif  Instruction(7 downto 6) = "11"  and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -336,7 +336,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction(7 downto 6) = "11" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -361,7 +361,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                      Count <= '1';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -385,7 +385,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -409,7 +409,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '1';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -433,7 +433,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -457,7 +457,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                      Count <= '1';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -481,7 +481,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -505,7 +505,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -529,7 +529,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -553,7 +553,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '1';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -577,7 +577,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000011" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -601,7 +601,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000011" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -625,7 +625,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000011" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -649,7 +649,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                    Count <= '1';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -673,7 +673,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -697,7 +697,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '1';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -721,7 +721,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -745,7 +745,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -769,7 +769,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '1';
                    RegBControl <= '0';
@@ -793,7 +793,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                     Count <= '1';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -817,7 +817,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -841,7 +841,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '1';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -865,7 +865,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -889,7 +889,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -913,7 +913,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '1';
@@ -937,7 +937,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                      Count <= '1';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -961,7 +961,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -985,7 +985,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '1';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1009,7 +1009,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1033,7 +1033,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1057,7 +1057,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10000110" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1082,7 +1082,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                     Count <= '1';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1106,7 +1106,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1130,7 +1130,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '1';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1154,7 +1154,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1178,7 +1178,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1202,7 +1202,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1226,7 +1226,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
                    Count <= '1';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1250,7 +1250,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '1' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1274,7 +1274,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '1' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '1';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1298,7 +1298,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1322,7 +1322,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '1' then
                    Count <= '1';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1346,7 +1346,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '1' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1370,7 +1370,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
                    Count <= '1';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1394,7 +1394,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '0' and Q2 = '0' and ABFlag = '0' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1418,7 +1418,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '0' and ABFlag = '0' then
                    Count <= '0';
-                   CounterOutControl <= '1';
+                   CounterOutControl <= '0';
                    InsRegControl <= '1';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1442,7 +1442,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '1' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1466,7 +1466,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '1' and Q2 = '1' and ABFlag = '0' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1490,7 +1490,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
   elsif Instruction = "10000101" and Q0 = '0' and Q1 = '0' and Q2 = '1' and ABFlag = '0' then
                    Count <= '0';
-                   CounterOutControl <= '0';
+                   CounterOutControl <= '1';
                    InsRegControl <= '0';
                    RegAControl <= '0';
                    RegBControl <= '0';
@@ -1515,7 +1515,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
                     Count <= '1';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1539,7 +1539,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '1' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1563,7 +1563,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '1' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '1';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1587,7 +1587,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1611,7 +1611,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '1' then
                     Count <= '1';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1635,7 +1635,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '1' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1659,7 +1659,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
                     Count <= '1';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1683,7 +1683,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '0' and Q2 = '0' and CarryFlag = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1707,7 +1707,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '0' and CarryFlag = '0' then
                     Count <= '0';
-                    CounterOutControl <= '1';
+                    CounterOutControl <= '0';
                     InsRegControl <= '1';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1731,7 +1731,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '1' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1755,7 +1755,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '1' and Q2 = '1' and CarryFlag = '0' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1779,7 +1779,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
    elsif Instruction = "10000100" and Q0 = '0' and Q1 = '0' and Q2 = '1' and CarryFlag = '0' then
                     Count <= '0';
-                    CounterOutControl <= '0';
+                    CounterOutControl <= '1';
                     InsRegControl <= '0';
                     RegAControl <= '0';
                     RegBControl <= '0';
@@ -1803,7 +1803,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                      Count <= '1';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1827,7 +1827,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1851,7 +1851,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                      Count <= '0';
-                     CounterOutControl <= '1';
+                     CounterOutControl <= '0';
                      InsRegControl <= '1';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1875,7 +1875,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1899,7 +1899,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1923,7 +1923,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
     elsif Instruction = "10110001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                      Count <= '0';
-                     CounterOutControl <= '0';
+                     CounterOutControl <= '1';
                      InsRegControl <= '0';
                      RegAControl <= '0';
                      RegBControl <= '0';
@@ -1948,7 +1948,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                       Count <= '1';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -1972,7 +1972,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -1996,7 +1996,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                       Count <= '0';
-                      CounterOutControl <= '1';
+                      CounterOutControl <= '0';
                       InsRegControl <= '1';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -2020,7 +2020,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -2044,7 +2044,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -2068,7 +2068,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
      elsif Instruction = "10110000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                       Count <= '0';
-                      CounterOutControl <= '0';
+                      CounterOutControl <= '1';
                       InsRegControl <= '0';
                       RegAControl <= '0';
                       RegBControl <= '0';
@@ -2092,7 +2092,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                        Count <= '1';
-                       CounterOutControl <= '0';
+                       CounterOutControl <= '1';
                        InsRegControl <= '0';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2116,7 +2116,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                        Count <= '0';
-                       CounterOutControl <= '1';
+                       CounterOutControl <= '0';
                        InsRegControl <= '0';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2140,7 +2140,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                        Count <= '0';
-                       CounterOutControl <= '1';
+                       CounterOutControl <= '0';
                        InsRegControl <= '1';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2164,7 +2164,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                        Count <= '0';
-                       CounterOutControl <= '0';
+                       CounterOutControl <= '1';
                        InsRegControl <= '0';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2188,7 +2188,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                        Count <= '0';
-                       CounterOutControl <= '0';
+                       CounterOutControl <= '1';
                        InsRegControl <= '0';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2212,7 +2212,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
       elsif Instruction = "10100000" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                        Count <= '0';
-                       CounterOutControl <= '0';
+                       CounterOutControl <= '1';
                        InsRegControl <= '0';
                        RegAControl <= '0';
                        RegBControl <= '0';
@@ -2236,7 +2236,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
                         Count <= '1';
-                        CounterOutControl <= '0';
+                        CounterOutControl <= '1';
                         InsRegControl <= '0';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2260,7 +2260,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
                         Count <= '0';
-                        CounterOutControl <= '1';
+                        CounterOutControl <= '0';
                         InsRegControl <= '0';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2284,7 +2284,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
                         Count <= '0';
-                        CounterOutControl <= '1';
+                        CounterOutControl <= '0';
                         InsRegControl <= '1';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2308,7 +2308,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
                         Count <= '0';
-                        CounterOutControl <= '0';
+                        CounterOutControl <= '1';
                         InsRegControl <= '0';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2332,7 +2332,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
                         Count <= '0';
-                        CounterOutControl <= '0';
+                        CounterOutControl <= '1';
                         InsRegControl <= '0';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2356,7 +2356,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
        elsif Instruction = "10100001" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
                         Count <= '0';
-                        CounterOutControl <= '0';
+                        CounterOutControl <= '1';
                         InsRegControl <= '0';
                         RegAControl <= '0';
                         RegBControl <= '0';
@@ -2380,7 +2380,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
         --                  Count <= '1';
-        --                  CounterOutControl <= '0';
+        --                  CounterOutControl <= '1';
         --                  InsRegControl <= '0';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2404,7 +2404,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
         --                  Count <= '0';
-        --                  CounterOutControl <= '1';
+        --                  CounterOutControl <= '0';
         --                  InsRegControl <= '0';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2428,7 +2428,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
         --                  Count <= '0';
-        --                  CounterOutControl <= '1';
+        --                  CounterOutControl <= '0';
         --                  InsRegControl <= '1';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2452,7 +2452,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
         --                  Count <= '0';
-        --                  CounterOutControl <= '0';
+        --                  CounterOutControl <= '1';
         --                  InsRegControl <= '0';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2476,7 +2476,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
         --                  Count <= '0';
-        --                  CounterOutControl <= '0';
+        --                  CounterOutControl <= '1';
         --                  InsRegControl <= '0';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2500,7 +2500,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         -- elsif Instruction = "10110010" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
         --                  Count <= '0';
-        --                  CounterOutControl <= '0';
+        --                  CounterOutControl <= '1';
         --                  InsRegControl <= '0';
         --                  RegAControl <= '0';
         --                  RegBControl <= '0';
@@ -2525,7 +2525,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
         --                    Count <= '1';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2549,7 +2549,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '1';
+        --                    CounterOutControl <= '0';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2573,7 +2573,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '1';
+        --                    CounterOutControl <= '0';
         --                    InsRegControl <= '1';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2597,7 +2597,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2621,7 +2621,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2645,7 +2645,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10110011" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2669,7 +2669,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --  elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '0' then
         --                    Count <= '1';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2693,7 +2693,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '0' and Q2 = '0' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '1';
+        --                    CounterOutControl <= '0';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2717,7 +2717,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '0' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '1';
+        --                    CounterOutControl <= '0';
         --                    InsRegControl <= '1';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2741,7 +2741,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10111111" and Q0 = '1' and Q1 = '1' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2765,7 +2765,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '1' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2789,7 +2789,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
         --
         --   elsif Instruction = "10111111" and Q0 = '0' and Q1 = '0' and Q2 = '1' then
         --                    Count <= '0';
-        --                    CounterOutControl <= '0';
+        --                    CounterOutControl <= '1';
         --                    InsRegControl <= '0';
         --                    RegAControl <= '0';
         --                    RegBControl <= '0';
@@ -2813,7 +2813,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
 
             else
                             Count <= '0';
-                            CounterOutControl <= '0';
+                            CounterOutControl <= '1';
                             InsRegControl <= '0';
                             RegAControl <= '0';
                             RegBControl <= '0';
