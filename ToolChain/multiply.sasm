@@ -1,0 +1,32 @@
+STC 0
+JBHI
+STC 0
+SMAH
+STC 0
+BIN
+STC 31 #&B get b and check if its zero
+SMA
+MEO
+AIN
+STC 25 $END
+JBI
+AMM
+JPE
+AMM
+MEN
+STC 30 &A #&A -- running the body of the loop
+SMA
+MEO
+AIN
+SUM
+BIN
+STC 6 #$LOOP
+JBI
+JMP
+BOT
+DSP
+STC 29 #kill
+JBI
+JMP
+STC 10 #A
+STC 10 #B
