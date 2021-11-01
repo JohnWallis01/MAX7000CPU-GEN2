@@ -4,29 +4,29 @@ STC 0
 SMAH
 STC 0
 BIN
-STC 31 #&B get b and check if its zero
+&LOOP STC &B    #b and check if its zero
 SMA
 MEO
 AIN
-STC 25 $END
+STC &END
 JBI
 AMM
 JPE
 AMM
 MEN
-STC 30 &A #&A -- running the body of the loop
+STC &A           #running the body of the loop
 SMA
 MEO
 AIN
 SUM
 BIN
-STC 6 #$LOOP
+STC &LOOP
 JBI
 JMP
-BOT
+&END BOT
 DSP
-STC 29 #kill
+STC &KILL
 JBI
-JMP
-STC 10 #A
-STC 10 #B
+&KILL JMP
+&A STC 2
+&B STC 2 
