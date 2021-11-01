@@ -2539,7 +2539,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                            Ram_LowControl <= '0';
                            Ram_HighControl <= '0';
                            Ram_Addr_Enable <='1';
-                           StackCount <= '1';
+                           StackCount <= '0';
                            StackOutControl <= '1';
                            DisplayControl <='0';
                            LowStackJump <='0';
@@ -2611,7 +2611,7 @@ architecture StandbyGen_Arch of MicroCodeGen is
                            Ram_LowControl <= '0';
                            Ram_HighControl <= '0';
                            Ram_Addr_Enable <='1';
-                           StackCount <= '0';
+                           StackCount <= '1';
                            StackOutControl <= '1';
                            DisplayControl <='0';
                            LowStackJump <='0';
