@@ -22,8 +22,9 @@ translator = {"NOP": "10111111",
               "XOR": "11111001",
               "AND": "11111110",
               "ORR": "11111011",
-              "LSH": "11011100",
+              "LSR": "11011100",
               "CMP": "11000110",
+              "APP": "11010000",
 
 
               "MEO": "10110001",
@@ -37,6 +38,7 @@ translator = {"NOP": "10111111",
               }
 
 literal_translator = {"STC": "0"}
+
 
 def read_sasm(file):
     f = open(file, 'r')
@@ -69,7 +71,9 @@ def intepret_opcodes(program):
     assembled = []
     try:
         for i in program:
-            if(i.split()[0].upper() in literal_translator):
+            if(i.split()[0].upper() == "EXE"):
+                assembled.append(i.split()[1])
+            elif(i.split()[0].upper() in literal_translator):
                 bytestring = '{0:07b}'.format(int(i.split()[1]))
                 assembled.append(literal_translator[i[0:3].upper()] + bytestring)
             else:
