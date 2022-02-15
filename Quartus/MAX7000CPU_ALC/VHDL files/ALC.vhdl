@@ -32,8 +32,8 @@ entity AL_Controller is
   DisplayControl: out std_logic;
   LowStackJump: out std_logic;
   HighStackJump: out std_logic;
-  SYNC: out std_logic; --bidirectional
-  STATE: out std_logic; --bidirectional
+  SYNC: in std_logic; --bidirectional
+  STATE: in std_logic; --bidirectional
   StackCountDirection: out std_logic
   );
 end AL_Controller;
@@ -99,13 +99,21 @@ component MicroCodeGen is
        HighStackJump: out std_logic;
        StackCountDirection: out std_logic;
        Constant_Enable: out std_logic;
-       ALU_Enable: out std_logic
+       ALU_Enable: out std_logic;
+       Key_Enable: out std_logic
   );
 
 end component;
 
+component KeyDecoder is
+    port(
+    Serial_CLK: in std_logic;
+    Serial_Data: in std_logic;
+    Scan_Code: out std_logic_vector (7 downto 0);
+    Enable: in std_logic);
+end component;
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Constant_Enable: std_logic;
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Constant_Enable, Key_Enable: std_logic;
 signal ALU_Out, Constants : std_logic_vector (7 downto 0);
 begin
 
@@ -151,17 +159,25 @@ begin
        HighStackJump,
        StackCountDirection,
        Constant_Enable,
-       ALU_Enable
+       ALU_Enable,
+       Key_Enable
   );
 
 
   Constants_Buffer: Octal_Bus_Driver port map(Ins(7 downto 0), MainBus(7 downto 0), Constant_Enable);
+
+  --keyboard controller
+
+  Keyboard_Controller: KeyDecoder port map(SYNC, STATE, MainBus(7 downto 0), Key_Enable);
+
+
 
   --ALU
   CarryFlagFlop: D_flip_flop port map(InsRegControl, CarryOut, '0', '1', CarryFlag, open);
   ABLowHigh <= ABLow and ABHigh;
   ABFlagFlop: D_flip_flop port map(InsRegControl, ABLowHigh, '0', '1', ABFlag, open);
   ALU_Buffer: Octal_Bus_Driver port map(ALU_Out(7 downto 0), MainBus(7 downto 0), ALU_Enable);
+
 
 
   --verilog implementation

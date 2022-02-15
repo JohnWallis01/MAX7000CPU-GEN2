@@ -221,3 +221,33 @@ architecture DFF_arch of D_flip_flop is
              end  if;
      end process;
 end DFF_arch;
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity undecal_shift_register is
+    Port ( D   : in  std_logic;
+           CLK : in  std_logic;
+           Q : out std_logic_vector (10 downto 0));
+end undecal_shift_register;
+
+architecture shift_register_beh of undecal_shift_register is
+    signal shift_reg : std_logic_vector(10 downto 0);
+begin
+
+
+    -- shift register
+    process (CLK)
+    begin
+        if (CLK'event and CLK = '1') then
+            shift_reg(9 downto 0) <= shift_reg(10 downto 1);
+            shift_reg(10) <= D;
+        end if;
+    end process;
+
+    -- hook up the shift register bits to the LEDs
+    Q <= shift_reg;
+
+end shift_register_beh;
