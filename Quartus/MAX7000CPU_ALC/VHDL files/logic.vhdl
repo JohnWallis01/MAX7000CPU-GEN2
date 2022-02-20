@@ -247,7 +247,6 @@ begin
         end if;
     end process;
 
-    -- hook up the shift register bits to the LEDs
     Q <= shift_reg;
 
 end shift_register_beh;

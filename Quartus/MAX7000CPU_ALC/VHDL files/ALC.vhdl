@@ -98,10 +98,8 @@ component MicroCodeGen is
        LowStackJump: out std_logic;
        HighStackJump: out std_logic;
        StackCountDirection: out std_logic;
-       Constant_Enable: out std_logic;
-       ALU_Enable: out std_logic;
-       Key_Enable: out std_logic
-  );
+       Drive_Enable: out std_logic;
+       ALU_Enable: out std_logic);
 
 end component;
 
@@ -109,12 +107,11 @@ component KeyDecoder is
     port(
     Serial_CLK: in std_logic;
     Serial_Data: in std_logic;
-    Scan_Code: out std_logic_vector (7 downto 0);
-    Enable: in std_logic);
+    Scan_Code: out std_logic_vector (7 downto 0));
 end component;
 
-signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Constant_Enable, Key_Enable: std_logic;
-signal ALU_Out, Constants : std_logic_vector (7 downto 0);
+signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Drive_Enable, Constant_Enable, Key_Enable: std_logic;
+signal ALU_Out, Constants, Keycode : std_logic_vector (7 downto 0);
 begin
 
   CLK <= interntalCLK;
@@ -158,17 +155,19 @@ begin
        LowStackJump,
        HighStackJump,
        StackCountDirection,
-       Constant_Enable,
-       ALU_Enable,
-       Key_Enable
+       Drive_Enable,
+       ALU_Enable
   );
 
+  Constant_Enable <= Drive_Enable and not Ins(7);
 
   Constants_Buffer: Octal_Bus_Driver port map(Ins(7 downto 0), MainBus(7 downto 0), Constant_Enable);
 
   --keyboard controller
 
-  Keyboard_Controller: KeyDecoder port map(SYNC, STATE, MainBus(7 downto 0), Key_Enable);
+  Key_Enable <= Drive_Enable and Ins(7);
+  Keyboard_Controller: KeyDecoder port map(SYNC, STATE, Keycode(7 downto 0));
+  Keyboard_Buffer: Octal_Bus_Driver port map(Keycode(7 downto 0), MainBus(7 downto 0), Key_Enable);
 
 
 

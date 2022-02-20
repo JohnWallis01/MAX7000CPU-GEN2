@@ -5,8 +5,7 @@ entity KeyDecoder is
   port(
   Serial_CLK: in std_logic;
   Serial_Data: in std_logic;
-  Scan_Code: out std_logic_vector (7 downto 0);
-  Enable: in std_logic);
+  Scan_Code: out std_logic_vector (7 downto 0));
 end KeyDecoder;
 
 architecture KeyDecoder_arch of KeyDecoder is
@@ -17,24 +16,15 @@ architecture KeyDecoder_arch of KeyDecoder is
          Q : out std_logic_vector (10 downto 0));
   end component;
 
-  component Octal_Bus_Driver
-  port(
-  A: In std_logic_vector (7 downto 0);
-  O: Out std_logic_vector (7 downto 0);
-  En: In std_logic
-  );
-end component;
-
-  signal output_enable: std_logic;
+  signal nSerial_Clock: std_logic;
   signal key_buffer: std_logic_vector (21 downto 0);
   signal data: std_logic_vector(7 downto 0);
   begin
-  OutputBuffer: Octal_Bus_Driver port map(data, Scan_Code, output_enable);
-  ShiftRegA: undecal_shift_register port map(Serial_Data, Serial_CLK, key_buffer(10 downto 0));
-  ShiftRegB: undecal_shift_register port map(Serial_Data, Serial_CLK, key_buffer(21 downto 11));
+  nSerial_Clock <= not Serial_CLK;
+  ShiftRegA: undecal_shift_register port map(Serial_Data, nSerial_Clock, key_buffer(21 downto 11));
+  ShiftRegB: undecal_shift_register port map(key_buffer(11), nSerial_Clock, key_buffer(10 downto 0));
 
-  output_enable <= Enable;
-  data(7 downto 0) <= key_buffer(8 downto 1);
-
+  data(7 downto 0) <= key_buffer(19 downto 12); -- this needs to be selected for the correct data sent by the keyboard
+  Scan_Code (7 downto 0) <= data(7 downto 0);
 
 end architecture;
