@@ -11,7 +11,7 @@ entity AL_Controller is
   UserCLK: in std_logic;
   SlowCLK: in std_logic;
   CLK_Select: in std_logic;
-  CLK: out std_logic; -- this needs to be birectional
+  CLK: buffer std_logic; -- this needs to be birectional
   Count: out std_logic;
   CounterOutControl: out std_logic;
   InsRegControl: buffer std_logic;
@@ -107,7 +107,9 @@ component KeyDecoder is
     port(
     Serial_CLK: in std_logic;
     Serial_Data: in std_logic;
-    Scan_Code: out std_logic_vector (7 downto 0));
+    Scan_Code: out std_logic_vector (7 downto 0);
+    Output_Enable: in std_logic;
+    System_CLK: in std_logic);
 end component;
 
 signal interntalCLK, nClkSelectState, ClkSelectState, ModReadTSig, ModOutTSig, ALU_connect, ABLow, ABHigh, CarryFlag, ABLowHigh, ABFlag, ALU_Enable, CarryOut, Drive_Enable, Constant_Enable, Key_Enable: std_logic;
@@ -166,9 +168,7 @@ begin
   --keyboard controller
 
   Key_Enable <= Drive_Enable and Ins(7);
-  Keyboard_Controller: KeyDecoder port map(SYNC, STATE, Keycode(7 downto 0));
-  Keyboard_Buffer: Octal_Bus_Driver port map(Keycode(7 downto 0), MainBus(7 downto 0), Key_Enable);
-
+  Keyboard_Controller: KeyDecoder port map(SYNC, STATE, MainBus(7 downto 0), Key_Enable, CLK);
 
 
   --ALU

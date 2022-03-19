@@ -3,7 +3,7 @@ import csv
 import serial
 import time
 
-Cable = serial.Serial(port="COM6", baudrate=57600, timeout=5)
+Cable = serial.Serial(port="COM3", baudrate=57600, timeout=5)
 
 
 JTAG_Data = [0] * 288

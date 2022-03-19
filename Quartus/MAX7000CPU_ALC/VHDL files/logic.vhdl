@@ -225,7 +225,6 @@ end DFF_arch;
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity undecal_shift_register is
     Port ( D   : in  std_logic;
@@ -236,7 +235,6 @@ end undecal_shift_register;
 architecture shift_register_beh of undecal_shift_register is
     signal shift_reg : std_logic_vector(10 downto 0);
 begin
-
 
     -- shift register
     process (CLK)
@@ -250,3 +248,49 @@ begin
     Q <= shift_reg;
 
 end shift_register_beh;
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Octal_Register is
+  port(D: in std_logic_vector(7 downto 0);
+       CLK: in std_logic;
+       Reset: in std_logic;
+       Q: out std_logic_vector (7 downto 0));
+end Octal_Register;
+
+architecture Octal_Register_beh of Octal_Register is
+
+  signal Data: std_logic_vector (7 downto 0);
+
+begin
+  process(CLK, Reset)
+    begin
+      if(CLK'event and CLK ='1') then
+        Data <= D;
+        if (Reset = '1') then
+        Data <= "00000000";
+      end if;
+      end if;
+    end process;
+
+    Q <= Data;
+end architecture;
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Set_Reset_Latch is
+    Port ( S : in    STD_LOGIC;
+           R : in    STD_LOGIC;
+           Q : inout STD_LOGIC); -- changed out to inout
+end Set_Reset_Latch;
+
+architecture Set_Reset_Latch_beh of Set_Reset_Latch is
+signal notQ : STD_LOGIC;
+begin
+
+Q    <= R nor notQ;
+notQ <= S nor Q;
+
+end architecture;
